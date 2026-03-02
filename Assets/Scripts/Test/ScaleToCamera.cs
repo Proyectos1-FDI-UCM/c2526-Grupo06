@@ -1,0 +1,66 @@
+//---------------------------------------------------------
+// Componente que escala el objeto al tamaño exacto de la cámara
+//---------------------------------------------------------
+
+using UnityEngine;
+// Añadir aquí el resto de directivas using
+
+
+/// <summary>
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
+/// </summary>
+public class ScaleToCamera : MonoBehaviour
+{
+    // ---- ATRIBUTOS DEL INSPECTOR ----
+    #region Atributos del Inspector (serialized fields)
+    // Documentar cada atributo que aparece aquí.
+    // El convenio de nombres de Unity recomienda que los atributos
+    // públicos y de inspector se nombren en formato PascalCase
+    // (palabras con primera letra mayúscula, incluida la primera letra)
+    // Ejemplo: MaxHealthPoints
+
+    #endregion
+
+    // ---- ATRIBUTOS PRIVADOS ----
+    #region Atributos Privados (private fields)
+    private Vector2 _worldSize;
+
+    #endregion
+    
+    // ---- MÉTODOS DE MONOBEHAVIOUR ----
+    #region Métodos de MonoBehaviour
+    void Start()
+    {
+        Camera cam = Camera.main;
+
+        float height = cam.orthographicSize * 2f;
+        float width = height * cam.aspect;
+
+        _worldSize = new Vector2(width, height);
+
+        transform.localScale = _worldSize;
+    }
+    #endregion
+
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos públicos
+    // Documentar cada método que aparece aquí con ///<summary>
+    // El convenio de nombres de Unity recomienda que estos métodos
+    // se nombren en formato PascalCase (palabras con primera letra
+    // mayúscula, incluida la primera letra)
+    // Ejemplo: GetPlayerController
+
+    #endregion
+    
+    // ---- MÉTODOS PRIVADOS ----
+    #region Métodos Privados
+    // Documentar cada método que aparece aquí
+    // El convenio de nombres de Unity recomienda que estos métodos
+    // se nombren en formato PascalCase (palabras con primera letra
+    // mayúscula, incluida la primera letra)
+
+    #endregion   
+
+} // class ScaleToCamera 
+// namespace
