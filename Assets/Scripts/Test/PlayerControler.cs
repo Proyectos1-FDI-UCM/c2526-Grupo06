@@ -1,6 +1,6 @@
 //---------------------------------------------------------
 // Breve descripción del contenido del archivo
-//Script que controla el movimiento leyendo inputs y moviendo al objeto
+//Script que controla el movimiento leyendo inputs y moviendo al objeto, además 
 // Responsable de la creación de este archivo
 //Adán 
 // Nombre del juego
@@ -44,6 +44,8 @@ public class PlayerControler : MonoBehaviour
     #endregion
     private InputAction movement_action;
     private Vector2 direction;
+    private float x_limit = 8.33f;
+    private float y_limit = 4.4f;
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
@@ -73,9 +75,14 @@ public class PlayerControler : MonoBehaviour
             else if (direction.x < 0) transform.Translate(-fly_speed * Time.deltaTime, 0, 0);
             if (direction.y > 0) transform.Translate(0,fly_speed * Time.deltaTime, 0);
             else if (direction.y < 0) transform.Translate(0,-fly_speed * Time.deltaTime, 0);
+
+            //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -x_limit, x_limit), Mathf.Clamp(transform.position.y, -y_limit, y_limit), 0);
+
         }
     }
     #endregion
+
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -86,7 +93,7 @@ public class PlayerControler : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -94,7 +101,7 @@ public class PlayerControler : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class PlayerControler 
 // namespace
