@@ -1,22 +1,19 @@
 //---------------------------------------------------------
-//Script que controla el movimiento leyendo inputs y moviendo al objeto, además 
-//Adán 
-//Dream O'SpaceSheep
+// Permite recoger instancias de pickups de munición, y se encarga de mantener esta dentro de unos límites
+// Adán Calvo Durán
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
-
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerControler : MonoBehaviour
+public class RecogeMunicion : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -25,11 +22,10 @@ public class PlayerControler : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    private int MaxAMO = 5; //Munición máxima que el player podra obtener durante la partida
 
     #endregion
-    [SerializeField]
-    private float FlySpeed = 1;
-
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
@@ -40,48 +36,27 @@ public class PlayerControler : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private int _currentAmo = 0; //Munición acutal del jugador
+    private OtorgaMunicion _om; //El componente OtorgaMuncion del pickup de munición más reciente contra el que haya chocado
+    private bool _SuckingAmo = true; //Boleano que controla si el jugador puede aborver o no pickups de munición
     #endregion
-    private InputAction _movementAction; //El action donde se guarda la action de move del InputSystem
-    private Vector2 _direction; //El vector que almacenara la dirección devuelta por el wasd o el joystick
-    private float _xLimit = 8.33f; // Punto límite que el jugador podra alcanzar en el eje x
-    private float _yLimit = 4.4f; // Punto límite que el jugador alcanzara en el eje y
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision) //Este metodo detecta la entrada a un trigger y cuando el game objet tiene el componente "OtorgaMunicion" toma la munición que este aporta y la suma a la currentAmo siempre que -SuckingAmo estea en true
     {
-        _movementAction = InputSystem.actions.FindAction("Move");
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        _direction = _movementAction.ReadValue<Vector2>() ;
-        if (_direction != Vector2.zero)
+        _om = collision.gameObject.GetComponent<OtorgaMunicion>();
+        if (_om != null && _SuckingAmo) 
         {
-            if (_direction.x > 0) transform.Translate(FlySpeed * Time.deltaTime, 0, 0);
-            else if (_direction.x < 0) transform.Translate(-FlySpeed * Time.deltaTime, 0, 0);
-            if (_direction.y > 0) transform.Translate(0, FlySpeed * Time.deltaTime, 0);
-            else if (_direction.y < 0) transform.Translate(0,-FlySpeed * Time.deltaTime, 0);
-
-            //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xLimit, _xLimit), Mathf.Clamp(transform.position.y, -_yLimit, _yLimit), 0);
-
+            Addamo(_om.MuncionOtorgada);
+            Destroy(collision.gameObject);
         }
     }
     #endregion
-
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -100,7 +75,22 @@ public class PlayerControler : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    private void Addamo(int amount) //Este metodo suma la cantidad de munción ingresada a _currentAmo asegurandose de no sobrepasar el límite
+    {
+        
+        if (!(_currentAmo >= MaxAMO))
+        {
+            _currentAmo = Mathf.Clamp((_currentAmo + amount), 0, 5);
+            Debug.Log("Munición Actual = " + _currentAmo);
+        }
+        else Debug.Log("Munción ya esta al máximo o el simplemente no se puede dispar");
+    }
 
-} // class PlayerControler 
+    public void StopAMOSucking() //Este metodo aparte de tener un gran nombre solo sirve para poner al jugador en un estado donde no puede absorver pickups de munición;
+    {
+        _SuckingAmo = false;
+    }
+    #endregion   
+
+} // class RecogeMunicion 
 // namespace

@@ -1,22 +1,19 @@
 //---------------------------------------------------------
-//Script que controla el movimiento leyendo inputs y moviendo al objeto, además 
-//Adán 
-//Dream O'SpaceSheep
+// Permite al objeto ser recogido por otro que tenga el componente "RecogeMunicion" y otorga la cantidad de munición establecida
+// Adán Calvo Durán
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
-
 
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PlayerControler : MonoBehaviour
+public class OtorgaMunicion : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -25,12 +22,11 @@ public class PlayerControler : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    public int MuncionOtorgada = 1; //Muncición otorgada al recoger este objeto;
 
     #endregion
-    [SerializeField]
-    private float FlySpeed = 1;
-
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -41,25 +37,21 @@ public class PlayerControler : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-    private InputAction _movementAction; //El action donde se guarda la action de move del InputSystem
-    private Vector2 _direction; //El vector que almacenara la dirección devuelta por el wasd o el joystick
-    private float _xLimit = 8.33f; // Punto límite que el jugador podra alcanzar en el eje x
-    private float _yLimit = 4.4f; // Punto límite que el jugador alcanzara en el eje y
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        _movementAction = InputSystem.actions.FindAction("Move");
+        
     }
 
     /// <summary>
@@ -67,21 +59,9 @@ public class PlayerControler : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _direction = _movementAction.ReadValue<Vector2>() ;
-        if (_direction != Vector2.zero)
-        {
-            if (_direction.x > 0) transform.Translate(FlySpeed * Time.deltaTime, 0, 0);
-            else if (_direction.x < 0) transform.Translate(-FlySpeed * Time.deltaTime, 0, 0);
-            if (_direction.y > 0) transform.Translate(0, FlySpeed * Time.deltaTime, 0);
-            else if (_direction.y < 0) transform.Translate(0,-FlySpeed * Time.deltaTime, 0);
-
-            //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xLimit, _xLimit), Mathf.Clamp(transform.position.y, -_yLimit, _yLimit), 0);
-
-        }
+        
     }
     #endregion
-
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -92,7 +72,7 @@ public class PlayerControler : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -100,7 +80,7 @@ public class PlayerControler : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    #endregion   
 
-} // class PlayerControler 
+} // class OtorgaMunicion 
 // namespace
