@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Hacemos al player "invencible" durante un tiempo determinado después de chocar con un enemigo
+// Javier de Sala Rodríguez
+// Dream o' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -23,7 +23,7 @@ public class PlayerInvencible : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float tiempoInvencible = 3f;
+    private float TiempoInvencible = 3f;
 
     #endregion
 
@@ -36,9 +36,9 @@ public class PlayerInvencible : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Collider2D collider;
+    private Collider2D _collider;
 
-    private float tiempo;
+    private float _tiempo;
 
     #endregion
 
@@ -59,12 +59,12 @@ public class PlayerInvencible : MonoBehaviour
 
     private void OnEnable()
     {
-        collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
 
-        if (collider != null)
+        if (_collider != null)
         {
-            collider.enabled = false;
-            tiempo = 0f;
+            _collider.enabled = false;
+            _tiempo = 0f;
         }
 
     }
@@ -74,13 +74,13 @@ public class PlayerInvencible : MonoBehaviour
     /// </summary>
     void Update()
     {
-        tiempo += Time.deltaTime;
+        _tiempo += Time.deltaTime;
 
-        if (tiempo >= tiempoInvencible)
+        if (_tiempo >= TiempoInvencible)
         {
-            if (collider != null)
+            if (_collider != null)
             {
-                collider.enabled = true;
+                _collider.enabled = true;
             }
             this.enabled = false;
         }

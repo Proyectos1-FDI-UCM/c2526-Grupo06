@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Gestionar el sistema de vida del player
+// Javier de Sala Rodríguez
+// Dream o' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -16,17 +16,6 @@ using UnityEngine;
 /// </summary>
 public class Vida : MonoBehaviour
 {
-    [SerializeField]
-    public int vidas = 4;
-
-    [SerializeField]
-    public TextMeshProUGUI textoVida;
-
-    [SerializeField]
-    public GameObject panelGameover;
-
-    [SerializeField]
-    public SpriteRenderer spriteRenderer;
 
 
 
@@ -37,6 +26,19 @@ public class Vida : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
+
+    [SerializeField]
+    private int Vidas = 4;
+
+    [SerializeField]
+    private TextMeshProUGUI TextoVida;
+
+    [SerializeField]
+    private GameObject PanelGameover;
+
+    [SerializeField]
+    private SpriteRenderer SpriteRenderer;
 
     #endregion
 
@@ -49,13 +51,13 @@ public class Vida : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int MAXIMO_VIDAS = 6;
+    private static int _maximoVidas = 6;
 
-    private static string PUNTO_VIDA = "▓ ";
+    private static string _puntoVida = "▓ ";
 
-    private static int LAYER_ENEMIGO = 11;
+    private static int _layerEnemigo = 11;
 
-    private static int LAYER_ITEM = 12;
+    private static int _layerItem = 12;
 
     #endregion
 
@@ -89,11 +91,11 @@ public class Vida : MonoBehaviour
     /// </summary>
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == LAYER_ENEMIGO)
+        if (other.gameObject.layer == _layerEnemigo)
         {
             ActualizarVidas(-1);
         }
-        else if (other.gameObject.layer == LAYER_ITEM)
+        else if (other.gameObject.layer == _layerItem)
         {
             ActualizarVidas(1);
             Destroy(other.gameObject);
@@ -121,27 +123,27 @@ public class Vida : MonoBehaviour
     private void ActualizarVidas(int delta)
     {
         string puntos = "";
-        vidas += delta;
-        if (vidas > MAXIMO_VIDAS)
+        Vidas += delta;
+        if (Vidas > _maximoVidas)
         {
-            vidas = MAXIMO_VIDAS;
+            Vidas = _maximoVidas;
         }
 
-        for (int i = 0; i < vidas; i++)
+        for (int i = 0; i < Vidas; i++)
         {
-            puntos += PUNTO_VIDA;
+            puntos += _puntoVida;
         }
-        textoVida.text = puntos;
+        TextoVida.text = puntos;
 
-        if(vidas <= 0)
+        if(Vidas <= 0)
         {
-            panelGameover.SetActive(true);
-            spriteRenderer.enabled = false;
+            PanelGameover.SetActive(true);
+            SpriteRenderer.enabled = false;
         }
         else
         {
-            panelGameover.SetActive(false);
-            spriteRenderer.enabled = true;
+            PanelGameover.SetActive(false);
+            SpriteRenderer.enabled = true;
 
             if(delta < 0)
             {

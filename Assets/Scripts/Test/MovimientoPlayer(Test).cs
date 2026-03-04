@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Probar el movimiento del jugador (TEST)
+// Javier de Sala Rodríguez
+// Dream o' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -22,8 +22,9 @@ public class MovimientoPlayer : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
     [SerializeField]
-    public float movementSpeed = 10f;
+    public float MovementSpeed = 10f;
 
     #endregion
 
@@ -64,19 +65,19 @@ public class MovimientoPlayer : MonoBehaviour
 
         if (vInput > 0)
         {
-            transform.position += transform.up * Time.deltaTime * movementSpeed;
+            transform.position += transform.up * Time.deltaTime * MovementSpeed;
         }
         if (vInput < 0)
         {
-            transform.position -= transform.up * Time.deltaTime * movementSpeed;
+            transform.position -= transform.up * Time.deltaTime * MovementSpeed;
         }
         if (hInput > 0)
         {
-            transform.position += transform.right * Time.deltaTime * movementSpeed;
+            transform.position += transform.right * Time.deltaTime * MovementSpeed;
         }
         if (hInput < 0)
         {
-            transform.position -= transform.right * Time.deltaTime * movementSpeed;
+            transform.position -= transform.right * Time.deltaTime * MovementSpeed;
         }
     }
     #endregion
