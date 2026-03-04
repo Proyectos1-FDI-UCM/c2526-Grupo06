@@ -23,7 +23,7 @@ public class OtorgaMunicion : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    public int MuncionOtorgada = 1; //Muncición otorgada al recoger este objeto;
+    private int MuncionOtorgada = 1; //Muncición otorgada al recoger este objeto;
 
     #endregion
     
@@ -70,6 +70,11 @@ public class OtorgaMunicion : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+
+    public int ReturnAmo() //Permite a otro componente obtener la cantidad de munición.
+    {
+        return MuncionOtorgada;
+    }
 
     #endregion
     

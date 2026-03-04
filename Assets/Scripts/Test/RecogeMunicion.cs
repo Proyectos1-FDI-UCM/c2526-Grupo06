@@ -52,7 +52,7 @@ public class RecogeMunicion : MonoBehaviour
         _om = collision.gameObject.GetComponent<OtorgaMunicion>();
         if (_om != null && _SuckingAmo) 
         {
-            Addamo(_om.MuncionOtorgada);
+            Addamo(_om.ReturnAmo());
             Destroy(collision.gameObject);
         }
     }
