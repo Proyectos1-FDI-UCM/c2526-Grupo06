@@ -71,6 +71,10 @@ public class OtorgaMunicion : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    /// <summary>
+    /// Devuelve el valor de municion otorgada por el objeto
+    /// </summary>
+    /// <returns></returns>
     public int ReturnAmo() //Permite a otro componente obtener la cantidad de munición.
     {
         return MuncionOtorgada;
