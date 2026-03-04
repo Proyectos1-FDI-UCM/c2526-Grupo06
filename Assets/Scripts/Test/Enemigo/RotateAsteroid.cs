@@ -23,7 +23,7 @@ public class RotateAsteroid : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    public float RotationsPerMinute = 10f;
+    private float RotationsPerMinute = 10f;
 
     #endregion
 

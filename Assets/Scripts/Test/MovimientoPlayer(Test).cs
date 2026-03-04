@@ -24,7 +24,7 @@ public class MovimientoPlayer : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     [SerializeField]
-    public float MovementSpeed = 10f;
+    private float MovementSpeed = 10f;
 
     #endregion
 
