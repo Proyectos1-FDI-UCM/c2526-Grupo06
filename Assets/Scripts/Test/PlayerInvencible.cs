@@ -1,11 +1,10 @@
 //---------------------------------------------------------
-// Gestionar el sistema de vida del player
+// Hacemos al player "invencible" durante un tiempo determinado después de chocar con un enemigo
 // Javier de Sala Rodríguez
 // Dream o' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using TMPro;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -14,11 +13,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Vida : MonoBehaviour
+public class PlayerInvencible : MonoBehaviour
 {
-
-
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,19 +22,8 @@ public class Vida : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-
     [SerializeField]
-    private int Vidas = 4;
-
-    [SerializeField]
-    private TextMeshProUGUI TextoVida;
-
-    [SerializeField]
-    private GameObject PanelGameover;
-
-    [SerializeField]
-    private SpriteRenderer SpriteRenderer;
+    private float TiempoInvencible = 3f;
 
     #endregion
 
@@ -51,13 +36,9 @@ public class Vida : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int _maximoVidas = 6;
+    private Collider2D _collider;
 
-    private static string _puntoVida = "▓ ";
-
-    private static int _layerEnemigo = 11;
-
-    private static int _layerItem = 12;
+    private float _tiempo;
 
     #endregion
 
@@ -74,7 +55,18 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ActualizarVidas(0);
+    }
+
+    private void OnEnable()
+    {
+        _collider = GetComponent<Collider2D>();
+
+        if (_collider != null)
+        {
+            _collider.enabled = false;
+            _tiempo = 0f;
+        }
+
     }
 
     /// <summary>
@@ -82,25 +74,18 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Update()
     {
-        ActualizarVidas(0);
+        _tiempo += Time.deltaTime;
 
-    }
-
-    /// <summary>
-    /// Detecta cuando hay colisión.
-    /// </summary>
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == _layerEnemigo)
+        if (_tiempo >= TiempoInvencible)
         {
-            ActualizarVidas(-1);
-        }
-        else if (other.gameObject.layer == _layerItem)
-        {
-            ActualizarVidas(1);
-            Destroy(other.gameObject);
+            if (_collider != null)
+            {
+                _collider.enabled = true;
+            }
+            this.enabled = false;
         }
     }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -120,44 +105,7 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void ActualizarVidas(int delta)
-    {
-        string puntos = "";
-        Vidas += delta;
-        if (Vidas > _maximoVidas)
-        {
-            Vidas = _maximoVidas;
-        }
+    #endregion
 
-        for (int i = 0; i < Vidas; i++)
-        {
-            puntos += _puntoVida;
-        }
-        TextoVida.text = puntos;
-
-        if(Vidas <= 0)
-        {
-            PanelGameover.SetActive(true);
-            SpriteRenderer.enabled = false;
-        }
-        else
-        {
-            PanelGameover.SetActive(false);
-            SpriteRenderer.enabled = true;
-
-            if(delta < 0)
-            {
-                PlayerInvencible pi = GetComponent<PlayerInvencible>();
-                if( pi != null)
-                {
-                    pi.enabled = true;
-                }
-            }
-        }
-
-
-    }
-    #endregion   
-
-} // class Vida 
+} // class PlayerInvencible 
 // namespace

@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Rotación de los asteriodes para que probar la vida sea más dinámico
+// Javier de Sala Rodríguez
+// Dream o' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -23,7 +23,7 @@ public class RotateAsteroid : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    public float rotationsPerMinute = 10f;
+    private float RotationsPerMinute = 10f;
 
     #endregion
 
@@ -59,7 +59,7 @@ public class RotateAsteroid : MonoBehaviour
     /// </summary>
     void Update()
     {
-        transform.Rotate(0, 0f, 6f * rotationsPerMinute * Time.deltaTime);
+        transform.Rotate(0, 0f, 6f * RotationsPerMinute * Time.deltaTime);
     }
     #endregion
 

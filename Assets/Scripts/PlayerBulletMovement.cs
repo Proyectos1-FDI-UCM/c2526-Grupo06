@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Breve descripción del contenido del archivo
-// Responsable de la creación de este archivo
-// Nombre del juego
+// Movimiento de las balas disparadas por el jugador
+// Pablo Redondo Vaillo
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -10,23 +10,17 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Movimiento de los proyectiles que dispara el jugador 
+/// El movimiento es rectilíneo uniforme, con una trayectoria horizontal (eje x de coordenadas) 
 /// </summary>
-public class PlayerInvencible : MonoBehaviour
+public class PlayerBulletMovement : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float tiempoInvencible = 3f;
-
+    private float Speed = 3f; // Velocidad del objeto
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,56 +30,19 @@ public class PlayerInvencible : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private Collider2D collider;
-
-    private float tiempo;
-
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-    }
-
-    private void OnEnable()
-    {
-        collider = GetComponent<Collider2D>();
-
-        if (collider != null)
-        {
-            collider.enabled = false;
-            tiempo = 0f;
-        }
-
-    }
-
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// Cada frame se mueve en una velocidad constante
     /// </summary>
     void Update()
     {
-        tiempo += Time.deltaTime;
-
-        if (tiempo >= tiempoInvencible)
-        {
-            if (collider != null)
-            {
-                collider.enabled = true;
-            }
-            this.enabled = false;
-        }
+        // Cantidad de espacio a recorrer este frame en el eje x
+        Vector3 move = new(Speed * Time.deltaTime, 0,0); 
+        transform.position += move; // Movimiento en el eje de coordenadas global
     }
-
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -97,7 +54,7 @@ public class PlayerInvencible : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -105,7 +62,7 @@ public class PlayerInvencible : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion
+    #endregion   
 
-} // class PlayerInvencible 
+} // class PlayerBulletMovement 
 // namespace

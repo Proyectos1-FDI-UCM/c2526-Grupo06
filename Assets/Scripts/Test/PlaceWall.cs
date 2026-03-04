@@ -1,6 +1,8 @@
 //---------------------------------------------------------
-//Componente que modifica el transform del objeto para que siempre sigua la
-//posición de la camara
+//Script que posiciona al objeto en las coordenadas de la cámara
+//Alejandro de Haro Morales
+//Dream O'SpaceSheep
+//Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
@@ -16,13 +18,13 @@ public class PlaceWall : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
 
+    [SerializeField]
+    private Transform _cam;
 
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    [SerializeField] 
-    private Transform _cam;
 
     #endregion
 
