@@ -1,5 +1,8 @@
 //---------------------------------------------------------
-// Componente que escala el objeto al tamaño exacto de la cámara
+//Script que reescala el objeto al tamaño de la cámara
+//Alejandro de Haro Morales
+//Dream O'SpaceSheep
+//Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
