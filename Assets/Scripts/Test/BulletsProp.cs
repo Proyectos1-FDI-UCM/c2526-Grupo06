@@ -1,19 +1,20 @@
 //---------------------------------------------------------
-// Componente que describe el movimiento de un proyectil recto
+// Componente con las funciones básicas de cualquier proyectil
 // Miguel Calderón Barba
-// Dream O’ SpaceSheep
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.UIElements;
 // Añadir aquí el resto de directivas using
 
 
 /// <summary>
-/// Movimiento de proyectil recto
+/// Este componente contiene los métodos públicos que comparten
+/// todas las balas como:
+/// Autodestruirse
 /// </summary>
-public class BulletsMovement : MonoBehaviour
+public class BulletsProp : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,10 +23,9 @@ public class BulletsMovement : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField]
-    private float Velocidad = -6f; //El número de unidades de unity que recorre por cada frame
-    #endregion
 
+    #endregion
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,22 +36,29 @@ public class BulletsMovement : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        
+    }
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// 
-    /// Movimiento Rectilineo Uniforme en dirección i
     /// </summary>
     void Update()
     {
-        transform.position += new Vector3 (Velocidad * Time.deltaTime,0,0); 
+        
     }
     #endregion
 
@@ -62,9 +69,15 @@ public class BulletsMovement : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    
+    /// <summary>
+    /// Destruye su propia instancia
+    /// </summary>
+    public void DestroyBullet()
+    {
+        Destroy(gameObject);
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -72,7 +85,7 @@ public class BulletsMovement : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class BulletsMovement 
+} // class BulletsProp 
 // namespace
