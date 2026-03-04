@@ -98,6 +98,11 @@ public class PlayerShooting : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
+    //Permite al GameManager el estado del disparo
+    public bool IsShooting() 
+    {
+        return _isShooting;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
