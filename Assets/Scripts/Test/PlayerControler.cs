@@ -20,31 +20,22 @@ public class PlayerControler : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
-
-    #endregion
+    
     [SerializeField]
     private float FlySpeed = 1;
+
+    #endregion
 
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
 
-    #endregion
     private InputAction _movementAction; //El action donde se guarda la action de move del InputSystem
     private Vector2 _direction; //El vector que almacenara la dirección devuelta por el wasd o el joystick
     private float _xLimit = 8.33f; // Punto límite que el jugador podra alcanzar en el eje x
     private float _yLimit = 4.4f; // Punto límite que el jugador alcanzara en el eje y
+
+    #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
