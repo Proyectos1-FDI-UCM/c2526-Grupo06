@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d58ac2726afb04587de6d98244883b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerMinute: 15
+  RotationsPerMinute: 100
 --- !u!70 &93689926
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d58ac2726afb04587de6d98244883b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerMinute: 13
+  RotationsPerMinute: 100
 --- !u!70 &108966368
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d58ac2726afb04587de6d98244883b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationsPerMinute: 10
+  RotationsPerMinute: 100
 --- !u!70 &665080432
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9525c77d45045974a96d5ec5eeed05b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  MovementSpeed: 10
 --- !u!114 &800792562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1311,10 +1311,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fb72c400b55524b89ff2b0356ab062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 11
-  textoVida: {fileID: 919366236}
-  panelGameover: {fileID: 54977731}
-  spriteRenderer: {fileID: 166506801}
+  Vidas: 10
+  TextoVida: {fileID: 919366236}
+  PanelGameover: {fileID: 54977731}
+  SpriteRenderer: {fileID: 166506801}
 --- !u!114 &800792563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,12 +1322,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800792558}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e8108f61dfd8894ba0251f87b5a540c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoInvencible: 3
+  TiempoInvencible: 1
 --- !u!50 &800792564
 Rigidbody2D:
   serializedVersion: 5
