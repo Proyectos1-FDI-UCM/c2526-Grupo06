@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Componente con las funciones básicas de cualquier proyectil
-// Miguel Calderón Barba
+// Componente con movimiento básico para los enemigos
+// Sergio Navarro Herreros
 // Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -10,11 +10,10 @@ using UnityEngine;
 
 
 /// <summary>
-/// Este componente contiene los métodos públicos que comparten
-/// todas las balas como:
-/// Autodestruirse
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-public class BulletsProp : MonoBehaviour
+public class MovimientoEnemigo : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,7 +22,10 @@ public class BulletsProp : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
+    [SerializeField] 
+    private float Velocidad; // Velocidad de movimiento del enemigo
+    [SerializeField]
+    private float Amplitud; //Amplitud del movimiento del enemigo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -35,6 +37,7 @@ public class BulletsProp : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private float _posicionInicialY; //Posición inicial del enemigo en el eje Y
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -50,7 +53,7 @@ public class BulletsProp : MonoBehaviour
     /// </summary>
     void Start()
     {
-
+        _posicionInicialY = transform.position.y; // Guarda la posición inicial del enemigo en el eje Y
     }
 
     /// <summary>
@@ -58,10 +61,10 @@ public class BulletsProp : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        float nuevaY = _posicionInicialY + Mathf.Sin(Time.time * Velocidad) * Amplitud;
+        transform.position = new Vector3(transform.position.x, nuevaY, transform.position.z);
     }
     #endregion
-
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -70,23 +73,17 @@ public class BulletsProp : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    /// <summary>
-    /// Destruye su propia instancia
-    /// </summary>
-    public void DestroyBullet()
-    {
-        Destroy(gameObject);
-    }
-    #endregion
 
+    #endregion
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    
-    #endregion
 
-} // class BulletsProp 
+    #endregion   
+
+} // class MovimientoEnemigo 
 // namespace

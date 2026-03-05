@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Componente con las funciones básicas de cualquier proyectil
-// Miguel Calderón Barba
+// Disparo básico del enemigo
+// Sergio Navarro Herreros
 // Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -10,11 +10,10 @@ using UnityEngine;
 
 
 /// <summary>
-/// Este componente contiene los métodos públicos que comparten
-/// todas las balas como:
-/// Autodestruirse
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-public class BulletsProp : MonoBehaviour
+public class DisparoEnemigo : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,7 +22,12 @@ public class BulletsProp : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
+    [SerializeField]
+    private GameObject BulletNormal; //Prefab de la bala normal
+    [SerializeField]
+    private Transform puntoDisparo;  // Punto de disparo del enemigo
+    [SerializeField]
+    private float tiempoEntreDisparos = 2f;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -34,7 +38,7 @@ public class BulletsProp : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
+    private float _timer; // Temporizador para controlar el tiempo entre disparos
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -45,23 +49,19 @@ public class BulletsProp : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
+        _timer += Time.deltaTime;
 
+        if (_timer >= tiempoEntreDisparos)
+        {
+            Disparar();
+            _timer = 0f;
+        }
     }
     #endregion
-
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -70,13 +70,7 @@ public class BulletsProp : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    /// <summary>
-    /// Destruye su propia instancia
-    /// </summary>
-    public void DestroyBullet()
-    {
-        Destroy(gameObject);
-    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -85,8 +79,11 @@ public class BulletsProp : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    
-    #endregion
+    private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
+    {
+        Instantiate(BulletNormal, puntoDisparo.position, puntoDisparo.rotation);
+    }
+    #endregion   
 
-} // class BulletsProp 
+} // class DisparoEnemigo 
 // namespace

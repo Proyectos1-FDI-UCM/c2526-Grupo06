@@ -1,7 +1,7 @@
 //---------------------------------------------------------
-// Componente con las funciones básicas de cualquier proyectil
-// Miguel Calderón Barba
-// Dream O'SpaceSheep
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
@@ -10,11 +10,10 @@ using UnityEngine;
 
 
 /// <summary>
-/// Este componente contiene los métodos públicos que comparten
-/// todas las balas como:
-/// Autodestruirse
+/// Antes de cada class, descripción de qué es y para qué sirve,
+/// usando todas las líneas que sean necesarias.
 /// </summary>
-public class BulletsProp : MonoBehaviour
+public class VidaEnemigo : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -25,7 +24,7 @@ public class BulletsProp : MonoBehaviour
     // Ejemplo: MaxHealthPoints
 
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -36,21 +35,21 @@ public class BulletsProp : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-
+        
     }
 
     /// <summary>
@@ -58,10 +57,9 @@ public class BulletsProp : MonoBehaviour
     /// </summary>
     void Update()
     {
-
+        
     }
     #endregion
-
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
@@ -70,23 +68,17 @@ public class BulletsProp : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    /// <summary>
-    /// Destruye su propia instancia
-    /// </summary>
-    public void DestroyBullet()
-    {
-        Destroy(gameObject);
-    }
-    #endregion
 
+    #endregion
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-    
-    #endregion
 
-} // class BulletsProp 
+    #endregion   
+
+} // class VidaEnemigo 
 // namespace
