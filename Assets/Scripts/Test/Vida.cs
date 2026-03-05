@@ -75,6 +75,9 @@ public class Vida : MonoBehaviour
     void Start()
     {
         ActualizarVidas(0);
+        Debug.Log(TextoVida);
+        Debug.Log(PanelGameover);
+        Debug.Log(SpriteRenderer);
     }
 
     /// <summary>

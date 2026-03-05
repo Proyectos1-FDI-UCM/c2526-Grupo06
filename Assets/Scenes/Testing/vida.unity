@@ -1083,8 +1083,8 @@ GameObject:
   m_Component:
   - component: {fileID: 665080433}
   - component: {fileID: 665080432}
-  - component: {fileID: 665080431}
   - component: {fileID: 665080434}
+  - component: {fileID: 665080431}
   m_Layer: 11
   m_Name: Enemigo
   m_TagString: Untagged
