@@ -23,6 +23,7 @@ public class DeadZone : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -41,14 +42,20 @@ public class DeadZone : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    /// <summary>
+    /// Al salir de la collision, si la entidad tiene el componente BulletsProp
+    /// llama a su función de DestroyBullet para destruir su instancia.
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<BulletsMovement>() != null)
+        if (collision.GetComponent<BulletsProp>() != null)
         {
             //Debug.Log("Me ha dado algo que tengo que destruir");
-            collision.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+            collision.TryGetComponent<BulletsProp>(out BulletsProp bullet);
             bullet.DestroyBullet();
         }
+
     }
     #endregion
 

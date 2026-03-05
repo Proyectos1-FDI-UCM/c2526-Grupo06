@@ -23,7 +23,7 @@ public class BulletsMovement : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float Velocidad = 6f; //El número de unidades de unity que recorre por cada frame
+    private float Velocidad = -6f; //El número de unidades de unity que recorre por cada frame
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -46,10 +46,12 @@ public class BulletsMovement : MonoBehaviour
 
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// 
+    /// Movimiento Rectilineo Uniforme en dirección i
     /// </summary>
     void Update()
     {
-        transform.position += new Vector3 (-1*(Velocidad * Time.deltaTime),0,0); //Movimiento Rectilineo Uniforme hacia -i;
+        transform.position += new Vector3 (Velocidad * Time.deltaTime,0,0); 
     }
     #endregion
 
@@ -60,10 +62,7 @@ public class BulletsMovement : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void DestroyBullet()
-    {
-        Destroy(gameObject);
-    }
+    
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----

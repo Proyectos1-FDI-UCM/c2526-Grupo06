@@ -1,11 +1,10 @@
 //---------------------------------------------------------
-// Gestionar el sistema de vida del player
-// Javier de Sala Rodríguez
-// Dream o' SpaceSheep
+// Disparo básico del enemigo
+// Sergio Navarro Herreros
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using TMPro;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -14,11 +13,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Vida : MonoBehaviour
+public class DisparoEnemigo : MonoBehaviour
 {
-
-
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,20 +22,12 @@ public class Vida : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-
     [SerializeField]
-    private int Vidas = 4;
-
+    private GameObject BulletNormal; //Prefab de la bala normal
     [SerializeField]
-    private TextMeshProUGUI TextoVida;
-
+    private Transform puntoDisparo;  // Punto de disparo del enemigo
     [SerializeField]
-    private GameObject PanelGameover;
-
-    [SerializeField]
-    private SpriteRenderer SpriteRenderer;
-
+    private float tiempoEntreDisparos = 2f;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -50,15 +38,7 @@ public class Vida : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
-    private static int _maximoVidas = 6;
-
-    private static string _puntoVida = "▓ ";
-
-    private static int _layerEnemigo = 11;
-
-    private static int _layerItem = 12;
-
+    private float _timer; // Temporizador para controlar el tiempo entre disparos
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -69,36 +49,16 @@ public class Vida : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
-    /// </summary>
-    void Start()
-    {
-        ActualizarVidas(0);
-    }
-
-    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        ActualizarVidas(0);
+        _timer += Time.deltaTime;
 
-    }
-
-    /// <summary>
-    /// Detecta cuando hay colisión.
-    /// </summary>
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == _layerEnemigo)
+        if (_timer >= tiempoEntreDisparos)
         {
-            ActualizarVidas(-1);
-        }
-        else if (other.gameObject.layer == _layerItem)
-        {
-            ActualizarVidas(1);
-            Destroy(other.gameObject);
+            Disparar();
+            _timer = 0f;
         }
     }
     #endregion
@@ -119,45 +79,11 @@ public class Vida : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    private void ActualizarVidas(int delta)
+    private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
-        string puntos = "";
-        Vidas += delta;
-        if (Vidas > _maximoVidas)
-        {
-            Vidas = _maximoVidas;
-        }
-
-        for (int i = 0; i < Vidas; i++)
-        {
-            puntos += _puntoVida;
-        }
-        TextoVida.text = puntos;
-
-        if(Vidas <= 0)
-        {
-            PanelGameover.SetActive(true);
-            SpriteRenderer.enabled = false;
-        }
-        else
-        {
-            PanelGameover.SetActive(false);
-            SpriteRenderer.enabled = true;
-
-            if(delta < 0)
-            {
-                PlayerInvencible pi = GetComponent<PlayerInvencible>();
-                if( pi != null)
-                {
-                    pi.enabled = true;
-                }
-            }
-        }
-
-
+        Instantiate(BulletNormal, puntoDisparo.position, puntoDisparo.rotation);
     }
     #endregion   
 
-} // class Vida 
+} // class DisparoEnemigo 
 // namespace

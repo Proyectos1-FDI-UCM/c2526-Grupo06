@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
+    [SerializeField]
+    private GameObject Player;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -151,6 +154,34 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);
         System.GC.Collect();
     } // ChangeScene
+
+    ///<summary>
+    ///Metodo que devuelve la cantidad de municion del objeto asigado (Si falla culpad a Adán)
+    ///</summary>
+    public int RelayAmmoCount()
+    {
+        if (Player.GetComponent<RecogeMunicion>() != null) return Player.GetComponent<RecogeMunicion>().AmmoCount();
+        else
+        {
+            Debug.Log("No se pudo encontrar el componente RecogeMunicion");
+            return -1;
+        }
+
+        
+    }
+
+    ///<summary>
+    ///Metodo que devuelve el estado de disparo del objeto asigado (Si falla culpad a Adán)
+    ///</summary>
+    public bool RelayShootingState()
+    {
+        if (Player.GetComponent<PlayerShooting>() != null) return Player.GetComponent<PlayerShooting>().IsShooting();
+        else
+        {
+            Debug.Log("No se pudo encontrar el componente RelayShootingState");
+            return false;
+        }
+    }
 
     #endregion
 

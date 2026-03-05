@@ -1,11 +1,10 @@
 //---------------------------------------------------------
-// Gestionar el sistema de vida del player
-// Javier de Sala Rodríguez
-// Dream o' SpaceSheep
+// Componente con movimiento básico para los enemigos
+// Sergio Navarro Herreros
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using TMPro;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -14,11 +13,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Vida : MonoBehaviour
+public class MovimientoEnemigo : MonoBehaviour
 {
-
-
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,20 +22,10 @@ public class Vida : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-
+    [SerializeField] 
+    private float Velocidad; // Velocidad de movimiento del enemigo
     [SerializeField]
-    private int Vidas = 4;
-
-    [SerializeField]
-    private TextMeshProUGUI TextoVida;
-
-    [SerializeField]
-    private GameObject PanelGameover;
-
-    [SerializeField]
-    private SpriteRenderer SpriteRenderer;
-
+    private float Amplitud; //Amplitud del movimiento del enemigo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -51,14 +37,7 @@ public class Vida : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int _maximoVidas = 6;
-
-    private static string _puntoVida = "▓ ";
-
-    private static int _layerEnemigo = 11;
-
-    private static int _layerItem = 12;
-
+    private float _posicionInicialY; //Posición inicial del enemigo en el eje Y
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -74,7 +53,7 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ActualizarVidas(0);
+        _posicionInicialY = transform.position.y; // Guarda la posición inicial del enemigo en el eje Y
     }
 
     /// <summary>
@@ -82,24 +61,8 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Update()
     {
-        ActualizarVidas(0);
-
-    }
-
-    /// <summary>
-    /// Detecta cuando hay colisión.
-    /// </summary>
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == _layerEnemigo)
-        {
-            ActualizarVidas(-1);
-        }
-        else if (other.gameObject.layer == _layerItem)
-        {
-            ActualizarVidas(1);
-            Destroy(other.gameObject);
-        }
+        float nuevaY = _posicionInicialY + Mathf.Sin(Time.time * Velocidad) * Amplitud;
+        transform.position = new Vector3(transform.position.x, nuevaY, transform.position.z);
     }
     #endregion
 
@@ -112,7 +75,7 @@ public class Vida : MonoBehaviour
     // Ejemplo: GetPlayerController
 
     #endregion
-
+    
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -120,44 +83,7 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    private void ActualizarVidas(int delta)
-    {
-        string puntos = "";
-        Vidas += delta;
-        if (Vidas > _maximoVidas)
-        {
-            Vidas = _maximoVidas;
-        }
-
-        for (int i = 0; i < Vidas; i++)
-        {
-            puntos += _puntoVida;
-        }
-        TextoVida.text = puntos;
-
-        if(Vidas <= 0)
-        {
-            PanelGameover.SetActive(true);
-            SpriteRenderer.enabled = false;
-        }
-        else
-        {
-            PanelGameover.SetActive(false);
-            SpriteRenderer.enabled = true;
-
-            if(delta < 0)
-            {
-                PlayerInvencible pi = GetComponent<PlayerInvencible>();
-                if( pi != null)
-                {
-                    pi.enabled = true;
-                }
-            }
-        }
-
-
-    }
     #endregion   
 
-} // class Vida 
+} // class MovimientoEnemigo 
 // namespace
