@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 8756156899856056065}
   - component: {fileID: 3014308030955811277}
   - component: {fileID: 7072670131807907653}
+  - component: {fileID: -5675689694924556444}
+  - component: {fileID: -7953771667111596643}
   m_Layer: 10
   m_Name: PlayerPlaceholder
   m_TagString: Untagged
@@ -205,3 +207,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5675689694924556444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374839448642552889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fb72c400b55524b89ff2b0356ab062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vidas: 4
+  TextoVida: {fileID: 0}
+  PanelGameover: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
+--- !u!114 &-7953771667111596643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374839448642552889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8108f61dfd8894ba0251f87b5a540c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TiempoInvencible: 3

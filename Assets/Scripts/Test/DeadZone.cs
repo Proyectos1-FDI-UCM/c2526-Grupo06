@@ -55,6 +55,7 @@ public class DeadZone : MonoBehaviour
             collision.TryGetComponent<BulletsProp>(out BulletsProp bullet);
             bullet.DestroyBullet();
         }
+
     }
     #endregion
 
