@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2344368246886788567}
   - component: {fileID: 3014308030955811277}
   - component: {fileID: 7072670131807907653}
+  - component: {fileID: 6012113104247243656}
+  - component: {fileID: 8756156899856056065}
   m_Layer: 0
   m_Name: PlayerPlaceholder
   m_TagString: Untagged
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1135768c18e52e94ba9d7f51bff3297b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fly_speed: 5
+  FlySpeed: 5
 --- !u!50 &3014308030955811277
 Rigidbody2D:
   serializedVersion: 5
@@ -176,3 +178,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6012113104247243656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374839448642552889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5941c285e859d54ba285e691e1dd870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxAMO: 5
+--- !u!114 &8756156899856056065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374839448642552889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90d5826823132042bf8cdf538875eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 0}
+  Cadence: 0.4
