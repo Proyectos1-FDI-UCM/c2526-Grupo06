@@ -11,13 +11,9 @@ GameObject:
   - component: {fileID: 4202310439107004848}
   - component: {fileID: 7036113311287963270}
   - component: {fileID: 2344368246886788567}
-  - component: {fileID: 6012113104247243656}
-  - component: {fileID: 8756156899856056065}
   - component: {fileID: 3014308030955811277}
   - component: {fileID: 7072670131807907653}
-  - component: {fileID: -5675689694924556444}
-  - component: {fileID: -7953771667111596643}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: PlayerPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,34 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1135768c18e52e94ba9d7f51bff3297b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlySpeed: 5
---- !u!114 &6012113104247243656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8374839448642552889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5941c285e859d54ba285e691e1dd870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxAMO: 5
---- !u!114 &8756156899856056065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8374839448642552889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90d5826823132042bf8cdf538875eb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bullet: {fileID: 6507326731185513161, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
-  Cadence: 0.4
+  fly_speed: 5
 --- !u!50 &3014308030955811277
 Rigidbody2D:
   serializedVersion: 5
@@ -207,32 +176,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-5675689694924556444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8374839448642552889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30fb72c400b55524b89ff2b0356ab062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Vidas: 4
-  TextoVida: {fileID: 0}
-  PanelGameover: {fileID: 0}
-  SpriteRenderer: {fileID: 0}
---- !u!114 &-7953771667111596643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8374839448642552889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e8108f61dfd8894ba0251f87b5a540c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TiempoInvencible: 3

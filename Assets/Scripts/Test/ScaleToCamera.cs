@@ -33,7 +33,7 @@ public class ScaleToCamera : MonoBehaviour
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    void Start() 
+    void Start()
     {
         Camera cam = Camera.main;
 

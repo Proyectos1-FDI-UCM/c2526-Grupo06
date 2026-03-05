@@ -47,24 +47,13 @@ public class RecogeMunicion : MonoBehaviour
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    private void OnTriggerStay2D(Collider2D collision) //Este metodo detecta la entrada a un trigger y cuando el game objet tiene el componente "OtorgaMunicion" toma la munición que este aporta y la suma a la currentAmo siempre que -SuckingAmo estea en true
+    private void OnTriggerEnter2D(Collider2D collision) //Este metodo detecta la entrada a un trigger y cuando el game objet tiene el componente "OtorgaMunicion" toma la munición que este aporta y la suma a la currentAmo siempre que -SuckingAmo estea en true
     {
         _om = collision.gameObject.GetComponent<OtorgaMunicion>();
-        if (_om != null) 
+        if (_om != null && _SuckingAmo) 
         {
-            if (GameManager.Instance != null) _SuckingAmo = !GameManager.Instance.RelayShootingState();
-            else
-            {
-                Debug.Log("No se le pudo preguntar al GameManager si el jugador esta disparando");
-                _SuckingAmo = true;
-            }
-
-            if (_SuckingAmo)
-            {
-                Addamo(_om.ReturnAmo());
-                Destroy(collision.gameObject);
-            }
-            else Debug.Log("No estoy absorviendo munición");
+            Addamo(_om.MuncionOtorgada);
+            Destroy(collision.gameObject);
         }
     }
     #endregion
@@ -91,7 +80,7 @@ public class RecogeMunicion : MonoBehaviour
         
         if (!(_currentAmo >= MaxAMO))
         {
-            _currentAmo = Mathf.Clamp((_currentAmo + amount), 0, MaxAMO);
+            _currentAmo = Mathf.Clamp((_currentAmo + amount), 0, 5);
             Debug.Log("Munición Actual = " + _currentAmo);
         }
         else Debug.Log("Munción ya esta al máximo o el simplemente no se puede dispar");
@@ -101,16 +90,7 @@ public class RecogeMunicion : MonoBehaviour
     {
         _SuckingAmo = false;
     }
-
-    ///<summary>
-    ///Metodo que devuelve la cantidad de municion actual
-    ///</summary>
-    public int AmmoCount()
-    {
-        return _currentAmo;
-    }
     #endregion   
-
 
 } // class RecogeMunicion 
 // namespace
