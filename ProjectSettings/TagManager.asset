@@ -18,7 +18,7 @@ TagManager:
   - LAYER_PLAYER
   - LAYER_ENEMIGO
   - LAYER_ITEM
-  - 
+  - LAYER_PLAYER_SHOT
   - 
   - 
   - 
