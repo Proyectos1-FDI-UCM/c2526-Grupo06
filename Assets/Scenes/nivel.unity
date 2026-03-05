@@ -833,6 +833,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 720962112}
   m_CullTransparentMesh: 1
+--- !u!1001 &892313809
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432223044141207073, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507326731185513161, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
+      propertyPath: m_Name
+      value: PlayerBullet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
 --- !u!1 &983378367
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,9 +1030,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6145399516430150669, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1943047498}
-    - targetCorrespondingSourceObject: {fileID: 6145399516430150669, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1943047499}
   m_SourcePrefab: {fileID: 100100000, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
 --- !u!1 &1254013969
 GameObject:
@@ -1631,33 +1685,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &1943047499
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1943047496}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
 --- !u!1 &2028173976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,3 +1863,4 @@ SceneRoots:
   - {fileID: 983378369}
   - {fileID: 1584142554}
   - {fileID: 1333243682}
+  - {fileID: 892313809}

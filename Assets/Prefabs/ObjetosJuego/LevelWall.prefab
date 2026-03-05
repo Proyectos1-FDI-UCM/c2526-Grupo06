@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4688427735061297630}
   - component: {fileID: -2908813728304112155}
   - component: {fileID: -3499856968488312890}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LevelWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

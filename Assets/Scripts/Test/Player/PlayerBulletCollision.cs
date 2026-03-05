@@ -40,13 +40,7 @@ public class PlayerBulletCollision : MonoBehaviour
         {
             DestroyPlayerBullet(); // destruye la bala del jugador
             // aquí se podría llamar a un método para reducir la vida del enemigo que estaría en el script VidaEnemigo
-
         }
-        else if (collision.GetComponent<DeadZone>() != null) // si choca con la zona de muerte
-        {
-            DestroyPlayerBullet(); // destruye la bala del jugador
-        }
-
     }
 
     #endregion
