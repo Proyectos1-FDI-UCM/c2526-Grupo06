@@ -1781,6 +1781,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelWall
       objectReference: {fileID: 0}
+    - target: {fileID: 296082621059601174, guid: d49f2350aac916d418ad52e46c08270b, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1816090038371501647, guid: d49f2350aac916d418ad52e46c08270b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
