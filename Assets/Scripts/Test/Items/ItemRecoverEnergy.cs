@@ -1,11 +1,10 @@
 //---------------------------------------------------------
-// Gestionar el sistema de vida del player
-// Javier de Sala Rodríguez
-// Dream o' SpaceSheep
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using TMPro;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -14,11 +13,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Vida : MonoBehaviour
+public class ItemRecoverEnergy : MonoBehaviour
 {
-
-
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,19 +22,6 @@ public class Vida : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
-
-    [SerializeField]
-    private int Vidas = 4;
-
-    [SerializeField]
-    private TextMeshProUGUI TextoVida;
-
-    [SerializeField]
-    private GameObject PanelGameover;
-
-    [SerializeField]
-    private SpriteRenderer SpriteRenderer;
 
     #endregion
 
@@ -50,12 +33,9 @@ public class Vida : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
+    private static int _layerPlayer = 10;
 
-    private static int _maximoVidas = 6;
-
-    private static string _puntoVida = "▓ ";
-
-    private static int _layerEnemigo = 11;
+    private bool control = true;
 
     #endregion
 
@@ -72,7 +52,7 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ActualizarVidas(0);
+        
     }
 
     /// <summary>
@@ -80,10 +60,21 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Update()
     {
-        ActualizarVidas(0);
-
+        
     }
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == _layerPlayer)
+        {
+            Vida vidaPlayer = other.gameObject.GetComponent<Vida>();
+            if (vidaPlayer != null && control)
+            {
+                control = false;
+                vidaPlayer.ActualizarVidas(1);
+                Destroy(this.gameObject);
+            }
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -93,43 +84,7 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void ActualizarVidas(int delta)
-    {
-        string puntos = "";
-        Vidas += delta;
-        if (Vidas > _maximoVidas)
-        {
-            Vidas = _maximoVidas;
-        }
 
-        for (int i = 0; i < Vidas; i++)
-        {
-            puntos += _puntoVida;
-        }
-        TextoVida.text = puntos;
-
-        if (Vidas <= 0)
-        {
-            PanelGameover.SetActive(true);
-            //SpriteRenderer.enabled = false;
-            Time.timeScale = 0;
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            PanelGameover.SetActive(false);
-            SpriteRenderer.enabled = true;
-
-            if (delta < 0)
-            {
-                PlayerInvencible pi = GetComponent<PlayerInvencible>();
-                if (pi != null)
-                {
-                    pi.enabled = true;
-                }
-            }
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -139,8 +94,7 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
+    #endregion
 
-    #endregion   
-
-} // class Vida 
+} // class ItemRecoverEnergy 
 // namespace
