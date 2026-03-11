@@ -36,10 +36,12 @@ public class PlayerBulletCollision : MonoBehaviour
     // </summary>
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<VidaEnemigo>() != null) // si choca con un enemigo
+        VidaEnemigo enemigo = collision.GetComponent<VidaEnemigo>();
+
+        if (enemigo != null) // si choca con un enemigo
         {
+            enemigo.RecibeDaño(1); // le quitamos vida al enemigo
             DestroyPlayerBullet(); // destruye la bala del jugador
-            // aquí se podría llamar a un método para reducir la vida del enemigo que estaría en el script VidaEnemigo
         }
     }
 
