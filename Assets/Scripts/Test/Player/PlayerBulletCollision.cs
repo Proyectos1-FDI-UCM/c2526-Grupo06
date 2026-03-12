@@ -32,7 +32,7 @@ public class PlayerBulletCollision : MonoBehaviour
     #region Métodos de MonoBehaviour
 
     // <summary>
-    // Método que se llama automáticamente cuando el collider de la bala del jugador entra en contacto con otro collider
+    // Método que se llama automáticamente cuando el collider de la bala del jugador entra en contacto con un trigger
     // </summary>
     void OnTriggerEnter2D(Collider2D collision)
     {

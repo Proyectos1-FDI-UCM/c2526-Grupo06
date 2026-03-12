@@ -170,7 +170,7 @@ MonoBehaviour:
   VelocidadIni: -8
   Acelera: 0
   VelocidadFin: -4
-  Curvo: 1
+  Curvo: 0
   Amplitud: 1
   Periodo: 4
 --- !u!114 &4063012165255120596

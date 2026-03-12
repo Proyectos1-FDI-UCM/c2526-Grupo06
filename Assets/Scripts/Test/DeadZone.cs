@@ -52,7 +52,7 @@ public class DeadZone : MonoBehaviour
         //Debug.Log("Me ha dado algo");
         if (collision.GetComponent<BulletsProp>() != null)
         {
-            //Debug.Log("Me ha dado algo que tengo que destruir");
+            Debug.Log("Me ha dado algo que tengo que destruir");
             collision.TryGetComponent<BulletsProp>(out BulletsProp bullet);
             bullet.DestroyBullet();
         }

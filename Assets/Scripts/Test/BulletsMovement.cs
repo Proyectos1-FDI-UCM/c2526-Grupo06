@@ -1,5 +1,5 @@
 //---------------------------------------------------------
-// Componente que describe el movimiento de un proyectil recto
+// Componente que describe el movimiento de un proyectil
 // Miguel Calderón Barba
 // Dream O’ SpaceSheep
 // Proyectos 1 - Curso 2025-26
