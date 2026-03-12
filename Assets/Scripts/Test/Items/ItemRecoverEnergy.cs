@@ -67,6 +67,7 @@ public class ItemRecoverEnergy : MonoBehaviour
         if (other.gameObject.layer == _layerPlayer)
         {
             Vida vidaPlayer = other.gameObject.GetComponent<Vida>();
+
             if (vidaPlayer != null && control)
             {
                 control = false;
