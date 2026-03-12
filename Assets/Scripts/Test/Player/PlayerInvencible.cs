@@ -53,10 +53,6 @@ public class PlayerInvencible : MonoBehaviour
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-    void Start()
-    {
-    }
-
     private void OnEnable()
     {
         _collider = GetComponent<Collider2D>();
