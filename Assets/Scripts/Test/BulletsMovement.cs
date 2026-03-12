@@ -54,7 +54,7 @@ public class BulletsMovement : MonoBehaviour
     private float _x, _y, //Resultados de cada dimensión para simplificar código
         _aceleracion, //Cálculo de la aceleración mediante la velocidad inicial, final y la posición inicial
         _amplitud, _periodo; //Parámetros de la curva para preservar las variables del inspector
-    private float _posIni = 16; //unidades de unity que describe el movimiento, es decir lo largo de la pantalla
+    private float _distancia = 16; //unidades de unity que describe el desplazamiento hasta la velocidad final, es decir el largo de la pantalla
     private Vector3 _posInicial;
     private float _index = 0f; //tiempo transcurrido sin depender del framerate
     #endregion
@@ -76,7 +76,7 @@ public class BulletsMovement : MonoBehaviour
         _posInicial = transform.position;
         //Despejado la aceleración de la fórmula de la posición y la velocidad de MRUA que quedaría en (velFin-velIni)^2 * 2(-posIni-VelIni*t)^1/3{raiz cúbica}
         //ASUMIMOS QUE LOS PROYECTILES VAN HACIA LA IZQUIERDA, SI NO FUESE ASÍ HABRÍA QUE CALCULAR LA DIRECCIÓN
-        if (Acelera) _aceleracion = Mathf.Pow(VelocidadFin - VelocidadIni, 2f) * -Mathf.Pow(Mathf.Abs(2 * (-_posIni - VelocidadIni * _index)), 1f / 3f); 
+        if (Acelera) _aceleracion = -(VelocidadFin * VelocidadFin - VelocidadIni * VelocidadIni) / (2 * _distancia); //_aceleracion = Mathf.Pow(VelocidadFin - VelocidadIni, 2f) * -Mathf.Pow(Mathf.Abs(2 * (-_posIni - VelocidadIni * _index)), 1f / 3f); 
         else _aceleracion = 0;
         if (Curvo) { _amplitud = Amplitud; _periodo = Periodo; }
         else { _amplitud = 0; _periodo = 1; }
