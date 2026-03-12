@@ -49,6 +49,7 @@ public class DeadZone : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //Debug.Log("Me ha dado algo");
         if (collision.GetComponent<BulletsProp>() != null)
         {
             //Debug.Log("Me ha dado algo que tengo que destruir");

@@ -61,7 +61,7 @@ public class MovimientoEnemigo : MonoBehaviour
     /// </summary>
     void Update()
     {
-        float nuevaY = _posicionInicialY + Mathf.Sin(Time.time * Velocidad) * Amplitud;
+        float nuevaY = _posicionInicialY + Mathf.Sin(Time.time*Velocidad) * Amplitud;
         transform.position = new Vector3(transform.position.x, nuevaY, transform.position.z);
     }
     #endregion
