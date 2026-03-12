@@ -63,8 +63,10 @@ public class BulletsMovement : MonoBehaviour
     private float _distancia = 16; //unidades de unity que describe el desplazamiento hasta la velocidad final, es decir el largo de la pantalla
     private Vector3 _posInicial;
     private float _index = 0f; //tiempo transcurrido sin depender del framerate
+
     private float _verticalVelocity = 0f;//(Añadido de Adán) velocidad vertical acumulada por aceleración gravitatoria
     private float _verticalDistance = 0f;//(Añadido de Adán) distancia que deberia haber recorrido la bala por el efecto de la gravedad (en realidad es re cutre, pero no pienso luchar contra la ecuación de movimiento de Miguel;
+    private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -91,19 +93,28 @@ public class BulletsMovement : MonoBehaviour
     }
     void Update()
     {
-        _index += Time.deltaTime;
-        //fórmula de la posición del MRUA tomando la posición inicial a 0
-        _x = VelocidadIni*_index + (_aceleracion*_index*_index)/2;
-        //Usando la definición seno se puede sacar la siguiente expresión: A*sen(2π*v*t/T)
-        _y = _amplitud*Mathf.Sin(2*Mathf.PI*VelocidadIni*_index/_periodo)+_verticalDistance;
-
-        if (Gravity)
+        if (_freezeTimer > 0) //(Añadido de Adán) si esta congelada no hace nada más que reducir su timer de congelación.
         {
-            _verticalDistance += _verticalVelocity*Time.deltaTime;
-            _verticalVelocity += GravityStrenght * Time.deltaTime;
+            _freezeTimer -= Time.deltaTime;
+            if (_freezeTimer < 0) _freezeTimer = 0;
         }
-        else if (_verticalVelocity != 0f) { _verticalVelocity = 0f; }
-        transform.position = new Vector3(_x, _y, 0) + _posInicial;
+        else
+        {
+            _index += Time.deltaTime;
+            //fórmula de la posición del MRUA tomando la posición inicial a 0
+            _x = VelocidadIni * _index + (_aceleracion * _index * _index) / 2;
+            //Usando la definición seno se puede sacar la siguiente expresión: A*sen(2π*v*t/T)
+            _y = _amplitud * Mathf.Sin(2 * Mathf.PI * VelocidadIni * _index / _periodo) + _verticalDistance;
+
+            if (Gravity) //(Añadido de Adán) calculos necesarios en caso de tener gravedad
+            {
+                _verticalDistance += _verticalVelocity * Time.deltaTime;
+                _verticalVelocity += GravityStrenght * Time.deltaTime;
+            }
+            else if (_verticalVelocity != 0f) { _verticalVelocity = 0f; }
+            transform.position = new Vector3(_x, _y, 0) + _posInicial;
+        }
+            
     }
     #endregion
 
@@ -114,9 +125,13 @@ public class BulletsMovement : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void GravityChange()//Cambia la boleana de gravedad
+    public void GravityChange()//(Añadido de Adán) Cambia la boleana de gravedad
     {
         Gravity = !Gravity;
+    }
+    public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
+    {
+        _freezeTimer += freeze;
     }
     #endregion
     

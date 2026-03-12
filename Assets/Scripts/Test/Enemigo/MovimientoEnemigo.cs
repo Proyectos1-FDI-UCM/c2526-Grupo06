@@ -38,6 +38,8 @@ public class MovimientoEnemigo : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private float _posicionInicialY; //Posición inicial del enemigo en el eje Y
+    private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
+    
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -61,8 +63,17 @@ public class MovimientoEnemigo : MonoBehaviour
     /// </summary>
     void Update()
     {
-        float nuevaY = _posicionInicialY + Mathf.Sin(Time.time*Velocidad) * Amplitud;
-        transform.position = new Vector3(transform.position.x, nuevaY, transform.position.z);
+        if (_freezeTimer > 0) //(Añadido de Adán) si esta congelada no hace nada más que reducir su timer de congelación.
+        {
+            _freezeTimer -= Time.deltaTime;
+            if (_freezeTimer < 0) _freezeTimer = 0;
+        }
+        else
+        {
+            float nuevaY = _posicionInicialY + Mathf.Sin(Time.time * Velocidad) * Amplitud;
+            transform.position = new Vector3(transform.position.x, nuevaY, transform.position.z);
+        }
+            
     }
     #endregion
 
@@ -73,9 +84,12 @@ public class MovimientoEnemigo : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
+    {
+        _freezeTimer += freeze;
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -83,7 +97,7 @@ public class MovimientoEnemigo : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
 } // class MovimientoEnemigo 
 // namespace

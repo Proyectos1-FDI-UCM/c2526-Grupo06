@@ -39,6 +39,9 @@ public class DisparoEnemigo : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private float _timer; // Temporizador para controlar el tiempo entre disparos
+
+    private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -53,13 +56,22 @@ public class DisparoEnemigo : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _timer += Time.deltaTime;
-
-        if (_timer >= tiempoEntreDisparos)
+        if (_freezeTimer > 0) //(Añadido de Adán) si esta congelada no hace nada más que reducir su timer de congelación.
         {
-            Disparar();
-            _timer = 0f;
+            _freezeTimer -= Time.deltaTime;
+            if (_freezeTimer < 0) _freezeTimer = 0;
         }
+        else
+        {
+            _timer += Time.deltaTime;
+
+            if (_timer >= tiempoEntreDisparos)
+            {
+                Disparar();
+                _timer = 0f;
+            }
+        }
+
     }
     #endregion
 
@@ -82,6 +94,11 @@ public class DisparoEnemigo : MonoBehaviour
     private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
         Instantiate(BulletNormal, puntoDisparo.position, puntoDisparo.rotation);
+    }
+
+    public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
+    {
+        _freezeTimer += freeze;
     }
     #endregion   
 

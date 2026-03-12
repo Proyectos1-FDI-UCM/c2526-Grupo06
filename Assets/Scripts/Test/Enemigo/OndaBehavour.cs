@@ -28,6 +28,8 @@ public class OndaBehavour : MonoBehaviour
     //Selección mediante enumeración del tipo de onda.
     [SerializeField]
     private _tipoDeOnda OndaElegida = _tipoDeOnda.Gravity;
+    [SerializeField]
+    private float FreezeTime = 1f;
 
     #endregion
 
@@ -78,6 +80,10 @@ public class OndaBehavour : MonoBehaviour
             {
                 collision.gameObject.GetComponent<BulletsMovement>().GravityChange();
             }
+            else if (OndaElegida == _tipoDeOnda.Freeze)//Onda de congelamiento
+            {
+                collision.gameObject.GetComponent<BulletsMovement>().AddFreezeTime(FreezeTime);
+            }
         }
         else
         {
@@ -88,14 +94,43 @@ public class OndaBehavour : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<PlayerBulletMovement>().GravityChange();
                 }
+                else if (OndaElegida == _tipoDeOnda.Freeze)//Onda de congelamiento
+                {
+                    collision.gameObject.GetComponent<PlayerBulletMovement>().AddFreezeTime(FreezeTime);
+                }
             }
             else
             {
                 _component = collision.gameObject.GetComponent<PlayerControler>();
                 if (_component != null)//Jugador en contacto
                 {
-                    
+                    if (OndaElegida == _tipoDeOnda.Gravity)//Onda de gravedad
+                    {
+                    }
+                    else if (OndaElegida == _tipoDeOnda.Freeze)//Onda de congelamiento
+                    {
+                        collision.gameObject.GetComponent<PlayerControler>().AddFreezeTime(FreezeTime);
+                        collision.gameObject.GetComponent<PlayerShooting>().AddFreezeTime(FreezeTime);
+                    }
                 }
+                //Pense que la onda de congelación podia afectar al enemigo, ignorar este codigo
+                /*    
+                    else
+                    {
+                        _component = collision.gameObject.GetComponent<DisparoEnemigo>();
+                        if (_component != null)//Enemigo en contacto
+                        {
+                            if (OndaElegida == _tipoDeOnda.Gravity)//Onda de gravedad
+                            {
+                            }
+                            else if (OndaElegida == _tipoDeOnda.Freeze)//Onda de congelamiento
+                            {
+                                collision.gameObject.GetComponent<DisparoEnemigo>().AddFreezeTime(FreezeTime);
+                                collision.gameObject.GetComponent<MovimientoEnemigo>().AddFreezeTime(FreezeTime);
+                            }
+                        }
+                    }
+                */
             }
         }
     }
