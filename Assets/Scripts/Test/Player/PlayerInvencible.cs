@@ -24,6 +24,7 @@ public class PlayerInvencible : MonoBehaviour
     // Ejemplo: MaxHealthPoints
     [SerializeField]
     private float TiempoInvencible = 3f;
+    private float _tiempo;
 
     #endregion
 
@@ -37,9 +38,6 @@ public class PlayerInvencible : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     private Collider2D _collider;
-
-    private float _tiempo;
-
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -55,13 +53,7 @@ public class PlayerInvencible : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        _collider = GetComponent<Collider2D>();
-
-        if (_collider != null)
-        {
-            _collider.enabled = false;
-            _tiempo = 0f;
-        }
+        _tiempo = 0f;
 
     }
 
@@ -74,10 +66,6 @@ public class PlayerInvencible : MonoBehaviour
 
         if (_tiempo >= TiempoInvencible)
         {
-            if (_collider != null)
-            {
-                _collider.enabled = true;
-            }
             this.enabled = false;
         }
     }

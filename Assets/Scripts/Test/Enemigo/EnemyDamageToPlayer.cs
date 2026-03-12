@@ -64,14 +64,16 @@ public class EnemyDamageToPlayer : MonoBehaviour
     /// <summary>
     /// Detecta cuando hay colisión.
     /// </summary>
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == _layerPlayer)
         {
             Vida vidaPlayer = other.gameObject.GetComponent<Vida>();
+
             if (vidaPlayer != null)
             {
-                bool HizoDanyo; // viva la ñ
+                bool HizoDanyo; //viva la ñ
+                
                 HizoDanyo = vidaPlayer.ActualizarVidas(-1);
 
                 if (HizoDanyo)
