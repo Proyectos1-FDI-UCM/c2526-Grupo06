@@ -66,6 +66,7 @@ public class EnemyDamageToPlayer : MonoBehaviour
     /// </summary>
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (!enabled) return; //Añadido para permitir que si el script esta desactivado no haga daño
         if (other.gameObject.layer == _layerPlayer)
         {
             Vida vidaPlayer = other.gameObject.GetComponent<Vida>();

@@ -1,10 +1,12 @@
 //---------------------------------------------------------
-// Gestionar el sistema de vida del player
-// Javier de Sala Rodríguez
-// Dream o' SpaceSheep
+// Script configurable que le aporta el comportamiento a las ondas
+// Adán Calvo Durán
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Runtime.InteropServices;
+using TMPro.EditorUtilities;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -13,11 +15,8 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class Vida : MonoBehaviour
+public class OndaBehavour : MonoBehaviour
 {
-
-
-
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // Documentar cada atributo que aparece aquí.
@@ -26,9 +25,9 @@ public class Vida : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
 
-
+    //Selección mediante enumeración del tipo de onda.
     [SerializeField]
-    private int Vidas = 4;
+    private _tipoDeOnda OndaElegida = _tipoDeOnda.Gravity;
 
     #endregion
 
@@ -41,10 +40,9 @@ public class Vida : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int _maximoVidas = 6;
-
-    private PlayerInvencible _scriptInvencible;
-
+    //La enumeración compuesta por los tipos de onda.
+    private enum _tipoDeOnda{ Gravity, Freeze, Swap };
+    private MonoBehaviour _component;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -60,13 +58,48 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Start()
     {
-        _scriptInvencible = GetComponent<PlayerInvencible>();
+        
+    }
 
-        if (GameManager.HasInstance())
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        _component = collision.gameObject.GetComponent<BulletsMovement>();
+        if (_component != null)// Bala enemiga o pickup de municion en contacto
         {
-            GameManager.Instance.MuestraVida(Vidas);
+            if (OndaElegida == _tipoDeOnda.Gravity)//Onda de gravedad
+            {
+                collision.gameObject.GetComponent<BulletsMovement>().GravityChange();
+            }
+        }
+        else
+        {
+            _component = collision.gameObject.GetComponent<PlayerBulletMovement>();
+            if (_component != null)// Bala aliada en contacto
+            {
+                if (OndaElegida == _tipoDeOnda.Gravity)//Onda de gravedad
+                {
+                    collision.gameObject.GetComponent<PlayerBulletMovement>().GravityChange();
+                }
+            }
+            else
+            {
+                _component = collision.gameObject.GetComponent<PlayerControler>();
+                if (_component != null)//Jugador en contacto
+                {
+                    
+                }
+            }
         }
     }
+
 
     #endregion
 
@@ -77,41 +110,7 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public bool ActualizarVidas(int delta)
-    {
-        if (delta < 0 && _scriptInvencible != null && _scriptInvencible.enabled)
-        {
-            return false; // ignoramos daño
-        }
 
-        Vidas += delta; // aplicar vidaa
-
-        if (Vidas > _maximoVidas)
-        {
-            Vidas = _maximoVidas;
-        }
-
-        if (GameManager.HasInstance())
-        {
-            GameManager.Instance.MuestraVida(Vidas);
-        }
-
-        if (Vidas <= 0)
-        {
-            if (GameManager.HasInstance()) GameManager.Instance.MostrarGameOver();
-            Time.timeScale = 0;
-            gameObject.SetActive(false);
-        }
-
-        else if (delta < 0)
-        {
-            if (_scriptInvencible != null)
-            {
-                _scriptInvencible.enabled = true;
-            }
-        }
-        return true;
-    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -121,7 +120,7 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class Vida 
+} // class OndaBehavour 
 // namespace

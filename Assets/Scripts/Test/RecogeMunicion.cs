@@ -52,6 +52,7 @@ public class RecogeMunicion : MonoBehaviour
         _om = collision.gameObject.GetComponent<OtorgaMunicion>();
         if (_om != null) 
         {
+            if (!_om.isActiveAndEnabled) return;
             if (GameManager.Instance != null) _SuckingAmo = !GameManager.Instance.RelayShootingState();
             else
             {
