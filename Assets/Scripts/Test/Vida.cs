@@ -138,7 +138,13 @@ public class Vida : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
+    private void OnCollisionEnter2D(Collision2D other) // Método para recibir daño al colisionar con un enemigo
+    {
+        if (other.gameObject.layer == _layerEnemigo)
+        {
+            ActualizarVidas(-1);
+        }
+    }
 
     #endregion   
 

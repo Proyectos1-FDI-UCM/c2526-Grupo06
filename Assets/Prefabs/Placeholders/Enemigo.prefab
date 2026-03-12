@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8949825214289205311}
   - component: {fileID: -8383125527185767258}
   - component: {fileID: 4498678450052928359}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,3 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuntosVidaMaximos: 2
+  PowerUps:
+  - {fileID: 1527679283823312103, guid: c70082c8005c6ef4f9593ef011995be9, type: 3}
+  ProbabilidadDrop: 1
