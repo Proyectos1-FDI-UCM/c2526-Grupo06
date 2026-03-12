@@ -71,8 +71,13 @@ public class EnemyDamageToPlayer : MonoBehaviour
             Vida vidaPlayer = other.gameObject.GetComponent<Vida>();
             if (vidaPlayer != null)
             {
-                vidaPlayer.ActualizarVidas(-1);
-                Destroy(this.gameObject);
+                bool HizoDanyo; // viva la ñ
+                HizoDanyo = vidaPlayer.ActualizarVidas(-1);
+
+                if (HizoDanyo)
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }

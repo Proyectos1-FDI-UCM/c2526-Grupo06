@@ -467,6 +467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7953771667111596643, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -5675689694924556444, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
       propertyPath: TextoVida
       value: 
@@ -582,6 +586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 388825355}
+  TextoVida: {fileID: 720962114}
+  PanelGameover: {fileID: 2028173976}
 --- !u!4 &704908726
 Transform:
   m_ObjectHideFlags: 0

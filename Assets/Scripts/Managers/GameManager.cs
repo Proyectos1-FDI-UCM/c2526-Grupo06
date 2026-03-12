@@ -6,6 +6,8 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using UnityEngine;
 
 
@@ -35,6 +37,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject Player;
 
+    [SerializeField] private TextMeshProUGUI TextoVida;
+    [SerializeField] private GameObject PanelGameover;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -45,6 +50,7 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
+    private string _puntoVida = "▓ ";
 
     #endregion
 
@@ -86,6 +92,18 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
             Init();
         } // if-else somos instancia nueva o no.
+    }
+
+    /// <summary>
+    /// lo que hacemos en este método desactivar el panel de derrota cuando empezamos la partida
+    /// </summary>
+
+    private void Start()
+    {
+        if (PanelGameover != null)
+        {
+            PanelGameover.SetActive(false); // para desactivar el panel al inicio
+        }
     }
 
     /// <summary>
@@ -166,8 +184,6 @@ public class GameManager : MonoBehaviour
             Debug.Log("No se pudo encontrar el componente RecogeMunicion");
             return -1;
         }
-
-        
     }
 
     ///<summary>
@@ -182,6 +198,40 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
+
+    ///<summary>
+    ///Método para mostrar las vidas en pantalla
+    ///</summary>
+    public void MuestraVida(int vidasActuales)
+    {
+        if (TextoVida == null)
+        {
+            return;
+        }
+
+        string puntos = "";
+
+        for (int i = 0; i < vidasActuales; i++)
+        {
+            puntos += _puntoVida;
+        }
+
+        TextoVida.text = puntos;
+    }
+
+    ///<summary>
+    ///Metodo que muestra el panel de game over
+    ///</summary>
+
+    public void MostrarGameOver()
+    {
+        if (PanelGameover != null)
+        {
+            PanelGameover.SetActive(true);
+        }
+    }
+
+
 
     #endregion
 

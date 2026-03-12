@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 using TMPro;
+using UnityEditor.Searcher;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -31,15 +32,6 @@ public class Vida : MonoBehaviour
     [SerializeField]
     private int Vidas = 4;
 
-    [SerializeField]
-    private TextMeshProUGUI TextoVida;
-
-    [SerializeField]
-    private GameObject PanelGameover;
-
-    [SerializeField]
-    private SpriteRenderer SpriteRenderer;
-
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -53,9 +45,7 @@ public class Vida : MonoBehaviour
 
     private static int _maximoVidas = 6;
 
-    private static string _puntoVida = "▓ ";
-
-    private static int _layerEnemigo = 11;
+    private PlayerInvencible _scriptInvencible;
 
     #endregion
 
@@ -72,16 +62,12 @@ public class Vida : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ActualizarVidas(0);
-    }
+        _scriptInvencible = GetComponent<PlayerInvencible>();
 
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    void Update()
-    {
-        ActualizarVidas(0);
-
+        if (GameManager.HasInstance())
+        {
+            GameManager.Instance.MuestraVida(Vidas);
+        }
     }
 
     #endregion
@@ -93,42 +79,41 @@ public class Vida : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void ActualizarVidas(int delta)
+    public bool ActualizarVidas(int delta)
     {
-        string puntos = "";
-        Vidas += delta;
+        if (delta < 0 && _scriptInvencible != null && _scriptInvencible.enabled)
+        {
+            return false; // ignoramos daño
+        }
+
+        Vidas += delta; // aplicar vidaa
+
         if (Vidas > _maximoVidas)
         {
             Vidas = _maximoVidas;
         }
 
-        for (int i = 0; i < Vidas; i++)
+        if (GameManager.HasInstance())
         {
-            puntos += _puntoVida;
+            GameManager.Instance.MuestraVida(Vidas);
         }
-        TextoVida.text = puntos;
 
         if (Vidas <= 0)
         {
-            PanelGameover.SetActive(true);
-            //SpriteRenderer.enabled = false;
+            if (GameManager.HasInstance()) GameManager.Instance.MostrarGameOver();
             Time.timeScale = 0;
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
-        else
-        {
-            PanelGameover.SetActive(false);
-            SpriteRenderer.enabled = true;
 
-            if (delta < 0)
+        else if (delta < 0)
+        {
+            if (_scriptInvencible != null)
             {
-                PlayerInvencible pi = GetComponent<PlayerInvencible>();
-                if (pi != null)
-                {
-                    pi.enabled = true;
-                }
+                _scriptInvencible.enabled = true;
             }
         }
+
+        return true;
     }
     #endregion
 
