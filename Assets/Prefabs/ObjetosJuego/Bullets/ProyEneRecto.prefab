@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4017509428294834628}
   - component: {fileID: 2852192830931062317}
   - component: {fileID: 5176829235121552676}
+  - component: {fileID: 1066451198679889255}
   m_Layer: 11
   m_Name: ProyEneRecto
   m_TagString: Untagged
@@ -184,3 +185,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c18a2b0c8cbfac4c84d2e4f9aa9a9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1066451198679889255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631576297854821485}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d07effe19111c647b6a3909a335e83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MuncionOtorgada: 1

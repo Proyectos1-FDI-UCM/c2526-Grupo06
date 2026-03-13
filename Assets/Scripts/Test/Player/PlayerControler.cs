@@ -34,6 +34,7 @@ public class PlayerControler : MonoBehaviour
     private Vector2 _direction; //El vector que almacenara la dirección devuelta por el wasd o el joystick
     private float _xLimit = 8.33f; // Punto límite que el jugador podra alcanzar en el eje x
     private float _yLimit = 4.4f; // Punto límite que el jugador alcanzara en el eje y
+    private float _freezeTimer = 0f;//esta variable se utilizara para contar cuanto tiempo le queda congelada
 
     #endregion
 
@@ -58,17 +59,24 @@ public class PlayerControler : MonoBehaviour
     /// </summary>
     void Update()
     {
-        _direction = _movementAction.ReadValue<Vector2>() ;
-        if (_direction != Vector2.zero)
+        if (_freezeTimer > 0) //si esta congelada no hace nada más que reducir su timer de congelación.
         {
-            if (_direction.x > 0) transform.Translate(FlySpeed * Time.deltaTime, 0, 0);
-            else if (_direction.x < 0) transform.Translate(-FlySpeed * Time.deltaTime, 0, 0);
-            if (_direction.y > 0) transform.Translate(0, FlySpeed * Time.deltaTime, 0);
-            else if (_direction.y < 0) transform.Translate(0,-FlySpeed * Time.deltaTime, 0);
+            _freezeTimer -= Time.deltaTime;
+            if (_freezeTimer < 0) _freezeTimer = 0;
+        }
+        else 
+        {
+            _direction = _movementAction.ReadValue<Vector2>();
+            if (_direction != Vector2.zero)
+            {
+                if (_direction.x > 0) transform.Translate(FlySpeed * Time.deltaTime, 0, 0);
+                else if (_direction.x < 0) transform.Translate(-FlySpeed * Time.deltaTime, 0, 0);
+                if (_direction.y > 0) transform.Translate(0, FlySpeed * Time.deltaTime, 0);
+                else if (_direction.y < 0) transform.Translate(0, -FlySpeed * Time.deltaTime, 0);
 
-            //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xLimit, _xLimit), Mathf.Clamp(transform.position.y, -_yLimit, _yLimit), 0);
-
+                //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xLimit, _xLimit), Mathf.Clamp(transform.position.y, -_yLimit, _yLimit), 0);
+            }
         }
     }
     #endregion
@@ -81,7 +89,10 @@ public class PlayerControler : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    public void AddFreezeTime(float freeze)//Añade tiempo de congelación
+    {
+        _freezeTimer += freeze;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

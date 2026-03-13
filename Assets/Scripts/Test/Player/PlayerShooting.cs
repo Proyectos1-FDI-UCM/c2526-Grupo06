@@ -29,6 +29,8 @@ public class PlayerShooting : MonoBehaviour
     private bool _isShooting;
     private float _lastShot;
     private int _bulletCount;
+    private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -38,7 +40,7 @@ public class PlayerShooting : MonoBehaviour
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
-    {
+    { 
         _fireAction = InputSystem.actions.FindAction("Fire");
         // Programación defensiva, el componente no funcionará si no hay gameobject bala o acción disparo
         if (_fireAction == null)
@@ -57,6 +59,7 @@ public class PlayerShooting : MonoBehaviour
             _isShooting = false;
             _lastShot = 0f;
         }
+        
     }
     /// <summary>
     /// Comprueba cada frame si se ha presionado la acción de disparo
@@ -64,29 +67,38 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        // Comprobación de input
-        if (_fireAction.WasPressedThisFrame() && !_isShooting)
+        if (_freezeTimer > 0) //(Añadido de Adán) si esta congelada no hace nada más que reducir su timer de congelación.
         {
-            _bulletCount = 5; // Valor provisional hasta tener gamemanager
-            if (_bulletCount != 0)
-            {
-                _isShooting = true;
-            }
+            _freezeTimer -= Time.deltaTime;
+            if (_freezeTimer < 0) _freezeTimer = 0;
         }
-        // Acción de disparo
-        if (_isShooting && _bulletCount != 0)
+        else
         {
-            // Comprueba si entre el último disparo y ahora ha pasado el tiempo de cadencia
-            if (Time.time - _lastShot > Cadence) 
+            // Comprobación de input
+            if (_fireAction.WasPressedThisFrame() && !_isShooting)
             {
-                Shoot(); // Función de disparo
-                _bulletCount--; // función provisional hasta tener gamemanager
-                if (_bulletCount == 0) // Si el número de balas acaba deja la acción de disparar
+                _bulletCount = 5; // Valor provisional hasta tener gamemanager
+                if (_bulletCount != 0)
                 {
-                    _isShooting = false;
+                    _isShooting = true;
+                }
+            }
+            // Acción de disparo
+            if (_isShooting && _bulletCount != 0)
+            {
+                // Comprueba si entre el último disparo y ahora ha pasado el tiempo de cadencia
+                if (Time.time - _lastShot > Cadence)
+                {
+                    Shoot(); // Función de disparo
+                    _bulletCount--; // función provisional hasta tener gamemanager
+                    if (_bulletCount == 0) // Si el número de balas acaba deja la acción de disparar
+                    {
+                        _isShooting = false;
+                    }
                 }
             }
         }
+        
     }
     #endregion
 
@@ -97,12 +109,15 @@ public class PlayerShooting : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
-    //Permite al GameManager el estado del disparo
-    public bool IsShooting() 
+    public bool IsShooting() //(Añadido de Adán) Permite al GameManager conocer el estado del disparo
     {
         return _isShooting;
     }
+    public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
+    {
+        _freezeTimer += freeze;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

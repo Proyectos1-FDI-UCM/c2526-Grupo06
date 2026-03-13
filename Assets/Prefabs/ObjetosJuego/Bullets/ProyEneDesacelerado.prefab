@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 895253305527846628}
   - component: {fileID: 6885234770467918738}
   - component: {fileID: 4057136474385053099}
+  - component: {fileID: -7796670036088588506}
   m_Layer: 14
   m_Name: ProyEneDesacelerado
   m_TagString: Untagged
@@ -184,3 +185,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c18a2b0c8cbfac4c84d2e4f9aa9a9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7796670036088588506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4302842385054555141}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d07effe19111c647b6a3909a335e83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MuncionOtorgada: 1
