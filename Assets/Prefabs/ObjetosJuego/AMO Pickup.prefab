@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5077175834760465348}
   - component: {fileID: -8561057869714332988}
   - component: {fileID: 5663276648216354562}
+  - component: {fileID: -8344496835370810693}
   m_Layer: 0
   m_Name: AMO Pickup
   m_TagString: Untagged
@@ -152,7 +153,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e3771cc5be6aa4da2fbe674c79f3e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidad: -6
+  VelocidadIni: -6
+  Acelera: 0
+  VelocidadFin: 0
+  Curvo: 0
+  Amplitud: 0
+  Periodo: 1
+  Gravity: 0
+  GravityStrenght: -8
 --- !u!114 &5663276648216354562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +173,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c18a2b0c8cbfac4c84d2e4f9aa9a9e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &-8344496835370810693
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296403632676444519}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

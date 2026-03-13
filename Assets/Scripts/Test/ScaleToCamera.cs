@@ -40,7 +40,7 @@ public class ScaleToCamera : MonoBehaviour
         float height = cam.orthographicSize * 2f;
         float width = height * cam.aspect;
 
-        _worldSize = new Vector2(width, height);
+        _worldSize = new Vector2(width, height + 5f);
 
         transform.localScale = _worldSize;
     }
