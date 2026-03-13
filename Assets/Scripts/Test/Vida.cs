@@ -44,6 +44,7 @@ public class Vida : MonoBehaviour
     private static int _maximoVidas = 6;
 
     private PlayerInvencible _scriptInvencible;
+    private PlayerShield _scriptShield;
 
     #endregion
 
@@ -61,7 +62,7 @@ public class Vida : MonoBehaviour
     void Start()
     {
         _scriptInvencible = GetComponent<PlayerInvencible>();
-
+        _scriptShield = GetComponent<PlayerShield>();
         if (GameManager.HasInstance())
         {
             GameManager.Instance.MuestraVida(Vidas);
@@ -79,6 +80,15 @@ public class Vida : MonoBehaviour
     // Ejemplo: GetPlayerController
     public bool ActualizarVidas(int delta)
     {
+        // Mecánica escudo
+        if (_scriptShield != null) // Programación defensiva
+        {
+            if (_scriptShield.GetShieldState()) // Si tiene el escudo activo 
+            {
+                _scriptShield.ShieldAttack(); // Hace el screen clean del escudo
+                return false; // return temporal, luego lo cambio
+            }
+        }
         if (delta < 0 && _scriptInvencible != null && _scriptInvencible.enabled)
         {
             return false; // ignoramos daño
