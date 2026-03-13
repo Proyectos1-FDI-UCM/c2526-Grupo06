@@ -50,7 +50,7 @@ public class EnemyDamageToPlayer : MonoBehaviour
     /// <summary>
     /// Detecta cuando hay colisión.
     /// </summary>
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (!enabled) return; //Añadido para permitir que si el script esta desactivado no haga daño
         
