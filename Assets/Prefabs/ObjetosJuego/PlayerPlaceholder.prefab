@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7072670131807907653}
   - component: {fileID: -5675689694924556444}
   - component: {fileID: -7953771667111596643}
+  - component: {fileID: 8176803611529647191}
   m_Layer: 10
   m_Name: PlayerPlaceholder
   m_TagString: Untagged
@@ -142,9 +143,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8374839448642552889}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
@@ -233,3 +234,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TiempoInvencible: 3
+--- !u!114 &8176803611529647191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374839448642552889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31394e0c403912a4fb0769261b6830bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldMaxTime: 5
+  BulletDestroyer: {fileID: 0}
