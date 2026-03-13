@@ -85,21 +85,21 @@ public class Pickable : MonoBehaviour
                     {
                         Debug.LogWarning("No está el componente PickUpEscudo, no se puede aplicar el efecto de este pickup");
                     }
-                    DestroyPickUp(); // se destruye el pickup después de activar su efecto
                     break;
-                    /*case PickableType.ReduceTamanyo:
-                        // se llama al componente concreto que tendrá la lógica de este pickup
-                        if (collider.GetComponent<PickUpSmall>() != null)
-                        {
-                            // collider.GetComponent<PickUpSmall>().ReduceSize(); // esto es un ejemplo
-                            // se llama al método que cura (aún no está hecho)
-                        }
-                        else
-                        {
-                            Debug.LogWarning("No está el componente PickUpSmall, no se puede aplicar el efecto de este pickup");
-                        }
-                        break;*/
+                case PickableType.ReduceTamanyo:
+
+                    PlayerResize pr = collider.GetComponent<PlayerResize>();
+                    if (pr != null)
+                    {
+                        pr.EnableResize();
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No está el componente PlayerResize, no se puede aplicar el efecto de este pickup");
+                    }
+                    break;
             }
+            DestroyPickUp(); // se destruye el pickup después de activar su efecto
         }
     }
 

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -5675689694924556444}
   - component: {fileID: -7953771667111596643}
   - component: {fileID: 8176803611529647191}
+  - component: {fileID: 7388294998051649465}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -248,3 +249,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShieldMaxTime: 5
   BulletDestroyer: {fileID: 0}
+--- !u!114 &7388294998051649465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374839448642552889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a79b21175766449bbff4391b2998ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smallTime: 5
+  _smallSize: 0.75
