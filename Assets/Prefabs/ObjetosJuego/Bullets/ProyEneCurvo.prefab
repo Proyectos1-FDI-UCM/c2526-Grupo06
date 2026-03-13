@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2703513941859415954}
   - component: {fileID: 7501050158181506077}
   - component: {fileID: -3961356910223353117}
+  - component: {fileID: 4307426486828904093}
   m_Layer: 14
   m_Name: ProyEneCurvo
   m_TagString: Untagged
@@ -173,6 +174,8 @@ MonoBehaviour:
   Curvo: 1
   Amplitud: 0.3
   Periodo: 3
+  Gravity: 0
+  GravityStrenght: -8
 --- !u!114 &7501050158181506077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +201,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MuncionOtorgada: 1
+--- !u!114 &4307426486828904093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8791570585168208411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb5ee6635c2b104d9d60d5358a3ca49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
