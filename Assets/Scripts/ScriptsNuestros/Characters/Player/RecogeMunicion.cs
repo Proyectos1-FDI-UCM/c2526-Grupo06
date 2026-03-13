@@ -39,33 +39,35 @@ public class RecogeMunicion : MonoBehaviour
     private int _currentAmo = 0; //Munición acutal del jugador
     private OtorgaMunicion _om; //El componente OtorgaMuncion del pickup de munición más reciente contra el que haya chocado
     private bool _SuckingAmo = true; //Boleano que controla si el jugador puede aborver o no pickups de munición
+    private PlayerShooting _componenteDisparo;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    private void OnTriggerStay2D(Collider2D collision) //Este metodo detecta la entrada a un trigger y cuando el game objet tiene el componente "OtorgaMunicion" toma la munición que este aporta y la suma a la currentAmo siempre que -SuckingAmo estea en true
+
+    private void Start()
     {
+        _componenteDisparo = this.gameObject.GetComponent<PlayerShooting>();
+        if (GameManager.Instance != null) GameManager.Instance.MuestraAmmo(_currentAmo, MaxAMO);
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Colision detectada " + collision);
         _om = collision.gameObject.GetComponent<OtorgaMunicion>();
         if (_om != null) 
         {
-            if (!_om.isActiveAndEnabled) return;
-            if (GameManager.Instance != null) _SuckingAmo = !GameManager.Instance.RelayShootingState();
-            else
-            {
-                Debug.Log("No se le pudo preguntar al GameManager si el jugador esta disparando");
-                _SuckingAmo = true;
-            }
-
-            if (_SuckingAmo)
+            if (_om.isActiveAndEnabled && _currentAmo != MaxAMO && !_componenteDisparo.IsShooting())
             {
                 Addamo(_om.ReturnAmo());
                 Destroy(collision.gameObject);
             }
-            else Debug.Log("No estoy absorviendo munición");
+
         }
     }
     #endregion
@@ -93,9 +95,8 @@ public class RecogeMunicion : MonoBehaviour
         if (!(_currentAmo >= MaxAMO))
         {
             _currentAmo = Mathf.Clamp((_currentAmo + amount), 0, MaxAMO);
-            Debug.Log("Munición Actual = " + _currentAmo);
         }
-        else Debug.Log("Munción ya esta al máximo o el simplemente no se puede dispar");
+        if (GameManager.Instance != null) GameManager.Instance.MuestraAmmo(_currentAmo, MaxAMO);
     }
 
     public void StopAMOSucking() //Este metodo aparte de tener un gran nombre solo sirve para poner al jugador en un estado donde no puede absorver pickups de munición;
@@ -109,6 +110,12 @@ public class RecogeMunicion : MonoBehaviour
     public int AmmoCount()
     {
         return _currentAmo;
+    }
+
+    public void ReduceAmo(int i)
+    {
+        _currentAmo -= i;
+        if (GameManager.Instance != null) GameManager.Instance.MuestraAmmo(_currentAmo, MaxAMO);
     }
     #endregion   
 

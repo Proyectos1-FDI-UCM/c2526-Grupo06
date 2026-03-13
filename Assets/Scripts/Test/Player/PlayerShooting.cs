@@ -77,7 +77,7 @@ public class PlayerShooting : MonoBehaviour
             // Comprobación de input
             if (_fireAction.WasPressedThisFrame() && !_isShooting)
             {
-                _bulletCount = 5; // Valor provisional hasta tener gamemanager
+                _bulletCount = this.gameObject.GetComponent<RecogeMunicion>().AmmoCount(); // Valor provisional hasta tener gamemanager
                 if (_bulletCount != 0)
                 {
                     _isShooting = true;
@@ -90,6 +90,7 @@ public class PlayerShooting : MonoBehaviour
                 if (Time.time - _lastShot > Cadence)
                 {
                     Shoot(); // Función de disparo
+                    this.gameObject.GetComponent<RecogeMunicion>().ReduceAmo(1);
                     _bulletCount--; // función provisional hasta tener gamemanager
                     if (_bulletCount == 0) // Si el número de balas acaba deja la acción de disparar
                     {
@@ -109,7 +110,7 @@ public class PlayerShooting : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public bool IsShooting() //(Añadido de Adán) Permite al GameManager conocer el estado del disparo
+    public bool IsShooting() //(Añadido de Adán) Permite al RecogeMunición conocer el estado del disparo
     {
         return _isShooting;
     }

@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI TextoVida;
     [SerializeField] private GameObject PanelGameover;
+    [SerializeField] private TextMeshProUGUI TextoAMMO;
 
     #endregion
 
@@ -173,31 +174,6 @@ public class GameManager : MonoBehaviour
         System.GC.Collect();
     } // ChangeScene
 
-    ///<summary>
-    ///Metodo que devuelve la cantidad de municion del objeto asigado (Si falla culpad a Adán)
-    ///</summary>
-    public int RelayAmmoCount()
-    {
-        if (Player.GetComponent<RecogeMunicion>() != null) return Player.GetComponent<RecogeMunicion>().AmmoCount();
-        else
-        {
-            Debug.Log("No se pudo encontrar el componente RecogeMunicion");
-            return -1;
-        }
-    }
-
-    ///<summary>
-    ///Metodo que devuelve el estado de disparo del objeto asigado (Si falla culpad a Adán)
-    ///</summary>
-    public bool RelayShootingState()
-    {
-        if (Player.GetComponent<PlayerShooting>() != null) return Player.GetComponent<PlayerShooting>().IsShooting();
-        else
-        {
-            Debug.Log("No se pudo encontrar el componente RelayShootingState");
-            return false;
-        }
-    }
 
     ///<summary>
     ///Método para mostrar las vidas en pantalla
@@ -217,6 +193,18 @@ public class GameManager : MonoBehaviour
         }
 
         TextoVida.text = puntos;
+    }
+
+    public void MuestraAmmo(int _municion, int _maxAmmo)
+    {
+        if (TextoAMMO == null)
+        {
+            return;
+        }
+        else
+        {
+            TextoAMMO.text = ($"{_municion} / {_maxAmmo}");
+        }
     }
 
     ///<summary>

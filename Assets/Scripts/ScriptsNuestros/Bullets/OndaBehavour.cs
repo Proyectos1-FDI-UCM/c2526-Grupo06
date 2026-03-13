@@ -86,8 +86,14 @@ public class OndaBehavour : MonoBehaviour
             }
             else if (OndaElegida == _tipoDeOnda.Swap)
             {
-                _component.GetComponent<EnemyDamageToPlayer>().enabled = !_component.GetComponent<EnemyDamageToPlayer>().isActiveAndEnabled;
-                _component.GetComponent<OtorgaMunicion>().enabled = !_component.GetComponent<OtorgaMunicion>().isActiveAndEnabled;
+                EnemyDamageToPlayer _damge = _component.GetComponent<EnemyDamageToPlayer>();
+                OtorgaMunicion _givesAmmo = _component.GetComponent<OtorgaMunicion>();
+                SpriteRenderer _sprite = _component.GetComponent<SpriteRenderer>();
+
+                _damge.enabled = !_damge.isActiveAndEnabled;
+                _givesAmmo.enabled = !_givesAmmo.isActiveAndEnabled;
+                if (_damge.isActiveAndEnabled) _sprite.color = (Color.red);
+                else _sprite.color = (Color.green);
             }
         }
         else
