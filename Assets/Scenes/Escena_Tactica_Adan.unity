@@ -675,6 +675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemigo
       objectReference: {fileID: 0}
+    - target: {fileID: 6145399516430150669, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1399,7 +1403,7 @@ PrefabInstance:
     - target: {fileID: 2897841812824780360, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
       propertyPath: BulletNormal
       value: 
-      objectReference: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
+      objectReference: {fileID: 1392576457044157150}
     - target: {fileID: 4498678450052928359, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
       propertyPath: PuntosVidaMaximos
       value: 100
@@ -1407,6 +1411,10 @@ PrefabInstance:
     - target: {fileID: 6145399516430150669, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
       propertyPath: m_Name
       value: Enemigo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220928334313065742, guid: a5957ff8b6574544eb1ef4da4d5fe5e1, type: 3}
+      propertyPath: Amplitud
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1550,7 +1558,12 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1001 &3857763256869820027
+--- !u!1 &1392576457044157150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
+  m_PrefabInstance: {fileID: 3873293990288345066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3873293990288345066
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1558,55 +1571,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
+      propertyPath: m_Name
+      value: OndaIntercambiadora
+      objectReference: {fileID: 0}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 9.76
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 305730557854058208, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 3500274652119371055, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2799809426980598949, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
-      propertyPath: m_Name
-      value: OndaCongelante
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1622,4 +1635,4 @@ SceneRoots:
   - {fileID: 1095609882}
   - {fileID: 741235760}
   - {fileID: 2034192650}
-  - {fileID: 3857763256869820027}
+  - {fileID: 3873293990288345066}

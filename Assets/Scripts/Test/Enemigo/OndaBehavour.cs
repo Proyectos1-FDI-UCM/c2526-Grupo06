@@ -84,6 +84,11 @@ public class OndaBehavour : MonoBehaviour
             {
                 collision.gameObject.GetComponent<BulletsMovement>().AddFreezeTime(FreezeTime);
             }
+            else if (OndaElegida == _tipoDeOnda.Swap)
+            {
+                _component.GetComponent<EnemyDamageToPlayer>().enabled = !_component.GetComponent<EnemyDamageToPlayer>().isActiveAndEnabled;
+                _component.GetComponent<OtorgaMunicion>().enabled = !_component.GetComponent<OtorgaMunicion>().isActiveAndEnabled;
+            }
         }
         else
         {
