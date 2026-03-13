@@ -60,18 +60,15 @@ public class EnemyDamageToPlayer : MonoBehaviour
 
             if (vidaPlayer != null)
             {
-                bool HizoDanyo; //viva la ñ
-                
-                HizoDanyo = vidaPlayer.ActualizarVidas(-1);
-
+                bool HizoDanyo = vidaPlayer.ActualizarVidas(-1);
                 // buscar si lo que ha causado daño tiene componente BulletsProp y si lo tiene destruirlo, y si no, no
                 if (HizoDanyo)
                 {
-                    BulletsProp esBala = GetComponent<BulletsProp>();
+                    BulletsProp bp = GetComponent<BulletsProp>();
 
-                    if (esBala != null)
+                    if (bp != null)
                     {
-                        Destroy(this.gameObject);
+                        bp.DestroyBullet();
                     }
                    
                 }
