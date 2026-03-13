@@ -28,7 +28,7 @@ public class Vida : MonoBehaviour
 
 
     [SerializeField]
-    private int Vidas = 4;
+    private int Vidas = 4; //declaramos cuantas vidas tendremos al inicio de la partida
 
     #endregion
 
@@ -41,7 +41,7 @@ public class Vida : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int _maximoVidas = 6;
+    private static int _maximoVidas = 6; //el máximo de vidas que puede tener el jugador
 
     private PlayerInvencible _scriptInvencible;
     private PlayerShield _scriptShield;
