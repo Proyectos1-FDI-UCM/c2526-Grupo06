@@ -456,6 +456,7 @@ PrefabInstance:
       objectReference: {fileID: 590104240}
     m_RemovedComponents:
     - {fileID: 6671212269335025863, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
+    - {fileID: 9177679653930009592, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -475,6 +476,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1563751414}
+    - target: {fileID: 31272575592928344, guid: eb72c2c1f1171da409ec986fd4a999f7, type: 3}
+      propertyPath: _littleBullet
+      value: 
+      objectReference: {fileID: 4541950960163187118, guid: deb0edfc169a9cb4d9bf040be8efd568, type: 3}
     - target: {fileID: 3700167802563883350, guid: eb72c2c1f1171da409ec986fd4a999f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10

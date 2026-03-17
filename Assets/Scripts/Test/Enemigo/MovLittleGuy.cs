@@ -21,7 +21,7 @@ public class MovLittleGuy : MonoBehaviour
     [SerializeField]
     private Transform _player;     //Guarda la posición del jugador
     [SerializeField]
-    private GameObject BulletNormal; //Prefab de la bala normal
+    private GameObject _littleBullet; //Prefab de la bala normal
 
     #endregion
 
@@ -79,6 +79,11 @@ public class MovLittleGuy : MonoBehaviour
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
 
+    public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
+    {
+        _freezeTimer += freeze;
+    }
+    
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
@@ -89,14 +94,13 @@ public class MovLittleGuy : MonoBehaviour
     }
     private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
-        Instantiate(BulletNormal, transform.position, transform.rotation);
+        GameObject spawned = Instantiate(_littleBullet, transform.position, Quaternion.Euler(0, 0, 0));
+        if (Random.value <= 0.4f)
+        {
+            spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+            spawned.GetComponent<OtorgaMunicion>().enabled = true;
+        }
     }
-
-    public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
-    {
-        _freezeTimer += freeze;
-    }
-
     #endregion   
 
 } // class MovLittleGuy 

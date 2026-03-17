@@ -76,36 +76,12 @@ public class MovHugeCore : MonoBehaviour
                 _timerCad = 0f;
             }
         }
-
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    private bool Equal(float v1, float v2, float v3)    //método para comparar coordenadas con un rango de error
-    {
-        return System.Math.Abs(v1 - v2) <= v3 && System.Math.Abs(v1 - v2) >= 0;
-    }
-    private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
-    {
-        float j = 0.9f;
-        for (int i = 0; i < 4; i++)
-        {
-            if (i == 0 || i == 3)
-            {
-                Vector2 v2 = new Vector2(transform.position.x, transform.position.y + j);
-                Vector3 posInst = new Vector3(v2.x, v2.y, transform.position.z);
-                Instantiate(BulletNormal, posInst, transform.rotation);
-            }
-            else
-            {
-                Vector2 v2 = new Vector2(transform.position.x - 0.6f, transform.position.y + j);
-                Vector3 posInst = new Vector3(v2.x, v2.y, transform.position.z);
-                Instantiate(BulletNormal, posInst, transform.rotation);
-            }
-            j = j - 0.6f;
-        }
-    }
+    
 
     public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
     {
@@ -116,11 +92,36 @@ public class MovHugeCore : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
+    private bool Equal(float v1, float v2, float v3)    //método para comparar coordenadas con un rango de error
+    {
+        return System.Math.Abs(v1 - v2) <= v3 && System.Math.Abs(v1 - v2) >= 0;
+    }
+    private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
+    {
+        GameObject spawned;
+        float j = 0.9f;
+        for (int i = 0; i < 4; i++)
+        {
+            if (i == 0 || i == 3)
+            {
+                Vector2 v2 = new Vector2(transform.position.x, transform.position.y + j);
+                Vector3 posInst = new Vector3(v2.x, v2.y, transform.position.z);
+                spawned = Instantiate(BulletNormal, posInst, transform.rotation);
+            }
+            else
+            {
+                Vector2 v2 = new Vector2(transform.position.x - 0.6f, transform.position.y + j);
+                Vector3 posInst = new Vector3(v2.x, v2.y, transform.position.z);
+                spawned = Instantiate(BulletNormal, posInst, transform.rotation);
+            }
+            if (Random.value <= 0.4f)
+            {
+                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                spawned.GetComponent<OtorgaMunicion>().enabled = true;
+            }
+            j = j - 0.6f;
+        }
+    }
     #endregion
 
 } // class MovHugeCore 
