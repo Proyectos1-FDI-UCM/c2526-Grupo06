@@ -10,44 +10,28 @@ using UnityEngine;
 
 
 /// <summary>
-/// Destruye balas enemigas y hace crecer un objeto durante un tiempo
+/// Hace crecer un objeto durante un tiempo, destruyendo toda bala enemiga que toca
+/// Luego desactiva el objeto
 /// </summary>
 public class EnemyBulletCleaner : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float GrowSpeed = 10f;
+    private float GrowSpeed = 30f; // Velocidad de crecimiento
     [SerializeField]
-    private float GrowTime = 3f;
+    private float GrowTime = 1f; // Tiempo de crecimiento
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-    private float _timer = 0f;
+    private float _timer = 0f; // Tiempo activo
     #endregion
     
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-    
     /// <summary>
-    /// Start is called on the frame when a script is enabled just before 
-    /// any of the Update methods are called the first time.
+    /// OnEnable se llama cuando se habilita el monobehaviour
     /// </summary>
     void OnEnable()
     {
@@ -69,31 +53,27 @@ public class EnemyBulletCleaner : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Comprueba si la colisión es una bala
         BulletsProp bp = collision.GetComponent<BulletsProp>();
         if (bp != null)
         {
-            bp.DestroyBullet();
+            // Comprueba si la colisión es una bala ENEMIGA
+            EnemyDamageToPlayer dp = collision.GetComponent<EnemyDamageToPlayer>();
+            // Si el script de daño existe y está activo, destruye la bala
+            if (dp != null && dp.enabled)
+            {
+                bp.DestroyBullet();
+            }
         }
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
-
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion
 
 } // class EnemyBulletCleaner 
