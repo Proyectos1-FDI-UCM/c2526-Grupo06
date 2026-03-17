@@ -28,8 +28,8 @@ public class VidaEnemigo : MonoBehaviour
     [SerializeField]
     private GameObject[] PowerUps; // lista de power ups posibles
 
-    [SerializeField]
-    private float ProbabilidadDrop = 0.5f; // Probabilidad de que el enemigo suelte un power up al morir
+    [SerializeField, Range(0, 100)]
+    private float ProbabilidadDrop = 50f; // Probabilidad en % de que el enemigo suelte un power up al morir
 
     #endregion
 
@@ -95,12 +95,15 @@ public class VidaEnemigo : MonoBehaviour
     }
     private void SoltarPowerUp() // Método que se llama para soltar un power up al morir el enemigo
     {
-        
-        if (Random.value <= ProbabilidadDrop && PowerUps.Length > 0)
+        if (PowerUps != null && PowerUps.Length > 0)
         {
-            int indice = Random.Range(0, PowerUps.Length);
+            float random = Random.Range(0f, 100f);
 
-            Instantiate(PowerUps[indice], transform.position, Quaternion.identity);
+            if (random <= ProbabilidadDrop)
+            {
+                int indice = Random.Range(0, PowerUps.Length);
+                Instantiate(PowerUps[indice], transform.position, Quaternion.identity);
+            }
         }
     }
 
