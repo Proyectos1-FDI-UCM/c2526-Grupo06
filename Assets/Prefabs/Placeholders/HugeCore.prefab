@@ -191,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1ab5074a02e7d48a95a291f70cd2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletNormal: {fileID: 0}
+  BulletNormal: {fileID: 1631576297854821485, guid: 87a0ec68121dfb644a937fd47dc769b7, type: 3}
   _posX: 2

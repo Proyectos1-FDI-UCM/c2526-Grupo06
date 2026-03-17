@@ -219,7 +219,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Metodo que permite spawnear un enemigo asignandole una cantidad, una posicion y un valor
+    /// que indica un rango de spawn al rededor de la posición otorgada. Esto solo se usara si
+    /// la cantidad de enemigos es mayor a 1
+    /// </summary>
+    public void EnemigoSpawn(GameObject enemy, int amount, Vector2 xy, int Spread)
+    {
+        if (enemy != null)
+        {
+            if (amount < 2)
+            {
+                GameObject enemyinstance = Instantiate(enemy);
+                enemyinstance.transform.position = xy;
+            }
+            else
+            {
+                for (int i = 0; i < amount; i++)
+                {
+                    GameObject enemyinstance = Instantiate(enemy);
+                    Vector2 SpawnPosition = xy + (new Vector2(Random.Range(-Spread, Spread+1), Random.Range(-Spread, Spread + 1)));
+                    enemyinstance.transform.position = xy;
+                }
+            }
+        }
+    }
 
     #endregion
 

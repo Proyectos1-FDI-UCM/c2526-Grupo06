@@ -90,6 +90,14 @@ public class BulletsMovement : MonoBehaviour
         else _aceleracion = 0;
         if (Curvo) { _amplitud = Amplitud; _periodo = Periodo; }
         else { _amplitud = 0; _periodo = 1; }
+
+        //(Añadido de Adán) Comprueba si la bala es recogible para darle color verde
+        OtorgaMunicion otorga = this.gameObject.GetComponent<OtorgaMunicion>();
+        if (otorga != null)
+        {
+            if (otorga.isActiveAndEnabled) this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            else this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
     void Update()
     {

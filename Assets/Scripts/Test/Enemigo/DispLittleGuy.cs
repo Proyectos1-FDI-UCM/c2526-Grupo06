@@ -47,6 +47,15 @@ public class DispLittleGuy : MonoBehaviour
 
         _dir = new Vector2(transform.position.x - _player.position.x, transform.position.y - _player.position.y);
 
+        //(Añadido de Adán) Comprueba si la bala es recogible para darle color verde
+        OtorgaMunicion otorga = this.gameObject.GetComponent<OtorgaMunicion>();
+        if (otorga != null ) 
+        {
+            if (otorga.isActiveAndEnabled) this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+            else this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        
+
     }
 
     void Update()
