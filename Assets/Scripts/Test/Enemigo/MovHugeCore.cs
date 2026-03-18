@@ -21,7 +21,9 @@ public class MovHugeCore : MonoBehaviour
     [SerializeField]
     private GameObject BulletNormal; //Prefab de la bala normal
     [SerializeField]
-    private float _posX; //posición X hasta la cual debe de llegar
+    private float _posX;             //posición X hasta la cual debe de llegar
+    [SerializeField]
+    private float _vel = 4f;         // Velocidad de movimiento del enemigo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -29,7 +31,6 @@ public class MovHugeCore : MonoBehaviour
 
     private Vector3 _posIni;            //para poner la posición inicial al instanciarlo
     private Vector3 _endPos;            //para guardar la posición que debe de tomar
-    private float _vel = 4f;            // Velocidad de movimiento del enemigo
     private float _amp = 3f;            //Amplitud del movimiento del enemigo
     private float _freezeTimer = 0f;    //(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
     private float _maxOffset = 0.2f;    //guarda un offset para comparar posiciones
@@ -99,7 +100,8 @@ public class MovHugeCore : MonoBehaviour
     private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
         GameObject spawned;
-        float j = 0.9f;
+        float j = 1.2f;
+        float x = Random.value;
         for (int i = 0; i < 4; i++)
         {
             if (i == 0 || i == 3)
@@ -107,17 +109,22 @@ public class MovHugeCore : MonoBehaviour
                 Vector2 v2 = new Vector2(transform.position.x, transform.position.y + j);
                 Vector3 posInst = new Vector3(v2.x, v2.y, transform.position.z);
                 spawned = Instantiate(BulletNormal, posInst, transform.rotation);
+                if (x <= 0.3f)
+                {
+                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                }
             }
             else
             {
                 Vector2 v2 = new Vector2(transform.position.x - 0.6f, transform.position.y + j);
                 Vector3 posInst = new Vector3(v2.x, v2.y, transform.position.z);
                 spawned = Instantiate(BulletNormal, posInst, transform.rotation);
-            }
-            if (Random.value <= 0.4f)
-            {
-                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                if (0.3f < x && x <= 0.6f)
+                {
+                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                }
             }
             j = j - 0.6f;
         }
