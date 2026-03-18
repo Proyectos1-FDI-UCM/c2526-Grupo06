@@ -16,8 +16,9 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Denota que el objeto puede ser recogido por el jugador y le otorga un efecto concreto al hacerlo
+/// Si choca con la deadZone, se destruye
+/// El pickup debe tener un rigidbody2D Kinematic para funcionar correctamente
 /// </summary>
 public class Pickable : MonoBehaviour
 {
@@ -100,6 +101,10 @@ public class Pickable : MonoBehaviour
                     break;
             }
             DestroyPickUp(); // se destruye el pickup después de activar su efecto
+        }
+        if (collider.GetComponent<DeadZone>() != null)
+        {
+            DestroyPickUp();
         }
     }
 
