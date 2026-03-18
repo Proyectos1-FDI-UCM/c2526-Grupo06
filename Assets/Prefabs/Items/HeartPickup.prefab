@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1579467891870581941}
   - component: {fileID: 7739562373667180215}
   - component: {fileID: 3225991702836840450}
-  - component: {fileID: 7720560444789309118}
+  - component: {fileID: -2163509597546975085}
+  - component: {fileID: 6809608399172763870}
+  - component: {fileID: -3691864924673513890}
   m_Layer: 12
   m_Name: HeartPickup
   m_TagString: Untagged
@@ -84,7 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3f73200879a854a9a5fecc08f5ae1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7720560444789309118
+--- !u!114 &-2163509597546975085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,10 +95,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1527679283823312103}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46e6c1568331484449655683d1e5286a, type: 3}
+  m_Script: {fileID: 11500000, guid: eb2ed8d14371e0346915292d22869fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  Velocidad: 5
+--- !u!114 &6809608399172763870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527679283823312103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c18a2b0c8cbfac4c84d2e4f9aa9a9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &-3691864924673513890
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527679283823312103}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4747221691545145631
 GameObject:
   m_ObjectHideFlags: 0

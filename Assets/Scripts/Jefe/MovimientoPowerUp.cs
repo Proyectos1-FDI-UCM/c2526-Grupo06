@@ -1,12 +1,11 @@
 //---------------------------------------------------------
-// Genera un movimiento horizontal negativo (-x) en una altura aleatoria entre +4 y -4
-// Javier de Sala Rodríguez
-// Dream O' SpaceSheep
+// Movimiento de los power ups que dropee el jefe para que no se queden estancados en su cuerpo
+// Sergio Navarro Herreros
+// Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 // Añadir aquí el resto de directivas using
 
 
@@ -14,7 +13,7 @@ using UnityEngine.TextCore.Text;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class ItemAnimation : MonoBehaviour
+public class MovimientoPowerUp : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,8 +22,8 @@ public class ItemAnimation : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    public float speed = 3f; //velocidad por defecto del item
-
+    [SerializeField]
+    private float Velocidad = 5f;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -35,7 +34,6 @@ public class ItemAnimation : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private float h; //altura aleatoria entre 4 y -4
 
     #endregion
 
@@ -52,9 +50,7 @@ public class ItemAnimation : MonoBehaviour
     /// </summary>
     void Start()
     {
-        h = Random.Range(0, 8) - 4; //generamos un número aleatorio entre 0 y 8 y le restamos 4 para ver a qué altura comienza a moverse el item
-        transform.Translate(0, h, 0); //altura que ha salido en el generador de aleatorios
-
+        
     }
 
     /// <summary>
@@ -62,7 +58,7 @@ public class ItemAnimation : MonoBehaviour
     /// </summary>
     void Update()
     {
-        transform.Translate(-speed * Time.deltaTime, 0, 0); //movimiento horizontal del item
+        transform.position += Vector3.left * Velocidad * Time.deltaTime;
     }
     #endregion
 
@@ -85,5 +81,5 @@ public class ItemAnimation : MonoBehaviour
 
     #endregion   
 
-} // class ItemAnimation 
+} // class MovimientoPowerUp 
 // namespace
