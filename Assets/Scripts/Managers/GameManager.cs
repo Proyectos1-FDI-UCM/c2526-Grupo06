@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
                 {
                     GameObject enemyinstance = Instantiate(enemy);
                     Vector2 SpawnPosition = xy + (new Vector2(Random.Range(-Spread, Spread+1), Random.Range(-Spread, Spread + 1)));
-                    enemyinstance.transform.position = xy;
+                    enemyinstance.transform.position = SpawnPosition;
                 }
             }
         }
