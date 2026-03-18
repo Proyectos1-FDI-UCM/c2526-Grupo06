@@ -6,6 +6,7 @@
 //---------------------------------------------------------
 
 
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
@@ -41,17 +42,18 @@ public class PlayerControler : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
+        // Recoge la acción de moverse
         _movementAction = InputSystem.actions.FindAction("Move");
+        if (_movementAction == null) { Debug.LogError("No move action found!"); Destroy(this); }
+        // Indica al GameManager que el objeto que controla es el jugador
+        if (GameManager.Instance != null) { GameManager.Instance.SetPlayer(this.gameObject); }
+
     }
 
     /// <summary>
@@ -84,11 +86,6 @@ public class PlayerControler : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
     public void AddFreezeTime(float freeze)//Añade tiempo de congelación
     {
         _freezeTimer += freeze;
@@ -97,11 +94,6 @@ public class PlayerControler : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-
     #endregion
 
 } // class PlayerControler 
