@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private static GameManager _instance;
     private string _puntoVida = "▓ ";
+    private GameObject _player; // Jugador
 
     #endregion
 
@@ -244,7 +245,24 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    // -- Métodos para get y set player --
+    /// <summary>
+    /// Devuelve el GameObject que equivale al jugador
+    /// </summary>
+    /// <returns>GameObject jugador</returns>
+    public GameObject GetPlayer()
+    {
+        // Avisa si se intenta conseguir un player y es nulo (no se ha asignado un gameObject jugador)
+        if (_player == null) { Debug.LogWarning("No hay player que devolver"); } 
+        return _player;
+    }
+    /// <summary>
+    /// Le indica al GameManager que el objeto dado es el jugador, útil para enemigos que siguen su posición.
+    /// </summary>GameObject que equivale al jugador</param>
+    public void SetPlayer(GameObject Player)
+    {
+        _player = Player;
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
