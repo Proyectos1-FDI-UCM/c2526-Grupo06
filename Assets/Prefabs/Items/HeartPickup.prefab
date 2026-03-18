@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1579467891870581941}
   - component: {fileID: 7739562373667180215}
   - component: {fileID: 3225991702836840450}
+  - component: {fileID: 7720560444789309118}
   m_Layer: 12
-  m_Name: item
+  m_Name: HeartPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +84,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d3f73200879a854a9a5fecc08f5ae1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7720560444789309118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527679283823312103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e6c1568331484449655683d1e5286a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!1 &4747221691545145631
 GameObject:
   m_ObjectHideFlags: 0
