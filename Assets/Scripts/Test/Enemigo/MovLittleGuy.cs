@@ -44,10 +44,14 @@ public class MovLittleGuy : MonoBehaviour
     {
         _posIni = transform.position;
         _endPos = new Vector3 (3.5f, _posIni.y, _posIni.z);
-        GameObject tf = GameObject.Find("Player");
-        if (tf != null)
+        // Busca al player mediante el GameManager
+        if (GameManager.Instance != null)
         {
-            _player = tf.transform;
+            GameObject player = GameManager.Instance.GetPlayer();
+            if (player != null)
+            {
+                _player = player.transform;
+            }
         }
     }
 
