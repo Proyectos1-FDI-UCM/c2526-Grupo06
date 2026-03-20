@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5926402173194506002}
   - component: {fileID: 5985558310506074107}
   - component: {fileID: 31272575592928344}
+  - component: {fileID: -6409636212588443166}
   m_Layer: 11
   m_Name: LittleGuy
   m_TagString: Untagged
@@ -194,3 +195,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 4202310439107004848, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
   _littleBullet: {fileID: 4541950960163187118, guid: deb0edfc169a9cb4d9bf040be8efd568, type: 3}
+--- !u!114 &-6409636212588443166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389297447793994570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb5ee6635c2b104d9d60d5358a3ca49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

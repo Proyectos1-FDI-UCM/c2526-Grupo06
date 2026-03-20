@@ -37,10 +37,17 @@ public class PlayerBulletCollision : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         VidaEnemigo enemigo = collision.GetComponent<VidaEnemigo>();
+        DroppeoJefe jefe = collision.GetComponent<DroppeoJefe>();
 
-        if (enemigo != null) // si choca con un enemigo
+        if (enemigo != null) // si choca con un enemigo corriente
         {
             enemigo.RecibeDaño(1); // le quitamos vida al enemigo
+            DestroyPlayerBullet(); // destruye la bala del jugador
+        }
+
+        if (jefe != null) // si choca con un jefe
+        {
+            jefe.RecibeDanio(1); // le quitamos vida al jefe
             DestroyPlayerBullet(); // destruye la bala del jugador
         }
     }

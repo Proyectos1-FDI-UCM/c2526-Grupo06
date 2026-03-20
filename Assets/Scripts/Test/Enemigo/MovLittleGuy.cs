@@ -19,8 +19,6 @@ public class MovLittleGuy : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     [SerializeField]
-    private Transform _player;     //Guarda la posición del jugador
-    [SerializeField]
     private GameObject _littleBullet; //Prefab de la bala normal
 
     #endregion
@@ -34,6 +32,7 @@ public class MovLittleGuy : MonoBehaviour
     private float _cadencia = 1f;   //cada cuanto dispara
     private float _timerCad = 0f;   //temporizador de disparo
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
+    private Transform _player;
 
     #endregion
 
@@ -45,6 +44,15 @@ public class MovLittleGuy : MonoBehaviour
     {
         _posIni = transform.position;
         _endPos = new Vector3 (3.5f, _posIni.y, _posIni.z);
+        // Busca al player mediante el GameManager
+        if (GameManager.Instance != null)
+        {
+            GameObject player = GameManager.Instance.GetPlayer();
+            if (player != null)
+            {
+                _player = player.transform;
+            }
+        }
     }
 
     void Update()

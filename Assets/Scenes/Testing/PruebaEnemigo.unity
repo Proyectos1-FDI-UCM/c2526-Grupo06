@@ -398,6 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
   _posX: 2
+  _vel: 2
 --- !u!1001 &2718001794568703838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,6 +407,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 119876187611534101, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 119876187611534101, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 119876187611534101, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 119876187611534101, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
