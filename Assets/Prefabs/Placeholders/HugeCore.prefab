@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2915438849048606407}
   - component: {fileID: 9177679653930009592}
   - component: {fileID: 1259365767746473472}
+  - component: {fileID: -5122694598108118139}
   m_Layer: 0
   m_Name: HugeCore
   m_TagString: Untagged
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuntosVidaMaximos: 5
   PowerUps: []
-  ProbabilidadDrop: 0.4
+  ProbabilidadDrop: 50
 --- !u!114 &9177679653930009592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletNormal: {fileID: 1631576297854821485, guid: 87a0ec68121dfb644a937fd47dc769b7, type: 3}
   _posX: 2
+  _vel: 4
 --- !u!114 &1259365767746473472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,3 +208,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb5ee6635c2b104d9d60d5358a3ca49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5122694598108118139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724237237191935932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360eac61cc7b9e4429218a240046f702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuntosVidaMaximos: 4
+  PowerUps:
+  - {fileID: 1527679283823312103, guid: c70082c8005c6ef4f9593ef011995be9, type: 3}
+  - {fileID: 8292450542019962312, guid: 3a7b08f3c4880b5438aca47f0c1cd3d2, type: 3}
+  - {fileID: 2102399660543291952, guid: 85886df6946615a49b87a7f5371b8c2d, type: 3}
+  ProbabilidadDrop: 50

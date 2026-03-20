@@ -179,8 +179,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuntosVidaMaximos: 2
   PowerUps:
-  - {fileID: 0}
-  ProbabilidadDrop: 0.2
+  - {fileID: 1527679283823312103, guid: c70082c8005c6ef4f9593ef011995be9, type: 3}
+  - {fileID: 8292450542019962312, guid: 3a7b08f3c4880b5438aca47f0c1cd3d2, type: 3}
+  - {fileID: 2102399660543291952, guid: 85886df6946615a49b87a7f5371b8c2d, type: 3}
+  ProbabilidadDrop: 50
 --- !u!114 &31272575592928344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd482715ac78c844a31a7a9072b8f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 4202310439107004848, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
   _littleBullet: {fileID: 4541950960163187118, guid: deb0edfc169a9cb4d9bf040be8efd568, type: 3}
 --- !u!114 &-6409636212588443166
 MonoBehaviour:
