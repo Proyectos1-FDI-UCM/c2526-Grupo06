@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TextoVida;
     [SerializeField] private GameObject PanelGameover;
     [SerializeField] private TextMeshProUGUI TextoAMMO;
+    [SerializeField] private GameObject ProgresionManager;
 
     #endregion
 
@@ -54,6 +55,10 @@ public class GameManager : MonoBehaviour
     private string _puntoVida = "▓ ";
     private GameObject _player; // Jugador
 
+    //Variable que evita relaizar una comprovación múltiples veces.
+    private bool _pMAsigned = false;
+    //Donde guardaremos el MonoBehavour del ProgresionManager con el fin de llamarlo múltiples veces.
+    private ProgresionManager _pM;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -105,6 +110,11 @@ public class GameManager : MonoBehaviour
         if (PanelGameover != null)
         {
             PanelGameover.SetActive(false); // para desactivar el panel al inicio
+        }
+        if (ProgresionManager != null)
+        {
+            _pMAsigned = true;
+            _pM = ProgresionManager.gameObject.GetComponent<ProgresionManager>();
         }
     }
 
@@ -225,7 +235,7 @@ public class GameManager : MonoBehaviour
     /// que indica un rango de spawn al rededor de la posición otorgada. Esto solo se usara si
     /// la cantidad de enemigos es mayor a 1
     /// </summary>
-    public void EnemigoSpawn(GameObject enemy, int amount, Vector2 xy, int Spread)
+    public void EnemigoSpawn(GameObject enemy, int amount, Vector2 xy, float Spread)
     {
         if (enemy != null)
         {
@@ -244,6 +254,11 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+    public void EnemyKilled()
+    {
+        if (_pMAsigned) _pM.ReduceEnemyCount(1);
+        else Debug.Log("There's no ProgresionManager so this kill wont register");
     }
     // -- Métodos para get y set player --
     /// <summary>

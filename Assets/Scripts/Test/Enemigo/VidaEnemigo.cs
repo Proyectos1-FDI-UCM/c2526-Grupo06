@@ -91,6 +91,7 @@ public class VidaEnemigo : MonoBehaviour
     private void Muere() // Método que se llama cuando el enemigo muere
     {
         SoltarPowerUp();
+        if (GameManager.Instance != null) GameManager.Instance.EnemyKilled();
         Destroy(gameObject);
     }
     private void SoltarPowerUp() // Método que se llama para soltar un power up al morir el enemigo
