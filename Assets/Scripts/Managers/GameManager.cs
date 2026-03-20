@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject Player;
+    [SerializeField]
+    private GameObject Boss;
 
     [SerializeField] private TextMeshProUGUI TextoVida;
     [SerializeField] private GameObject PanelGameover;
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     private string _puntoVida = "▓ ";
     private GameObject _player; // Jugador
+    private GameObject _boss; //jefe
 
     //Variable que evita relaizar una comprovación múltiples veces.
     private bool _pMAsigned = false;
@@ -277,6 +280,20 @@ public class GameManager : MonoBehaviour
     public void SetPlayer(GameObject Player)
     {
         _player = Player;
+    }
+
+    public GameObject GetBoss()
+    {
+        // Avisa si se intenta conseguir un boss  y es nulo (no se ha asignado un gameObject boss)
+        if (_boss == null) { Debug.LogWarning("No hay player que devolver"); }
+        return _boss;
+    }
+    /// <summary>
+    /// Le indica al GameManager que el objeto dado es el boss, útil para proyectiles que se instancien en su posición.
+    /// </summary>GameObject que equivale al boss</param>
+    public void SetBoss(GameObject Boss)
+    {
+        _boss = Boss;
     }
     #endregion
 
