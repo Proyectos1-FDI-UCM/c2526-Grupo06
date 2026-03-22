@@ -227,6 +227,7 @@ public class GameManager : MonoBehaviour
 
     public void MostrarGameOver()
     {
+        if (ProgresionManager != null) ProgresionManager.GetComponent<ProgresionManager>().StopHordeSpawning(true);
         if (PanelGameover != null)
         {
             PanelGameover.SetActive(true);
@@ -242,7 +243,7 @@ public class GameManager : MonoBehaviour
     {
         if (enemy != null)
         {
-            if (amount < 2)
+            if (!(Spread > 0f))
             {
                 GameObject enemyinstance = Instantiate(enemy);
                 enemyinstance.transform.position = xy;
