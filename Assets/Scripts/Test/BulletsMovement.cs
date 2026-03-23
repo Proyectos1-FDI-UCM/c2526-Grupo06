@@ -141,6 +141,14 @@ public class BulletsMovement : MonoBehaviour
     {
         _freezeTimer += freeze;
     }
+    /// <summary>
+    /// (añadido de alejandro) selecciona el tipo de bala a ser instanciada
+    /// </summary>
+    public void SelectBulletType(bool x, bool y)
+    {
+        if (x) Acelera = true;
+        if (y) Curvo = true;
+    }
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
