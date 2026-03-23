@@ -8,6 +8,8 @@
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 using System.Collections;
+using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 /// <summary>
 /// Antes de cada class, descripción de qué es y para qué sirve,
@@ -43,6 +45,8 @@ public class ProgresionManager : MonoBehaviour
     private int _enemyAmount = 0; // Variable que controla la cantidad de enemigos en pantalla para adelantar las hordas en caso de que no queden enemigos
     private float _timer = 0f; // Variable que controla el tiempo para que las oleadas puedan generarse segun el tiempo
     private bool _stoped = false; // Variable con la funcion de ponerse en true cuando la generacion de oleadas deba detenerse
+    private bool _start = false; // Variable que en caso de que haya una instancia de game manager permite el funcionamiento del script
+    private int _numHorde = 0; //Variable que cuenta cuantas hordas han pasado
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -52,9 +56,15 @@ public class ProgresionManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        if (GameManager.Instance != null) StartCoroutine(LevelSequence());
-        else Debug.Log("Missing GameManager to start level");
-
+        if (GameManager.Instance != null) _start = true;
+    }
+    private void Update()
+    {
+        if (_start && !_stoped)
+        {
+            _timer += Time.deltaTime;
+            CheckSpawn();
+        }
     }
     #endregion
 
@@ -84,168 +94,174 @@ public class ProgresionManager : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
-    private IEnumerator LevelSequence()
+    private void CheckSpawn()
     {
-        //Horda 1
-        while (_timer < 1.5f)
+        switch (_numHorde)
         {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
+            case 0:
+                //Horda 1
+                if (_timer > 1.5f)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -1), 0);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 1:
+                //Horda 2
+                if (_timer > 7 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 2:
+                //Horda 3
+                if (_timer > 7 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f);
+                    _enemyAmount += 2;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 3:
+                //Horda 4
+                if (_timer > 20 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 0);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 4:
+                //Horda 5
+                if (_timer > 20 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 2), 1f);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 5:
+                //Horda 6
+                if (_timer > 3 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 0);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 6:
+                //Horda 7
+                if (_timer > 3 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -4), 0);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 7:
+                //Horda 8
+                if (_timer > 12 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 4, new Vector2(XPositionEnemySpawn, 0), 3.5f);
+                    _enemyAmount += 4;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 8:
+                //Horda 9
+                if (_timer > 7 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 2f);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 9:
+                //Horda 10
+                if (_timer > 7 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, -1), 2.5f);
+                    _enemyAmount += 3;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 10:
+                //Horda 11
+                if (_timer > 20 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -3), 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0);
+                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, -1), 0);
+                    _enemyAmount += 3;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 11:
+                //Horda 12
+                if (_timer > 12 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 0), 1f);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 12:
+                //Horda 13
+                if (_timer > 4 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -2), 1f);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 13:
+                //Horda 14
+                if (_timer > 5 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, 0), 3.5f);
+                    _enemyAmount += 3;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 14:
+                //Horda 15
+                if (_timer > 10 || _enemyAmount <= 0)
+                {
+                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 2f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f);
+                    _enemyAmount++;
+                    _timer = 0f;
+                    _numHorde++;
+                }
+                break;
+            case 15:
+                //Horda 16
+                if (_enemyAmount <= 0)
+                {
+                    //Metodo para empezar la boss fight
+                    _stoped = true;
+                }
+                break;
+            default:
+            break;
         }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -1), 0);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 2
-        while (_timer < 7 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 3
-        while (_timer < 7 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f);
-        _enemyAmount += 2;
-        _timer = 0f;
-
-        //Horda 4
-        while (_timer < 20 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0),0);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 5
-        while (_timer < 20 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 2), 1f);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 6
-        while (_timer < 3 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 0);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 7
-        while (_timer < 3 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -4), 0);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 8
-        while (_timer < 12 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 4, new Vector2(XPositionEnemySpawn, 0), 3.5f);
-        _enemyAmount += 4;
-        _timer = 0f;
-
-        //Horda 8
-        while (_timer < 7 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 2f);
-        _enemyAmount++;
-        _timer = 0f;
-
-        //Horda 9
-        while (_timer < 7 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, -1), 2.5f);
-        _enemyAmount += 3;
-        _timer = 0f;
-
-        //Horda 10
-        while (_timer < 20 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -3), 0);
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0);
-        GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, -1), 0);
-        _enemyAmount += 3;
-        _timer = 0f;
-
-        //Horda 11
-        while (_timer < 15 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 0), 1f);
-        _enemyAmount ++;
-        _timer = 0f;
-
-        //Horda 12
-        while (_timer < 4 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -2), 1f);
-        _enemyAmount ++;
-        _timer = 0f;
-
-        //Horda 13
-        while (_timer < 10 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, 0), 3.5f);
-        _enemyAmount += 3;
-        _timer = 0f;
-
-        //Horda 14
-        while (_timer < 10 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 2f);
-        _enemyAmount ++;
-        _timer = 0f;
-
-        //Horda 14
-        while (_timer < 99999 && _enemyAmount > 0)
-        {
-            if (!_stoped) _timer += Time.deltaTime;
-            yield return null;
-        }
-        Debug.Log("Aquí deberia spawnear el jefe");
     }
     #endregion
 

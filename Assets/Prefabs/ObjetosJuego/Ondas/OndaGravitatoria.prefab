@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 961678861241778782}
   - component: {fileID: 8947641712689668048}
   - component: {fileID: 8055317952159088682}
-  - component: {fileID: 4374065379552542288}
   - component: {fileID: 757662437541201107}
   - component: {fileID: 2537664275265114302}
+  - component: {fileID: -5034799444862242415}
   m_Layer: 0
   m_Name: OndaGravitatoria
   m_TagString: Untagged
@@ -165,19 +165,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4374065379552542288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5273697164822052583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63125c6f63673644cb630247ef5dbb60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OndaElegida: 0
 --- !u!114 &757662437541201107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,5 +195,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c18a2b0c8cbfac4c84d2e4f9aa9a9e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5034799444862242415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5273697164822052583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907bfb936b591d7469f5e1ac1ad67c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
