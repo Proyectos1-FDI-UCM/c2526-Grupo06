@@ -108,11 +108,39 @@ public class BossMovement : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
+
+    /// <summary>
+    /// Cambia el patrón al movimiento por defecto, que es el movimiento normal del boss, sin pausas ni teletransportes
+    /// </summary>
+    public void ChangeToDefault()
+    {
+        TipoMovimiento = TypeMov.Default;
+    }
+
+    /// <summary>
+    /// Cambia el patrón al movimiento con pausas, que es el movimiento para 
+    /// los ataques de barrida y horizontal, en el que el boss se para al disparar
+    /// </summary>
+    public void ChangeToAtaqueCargado()
+    {
+        TipoMovimiento = TypeMov.AtaqueCargado;
+    }
+
+    /// <summary>
+    /// Cambia el patrón al movimiento con teletransporte hacia arriba
+    /// </summary>
+    public void ChangeToAtaqueVerticalUp()
+    {
+        TipoMovimiento = TypeMov.AtaqueVerticalUp;
+    }
+
+    /// <summary>
+    /// Cambia el patrón al movimiento con teletransporte hacia abajo
+    /// </summary>
+    public void ChangeToAtaqueVerticalDown()
+    {
+        TipoMovimiento = TypeMov.AtaqueVerticalDown;
+    }
 
     #endregion
 
