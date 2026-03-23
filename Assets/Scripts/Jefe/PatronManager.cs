@@ -66,9 +66,36 @@ public class PatronManager : MonoBehaviour
             altura = altura - 0.72f;
         }
     }
-    public void PatronBarrida(bool acelera, bool curvo)
+    public IEnumerator PatronBarrida(bool acelera, bool curvo)
     {
+        int n = 12;
 
+        float separacionY = 0.5f; // separación vertical
+        float separacionX = 0.3f; // cuánto se desplaza en X cada bala
+
+        float inicioY = -1.5f; // empieza abajo
+
+        _cadencia = 0.08f;
+
+        for (int i = 0; i < n; i++)
+        {
+            //Y: sube (de abajo a arriba)
+            float posY = transform.position.y + inicioY + (i * separacionY);
+
+            //X: las de abajo más a la izquierda
+            float posX = transform.position.x - 2f - (i * separacionX);
+
+            Vector3 posInst = new Vector3(posX, posY, transform.position.z);
+
+            GameObject spawned = Instantiate(BulletNormal, posInst, transform.rotation);
+
+            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+
+            if (acelera ^ curvo)
+                bullet.SelectBulletType(acelera, curvo);
+
+            yield return new WaitForSeconds(_cadencia);
+        }
     }
     public void PatronVertical(bool acelera, bool curvo)
     {

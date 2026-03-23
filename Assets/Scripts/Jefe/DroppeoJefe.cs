@@ -25,15 +25,17 @@ public class DroppeoJefe : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private int PuntosVidaMaximos = 10; // Puntos de vida máximos del jefe
+    private int PuntosVidaMaximos = 10; //Puntos de vida máximos del jefe
 
     [SerializeField]
-    private GameObject[] PowerUps; // lista de power ups posibles
+    private GameObject[] PowerUps; //lista de power ups posibles
 
     [SerializeField]
     private float[] umbralesDrop = { 6.67f, 3.33f}; //umbrales de energía que cuando los cruzamos haciendo
                                                     //daño al jefe, este suelta los dos items.
                                                     //los umbrales tienen que estar ordenados de mayor a menor
+    [SerializeField]
+    private float TiempoEntreDrops = 1f; //tiempo entre el primer y segundo drop
 
     #endregion
 
@@ -47,6 +49,11 @@ public class DroppeoJefe : MonoBehaviour
     // Ejemplo: _maxHealthPoints
     private int _puntosVidaRestantes; // Puntos de vida restantes del enemigo
     private int _dropsRealizados; //número de droppeos que ha hecho el jefe
+    
+    //control del segundo drop
+    private float _timerDrop = 0f;
+    private bool _esperandoSegundoDrop = false;
+    private int _indicePendiente;
 
     #endregion
 
@@ -69,7 +76,20 @@ public class DroppeoJefe : MonoBehaviour
         Debug.Log($"Vida Jefe: {_puntosVidaRestantes}");
         _dropsRealizados = 0;
     }
+    void Update()
+    {
+        // gestionar segundo drop con delay
+        if (_esperandoSegundoDrop)
+        {
+            _timerDrop += Time.deltaTime;
 
+            if (_timerDrop >= TiempoEntreDrops)
+            {
+                Instantiate(PowerUps[_indicePendiente], transform.position, Quaternion.identity);
+                _esperandoSegundoDrop = false;
+            }
+        }
+    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -120,9 +140,10 @@ public class DroppeoJefe : MonoBehaviour
             //Soltar el primer powerup - Corazón
             Instantiate(PowerUps[0], transform.position, Quaternion.identity);
 
-            // Soltar el segundo powerup aleatorio - Escudo o Resize
-            int indice = Random.Range(1, PowerUps.Length);
-            Instantiate(PowerUps[indice], transform.position, Quaternion.identity);
+            // Preparar segundo power-up con delay: Escudo o Resize
+            _indicePendiente = Random.Range(1, PowerUps.Length);
+            _esperandoSegundoDrop = true;
+            _timerDrop = 0f;
         }
     }
 
