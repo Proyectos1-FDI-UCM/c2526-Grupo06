@@ -152,8 +152,10 @@ public class BossMovement : MonoBehaviour
     /// </summary>
     private void MovimientoDefault()
     {
+        _unclampedTime += Time.deltaTime * Velocidad; // tiempo del movimiento
+        SimplificaUnclampedTime(_unclampedTime); // se simplifica el tiempo sin limitar para que no se vuelva demasiado grande
         // Movimiento de balanceo de arriba a abajo
-        float nuevaPosicionY = _intialPositionY + _amplitudMov * Mathf.Sin(Time.time * Velocidad);
+        float nuevaPosicionY = _intialPositionY + _amplitudMov * Mathf.Sin(_unclampedTime);
         transform.position = new Vector3(transform.position.x, nuevaPosicionY, transform.position.z);
     }
 
@@ -168,6 +170,7 @@ public class BossMovement : MonoBehaviour
         if (!_isPaused) 
         {
             _unclampedTime += Time.deltaTime * Velocidad; // tiempo del movimiento
+            SimplificaUnclampedTime(_unclampedTime); // se simplifica el tiempo sin limitar para que no se vuelva demasiado grande
             float pos = Mathf.Sin(_unclampedTime); // posición del movimiento, es un valor entre -1 y 1
             if (pos > 0)
             {
@@ -213,6 +216,7 @@ public class BossMovement : MonoBehaviour
         if (!_isPaused)
         {
             _unclampedTime += Time.deltaTime * Velocidad; // tiempo del movimiento
+            SimplificaUnclampedTime(_unclampedTime); // se simplifica el tiempo sin limitar para que no se vuelva demasiado grande
             float pos = Mathf.Sin(_unclampedTime); // posición del movimiento, es un valor entre -1 y 1
             if (pos > 0)
             {
@@ -240,6 +244,9 @@ public class BossMovement : MonoBehaviour
                     transform.position = new Vector3(transform.position.x, _topPosition, transform.position.z);
                 }
                 _lastPause = peak; // se guarda el checkpoint en el que se ha pausado
+                _unclampedTime = _unclampedTime + Mathf.PI;
+                // se avanza el tiempo para que el movimiento siga siendo fluido después de teletransportarse
+                // si no volvería a la posición original tras la pausa y no se vería bien
             }
         }
         else
@@ -252,6 +259,15 @@ public class BossMovement : MonoBehaviour
                 
             }
         }
+    }
+
+    /// <summary>
+    /// Simplifica el tiempo sin limitar, para que el valor no se vuelva demasiado grande
+    /// se divide el tiempo entre 2*PI, que es el periodo del movimiento senoidal, y se redondea al entero más cercano
+    /// </summary>
+    private float SimplificaUnclampedTime(float unclampedTime)
+    {
+        return Mathf.RoundToInt(unclampedTime / (2 * Mathf.PI));
     }
 
     #endregion   
