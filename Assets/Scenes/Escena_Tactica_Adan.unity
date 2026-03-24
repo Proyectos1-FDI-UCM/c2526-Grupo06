@@ -188,6 +188,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+--- !u!1001 &301431245
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1642281261426258685, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791570585168208411, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
+      propertyPath: m_Name
+      value: ProyEneCurvo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ba7767eb775de94d8187a613bba6eb3, type: 3}
 --- !u!1 &411101006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,9 +1468,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1769717430}
+  Boss: {fileID: 0}
   TextoVida: {fileID: 733055391}
   PanelGameover: {fileID: 748414456}
   TextoAMMO: {fileID: 1747379444}
+  ProgresionManager: {fileID: 0}
 --- !u!4 &1561824136
 Transform:
   m_ObjectHideFlags: 0
@@ -1910,3 +1969,4 @@ SceneRoots:
   - {fileID: 2034192650}
   - {fileID: 1561824136}
   - {fileID: 2129571429}
+  - {fileID: 301431245}

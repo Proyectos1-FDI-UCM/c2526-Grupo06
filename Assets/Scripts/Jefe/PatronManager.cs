@@ -7,7 +7,8 @@
 
 using System.Drawing;
 using UnityEngine;
-using System.Collections;   //necesario para corutinas
+using System.Collections;
+using System.Runtime.CompilerServices;   //necesario para corutinas
 // Añadir aquí el resto de directivas using
 
 public class PatronManager : MonoBehaviour
@@ -97,9 +98,40 @@ public class PatronManager : MonoBehaviour
             yield return new WaitForSeconds(_cadencia);
         }
     }
-    public void PatronVertical(bool acelera, bool curvo)
+    /// <summary>
+    /// Metodo para invocar el patron de ataque vertical
+    /// </summary>
+    public void PatronVertical(bool acelera, bool curvo) 
     {
-
+        //necesito una forma de pedir el _middlePosition para decidir si va pa riba o pa bajo
+        float _middlePosition = 0f; //Placeholder
+        float _x = Random.value; //Valor aleatorio para determinar si disparara o no pickups
+        float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
+        float _inicioX = 3f; //Distancia desde donde spawnean las balas en x
+        int _upOrDown; //Dirección en la que se generan las balas
+        if (this.gameObject.GetComponent<Transform>().position.y < _middlePosition)
+        {
+            this.gameObject.GetComponent<BossMovement>().ChangeToAtaqueVerticalUp();
+            _inicioY = -1.5f;
+            _upOrDown = 1;
+        }
+        else
+        {
+            this.gameObject.GetComponent<BossMovement>().ChangeToAtaqueVerticalDown();
+            _inicioY = 1.5f;
+            _upOrDown = -1;
+        }
+        for (int i = 0; i < 12; i++)
+        {
+            GameObject spawned = Instantiate(BulletNormal, new Vector3(transform.position.x - _inicioX, transform.position.y + _inicioY + i * _upOrDown, 0), transform.rotation);
+            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+            if (acelera ^ curvo) bullet.SelectBulletType(acelera, curvo);
+            if (_x >= 0.5f && i > 6)
+            {
+                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                spawned.GetComponent<OtorgaMunicion>().enabled = true;
+            }
+        }
     }
     public IEnumerator PatronHorizontal(bool acelera, bool curvo)
     {
