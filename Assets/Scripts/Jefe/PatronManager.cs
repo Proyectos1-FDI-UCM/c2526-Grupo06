@@ -38,6 +38,8 @@ public class PatronManager : MonoBehaviour
         if (GameManager.Instance != null) GameManager.Instance.SetBoss(this.gameObject);
 
         //Para pruebas
+
+        PatronSimple(true,false);
     }
     #endregion
 
