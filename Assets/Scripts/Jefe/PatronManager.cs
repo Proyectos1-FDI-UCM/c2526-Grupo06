@@ -38,12 +38,14 @@ public class PatronManager : MonoBehaviour
         if (GameManager.Instance != null) GameManager.Instance.SetBoss(this.gameObject);
 
         //Para pruebas
-        StartCoroutine(PatronHorizontal(false, true));
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
+    /// <summary>
+    /// Método para el patrón simple, todas las balas se instancias al instante
+    /// </summary>
     public void PatronSimple(bool acelera, bool curvo)
     {
         float altura = 1.8f;
@@ -65,37 +67,6 @@ public class PatronManager : MonoBehaviour
             }
 
             altura = altura - 0.72f;
-        }
-    }
-    public IEnumerator PatronBarrida(bool acelera, bool curvo)
-    {
-        int n = 12;
-
-        float separacionY = 0.5f; // separación vertical
-        float separacionX = 0.3f; // cuánto se desplaza en X cada bala
-
-        float inicioY = -1.5f; // empieza abajo
-
-        _cadencia = 0.08f;
-
-        for (int i = 0; i < n; i++)
-        {
-            //Y: sube (de abajo a arriba)
-            float posY = transform.position.y + inicioY + (i * separacionY);
-
-            //X: las de abajo más a la izquierda
-            float posX = transform.position.x - 2f - (i * separacionX);
-
-            Vector3 posInst = new Vector3(posX, posY, transform.position.z);
-
-            GameObject spawned = Instantiate(BulletNormal, posInst, transform.rotation);
-
-            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-
-            if (acelera ^ curvo)
-                bullet.SelectBulletType(acelera, curvo);
-
-            yield return new WaitForSeconds(_cadencia);
         }
     }
     /// <summary>
@@ -133,31 +104,24 @@ public class PatronManager : MonoBehaviour
             }
         }
     }
-    public IEnumerator PatronHorizontal(bool acelera, bool curvo)
+    
+    /// <summary>
+    /// Patrón que sirve para patrones que instancien balas de seguido
+    /// </summary>
+    public void PatronCadencia(bool acelera, bool curvo, int n, int x, int indice)
     {
-        int n = 12;
-        if (acelera) n = 16;
-        _cadencia = 0.1f; //aquí va la cadencia de tomar el tiempo de accion y dividirlo entre el numero de balas
-        float x = Random.value;
-        _posInst = new Vector2(transform.position.x - 2, transform.position.y);
+        spawned = Instantiate(BulletNormal, transform.position, transform.rotation);
 
-        for (int i = 0; i < n; i++)
+        spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+        if (acelera ^ curvo) bullet.SelectBulletType(acelera, curvo);
+
+        if (indice > n/2 && x <= 0.5f)
         {
-            GameObject spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
-            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-
-            if (acelera ^ curvo)
-                bullet.SelectBulletType(acelera, curvo);
-
-            if (i > n / 2 && x <= 0.5f)
-            {
-                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                spawned.GetComponent<OtorgaMunicion>().enabled = true;
-            }
-
-            yield return new WaitForSeconds(_cadencia); // 🔑 aquí sí espera
+            spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+            spawned.GetComponent<OtorgaMunicion>().enabled = true;
         }
     }
+    
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
