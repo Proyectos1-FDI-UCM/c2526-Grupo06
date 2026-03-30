@@ -1,11 +1,12 @@
 //---------------------------------------------------------
-// Movimiento de los power ups que dropee el jefe para que no se queden estancados en su cuerpo
+// Script para pausar el juego, mostrando un menú de pausa y deteniendo el tiempo del juego.
 // Sergio Navarro Herreros
 // Dream O'SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,7 +14,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class MovimientoPowerUp : MonoBehaviour
+public class PausaJuego : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,8 +23,6 @@ public class MovimientoPowerUp : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField]
-    private float Velocidad = 5f;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -35,6 +34,7 @@ public class MovimientoPowerUp : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    private InputAction _pauseAction; // Acción de entrada para pausar el juego
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -45,11 +45,23 @@ public class MovimientoPowerUp : MonoBehaviour
     // - Hay que borrar los que no se usen 
 
     /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
+    void Start()
+    {
+        _pauseAction = InputSystem.actions.FindAction("Pause");
+    }
+
+    /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
-        transform.position += Vector3.left * Velocidad * Time.deltaTime;
+        if (_pauseAction != null && _pauseAction.triggered)
+        {
+            GameManager.Instance.CambiarEstadoPausa();
+        }
     }
     #endregion
 
@@ -69,8 +81,7 @@ public class MovimientoPowerUp : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
-
     #endregion   
 
-} // class MovimientoPowerUp 
+} // class PausaJuego 
 // namespace
