@@ -18,6 +18,10 @@ public class PatronManager : MonoBehaviour
 
     [SerializeField]
     private GameObject BulletNormal; //Prefab de la bala normal
+
+    [SerializeField]
+    private GameObject ondaIntercambiadora;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -39,7 +43,7 @@ public class PatronManager : MonoBehaviour
 
         //Para pruebas
 
-        PatronSimple(true,false);
+        PatronSimple(true,true);
     }
     #endregion
 
@@ -120,7 +124,18 @@ public class PatronManager : MonoBehaviour
             spawned.GetComponent<OtorgaMunicion>().enabled = true;
         }
     }
-    
+
+
+    public void LanzarOndaIntercambiadora()
+    {
+        float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
+        float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
+        
+        GameObject onda = Instantiate(ondaIntercambiadora,
+                                       new Vector3(transform.position.x - _inicioX, _inicioY / 2 , 0), transform.rotation);
+
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

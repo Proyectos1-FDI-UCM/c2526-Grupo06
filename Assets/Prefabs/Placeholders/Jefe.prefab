@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1824106262905017276}
   - component: {fileID: 214579828221008966}
   - component: {fileID: -8689365205742958258}
+  - component: {fileID: 8511815470774641692}
+  - component: {fileID: 8901733773716986925}
   m_Layer: 11
   m_Name: Jefe
   m_TagString: Untagged
@@ -99,7 +101,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8657113104869342218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 123182a705a024c448ddf2ba2a4f2ad1, type: 3}
   m_Name: 
@@ -216,3 +218,33 @@ MonoBehaviour:
   Velocidad: 0
   TiempoPausa: 1
   TipoMovimiento: 0
+--- !u!114 &8511815470774641692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657113104869342218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ee00efe8c3c774db76b978f103f272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Velocidad: 0
+  TiempoPausa: 1
+  TipoMovimiento: 0
+  patronManager: {fileID: 8901733773716986925}
+--- !u!114 &8901733773716986925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657113104869342218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795f2ca7f922cea40b9a4f500335e9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
+  ondaIntercambiadora: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
