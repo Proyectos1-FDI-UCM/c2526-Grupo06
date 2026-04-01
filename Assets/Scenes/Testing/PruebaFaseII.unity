@@ -201,24 +201,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 461617123}
   m_SourcePrefab: {fileID: 100100000, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
---- !u!1 &1326070587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8657113104869342218, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
-  m_PrefabInstance: {fileID: 5403738129367842346}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1326070595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326070587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 795f2ca7f922cea40b9a4f500335e9c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
 --- !u!1001 &1350706587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541,13 +523,17 @@ PrefabInstance:
       propertyPath: Velocidad
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8689365205742958258, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4700715419149072551, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.42
       objectReference: {fileID: 0}
     - target: {fileID: 4700715419149072551, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4700715419149072551, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -581,17 +567,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: Velocidad
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: TipoMovimiento
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8657113104869342218, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_Name
       value: Jefe
       objectReference: {fileID: 0}
+    - target: {fileID: 8901733773716986925, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8657113104869342218, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1326070595}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

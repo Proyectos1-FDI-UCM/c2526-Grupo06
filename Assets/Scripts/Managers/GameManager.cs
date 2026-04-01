@@ -9,6 +9,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 /// <summary>
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PanelGameover;
     [SerializeField] private TextMeshProUGUI TextoAMMO;
     [SerializeField] private GameObject ProgresionManager;
+    [SerializeField] private GameObject PanelPausa;
 
     #endregion
 
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour
     private string _puntoVida = "▓ ";
     private GameObject _player; // Jugador
     private GameObject _boss; //jefe
+    private bool _juegoPausado = false; // Estado actual del juego (pausado o no)
+    private InputActionAsset _inputActions; // Asset de acciones de entrada para gestionar el control del juego
 
     //Variable que evita relaizar una comprovación múltiples veces.
     private bool _pMAsigned = false;
@@ -119,6 +123,7 @@ public class GameManager : MonoBehaviour
             _pMAsigned = true;
             _pM = ProgresionManager.gameObject.GetComponent<ProgresionManager>();
         }
+        _inputActions = InputSystem.actions; // para gestionar el control del juego (pausa, etc.)
     }
 
     /// <summary>
@@ -295,6 +300,32 @@ public class GameManager : MonoBehaviour
     public void SetBoss(GameObject Boss)
     {
         _boss = Boss;
+    }
+
+    /// <summary>
+    /// Alterna el estado de pausa del juego. 
+    /// Si el juego está en ejecución lo pausa, y si está pausado lo reanuda.
+    /// Además, muestra u oculta el panel de pausa y ajusta el Time.timeScale.
+    /// </summary>
+    public void CambiarEstadoPausa()
+    {
+        _juegoPausado = !_juegoPausado;
+
+        if (_juegoPausado)
+        {
+            Time.timeScale = 0f;
+            if (PanelPausa != null) PanelPausa.SetActive(true);
+
+            _inputActions.FindActionMap("Player").Disable();
+            _inputActions.FindActionMap("UI").Enable();
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            if (PanelPausa != null) PanelPausa.SetActive(false);
+
+            _inputActions.FindActionMap("Player").Enable();
+        }
     }
     #endregion
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9177679653930009592}
   - component: {fileID: 1259365767746473472}
   - component: {fileID: -5122694598108118139}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HugeCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}

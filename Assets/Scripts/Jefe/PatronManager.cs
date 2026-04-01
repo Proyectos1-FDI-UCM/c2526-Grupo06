@@ -18,6 +18,10 @@ public class PatronManager : MonoBehaviour
 
     [SerializeField]
     private GameObject BulletNormal; //Prefab de la bala normal
+
+    [SerializeField]
+    private GameObject ondaIntercambiadora;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -38,6 +42,8 @@ public class PatronManager : MonoBehaviour
         if (GameManager.Instance != null) GameManager.Instance.SetBoss(this.gameObject);
 
         //Para pruebas
+
+        PatronSimple(true,true);
     }
     #endregion
 
@@ -72,39 +78,36 @@ public class PatronManager : MonoBehaviour
     /// <summary>
     /// Metodo para invocar el patron de ataque vertical
     /// </summary>
-    public void PatronVertical(bool acelera, bool curvo) 
+    public void PatronVertical(bool up, bool acelera, bool curvo)
     {
-        //necesito una forma de pedir el _middlePosition para decidir si va pa riba o pa bajo
-        float _middlePosition = 0f; //Placeholder
         float _x = Random.value; //Valor aleatorio para determinar si disparara o no pickups
         float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
-        float _inicioX = 3f; //Distancia desde donde spawnean las balas en x
-        int _upOrDown; //Dirección en la que se generan las balas
-        if (this.gameObject.GetComponent<Transform>().position.y < _middlePosition)
+        float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
+        int order = 0; //Variable que permite saber si las balas deben instanciarse de arriba abajo o vicebersa
+        if (up)
         {
             this.gameObject.GetComponent<BossMovement>().ChangeToAtaqueVerticalUp();
-            _inicioY = -1.5f;
-            _upOrDown = 1;
+            _inicioY = -4.7f;
+            order = 1;
         }
         else
         {
             this.gameObject.GetComponent<BossMovement>().ChangeToAtaqueVerticalDown();
-            _inicioY = 1.5f;
-            _upOrDown = -1;
+            _inicioY = 4.7f;
+            order = -1;
         }
-        for (int i = 0; i < 12; i++)
+        for (float i = 0; i < 12; i++)
         {
-            GameObject spawned = Instantiate(BulletNormal, new Vector3(transform.position.x - _inicioX, transform.position.y + _inicioY + i * _upOrDown, 0), transform.rotation);
+            GameObject spawned = Instantiate(BulletNormal, new Vector3(transform.position.x - _inicioX, _inicioY + i / 2 * order, 0), transform.rotation);
             spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
             if (acelera ^ curvo) bullet.SelectBulletType(acelera, curvo);
-            if (_x >= 0.5f && i > 6)
+            if (_x >= 0.5f && i < 6)
             {
                 spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
                 spawned.GetComponent<OtorgaMunicion>().enabled = true;
             }
         }
     }
-    
     /// <summary>
     /// Patrón que sirve para patrones que instancien balas de seguido
     /// </summary>
@@ -121,7 +124,18 @@ public class PatronManager : MonoBehaviour
             spawned.GetComponent<OtorgaMunicion>().enabled = true;
         }
     }
-    
+
+
+    public void LanzarOndaIntercambiadora()
+    {
+        float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
+        float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
+        
+        GameObject onda = Instantiate(ondaIntercambiadora,
+                                       new Vector3(transform.position.x - _inicioX, _inicioY / 2 , 0), transform.rotation);
+
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
