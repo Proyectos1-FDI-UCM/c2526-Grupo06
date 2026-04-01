@@ -40,7 +40,7 @@ public class Fases : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private int _faseActual = 1;
+    public int _faseActual = 1;
     private float _realTime = 0f;
     private float _timer = 0f;
     private PatronManager _patrones;
@@ -74,9 +74,9 @@ public class Fases : MonoBehaviour
         _timer = (_realTime * PatronPerSecond);
         switch (_faseActual)
         {
-            case 1:PrimeraFase(_timer);break;
+            case 1:PrimeraFase(_timer); break;
             case 2:SegundaFase(_timer); break;
-            case 3:TerceraFase((_timer)); break;
+            case 3:TerceraFase(_timer); break;
         }
     }
     #endregion
@@ -97,7 +97,7 @@ public class Fases : MonoBehaviour
     public void PrimeraFase(float timer)
     {
         timer = timer % 48;
-
+        /*
         switch (timer)
         {
             case 0: _movement.ChangeToDefault(); break;
@@ -160,14 +160,34 @@ public class Fases : MonoBehaviour
             case 46: _patrones.PatronSimple(true, false); break;
             case 47: _patrones.PatronVertical(false, true); break;
         }
+        */
     }
+    
     public void SegundaFase(float timer)
     {
+        timer = timer % 5;
+
+        switch (timer)
+        {
+            case 0: _movement.ChangeToDefault(); break;
+            ///case 0: _patrones.PatronSimple(true, false); break;
+            case 1: break;
+            case 2: _patrones.PatronSimple(false, false); break;
+            case 3: _patrones.PatronSimple(false, false); break;
+            case 4: _patrones.LanzarOndaIntercambiadora(); break;
+        }
 
     }
+
     public void TerceraFase(float timer)
     {
 
+    }
+
+    public void NextFase()
+    {
+        _faseActual++;
+        _timer = 0;
     }
 
     #endregion

@@ -119,6 +119,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &95127808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8657113104869342218, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+  m_PrefabInstance: {fileID: 5403738129367842346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &95127818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95127808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8913ec5444afd1a409f16846c93e1552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PatronPerSecond: 1
+  NumPatrons: 48
+  _faseActual: 1
 --- !u!1 &461617111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8374839448642552889, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
@@ -184,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 4202310439107004848, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6012113104247243656, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: MaxAMO
+      value: 9999
       objectReference: {fileID: 0}
     - target: {fileID: 7072670131807907653, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
       propertyPath: m_Enabled
@@ -527,6 +551,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 214579828221008966, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: PuntosVidaMaximos
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4700715419149072551, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.42
@@ -572,6 +600,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: TipoMovimiento
       value: 1
       objectReference: {fileID: 0}
@@ -586,7 +618,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8657113104869342218, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 95127818}
   m_SourcePrefab: {fileID: 100100000, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

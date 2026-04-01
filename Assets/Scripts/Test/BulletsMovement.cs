@@ -98,6 +98,8 @@ public class BulletsMovement : MonoBehaviour
             if (otorga.isActiveAndEnabled) this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             else this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         }
+
+        Destroy(this.gameObject, 4f);
     }
     void Update()
     {

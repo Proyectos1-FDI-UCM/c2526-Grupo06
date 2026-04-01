@@ -47,13 +47,15 @@ public class DroppeoJefe : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private int _puntosVidaRestantes; // Puntos de vida restantes del enemigo
+    public int _puntosVidaRestantes; // Puntos de vida restantes del enemigo
     private int _dropsRealizados; //número de droppeos que ha hecho el jefe
     
     //control del segundo drop
     private float _timerDrop = 0f;
     private bool _esperandoSegundoDrop = false;
     private int _indicePendiente;
+
+    private Fases fase;
 
     #endregion
 
@@ -75,6 +77,8 @@ public class DroppeoJefe : MonoBehaviour
         _puntosVidaRestantes = PuntosVidaMaximos;
         Debug.Log($"Vida Jefe: {_puntosVidaRestantes}");
         _dropsRealizados = 0;
+
+        fase = GetComponent<Fases>();
     }
     void Update()
     {
@@ -110,6 +114,8 @@ public class DroppeoJefe : MonoBehaviour
             {
                 SoltarPowerUp();
                 _dropsRealizados++; // la siguiente vez que pierda vida, buscamos el siguiente umbral de la lista
+
+                fase.NextFase();
             }
         }
 

@@ -28,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     private InputAction _fireAction;
     private bool _isShooting;
     private float _lastShot;
-    private int _bulletCount;
+    public int _bulletCount;
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
 
     #endregion

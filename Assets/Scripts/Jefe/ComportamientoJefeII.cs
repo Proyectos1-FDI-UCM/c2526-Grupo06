@@ -28,6 +28,7 @@ public class ComportamientoJefeII : MonoBehaviour
     [SerializeField]
     private TypeMov TipoMovimiento;
 
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -69,6 +70,8 @@ public class ComportamientoJefeII : MonoBehaviour
     private string[] estados = { "ATAQUE SIMPLE", "NADA", "SIMPLE OPUESTO 1", "SIMPLE OPUESTO 2", "ONDA INVERTIDA" };
     private int indiceEstados = -1;   //La primera vez con índice -1, no hace "ataque"
 
+    private PatronManager _patrones;
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -79,6 +82,8 @@ public class ComportamientoJefeII : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _patrones = this.GetComponent<PatronManager>();
+
         _intialPositionY = transform.position.y; // guarda la posición inicial del boss en el eje Y
 
         // posiciones de posible pausa
@@ -213,6 +218,16 @@ public class ComportamientoJefeII : MonoBehaviour
         {
             Debug.Log("LANZAR ATAQUE!!!! -> " + estados[indiceEstados]);
             indiceEstados = (indiceEstados + 1) % estados.Length;
+
+            switch (indiceEstados)
+            {
+                case 0: _patrones.PatronSimple(true, false); break;
+                case 1: break;
+                case 2: _patrones.PatronSimple(false, false); break;
+                case 3: _patrones.PatronSimple(false, false); break;
+                case 4: _patrones.LanzarOndaIntercambiadora(); break;
+                case -1: break;
+            }
         }
         else
         {
