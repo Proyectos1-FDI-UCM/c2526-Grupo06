@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     private GameObject _boss; //jefe
     private bool _juegoPausado = false; // Estado actual del juego (pausado o no)
     private InputActionAsset _inputActions; // Asset de acciones de entrada para gestionar el control del juego
+    private bool _gameOver = false; // Variable para controlar si el juego ha terminado
+    // Sin _gameOver, el juego se podría pausar y reanudar después de mostrar el panel de game over, lo que no es deseable.
 
     //Variable que evita relaizar una comprovación múltiples veces.
     private bool _pMAsigned = false;
@@ -232,11 +234,15 @@ public class GameManager : MonoBehaviour
 
     public void MostrarGameOver()
     {
-        if (ProgresionManager != null) ProgresionManager.GetComponent<ProgresionManager>().StopHordeSpawning(true);
+        _gameOver = true;
+
+        if (ProgresionManager != null)
+            ProgresionManager.GetComponent<ProgresionManager>().StopHordeSpawning(true);
+
         if (PanelGameover != null)
-        {
             PanelGameover.SetActive(true);
-        }
+
+        Time.timeScale = 0f;
     }
 
     /// <summary>
@@ -309,22 +315,25 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void CambiarEstadoPausa()
     {
-        _juegoPausado = !_juegoPausado;
-
-        if (_juegoPausado)
+        if (!_gameOver)
         {
-            Time.timeScale = 0f;
-            if (PanelPausa != null) PanelPausa.SetActive(true);
+            _juegoPausado = !_juegoPausado;
 
-            _inputActions.FindActionMap("Player").Disable();
-            _inputActions.FindActionMap("UI").Enable();
-        }
-        else
-        {
-            Time.timeScale = 1f;
-            if (PanelPausa != null) PanelPausa.SetActive(false);
+            if (_juegoPausado)
+            {
+                Time.timeScale = 0f;
+                if (PanelPausa != null) PanelPausa.SetActive(true);
 
-            _inputActions.FindActionMap("Player").Enable();
+                _inputActions.FindActionMap("Player").Disable();
+                _inputActions.FindActionMap("UI").Enable();
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                if (PanelPausa != null) PanelPausa.SetActive(false);
+
+                _inputActions.FindActionMap("Player").Enable();
+            }
         }
     }
     #endregion
