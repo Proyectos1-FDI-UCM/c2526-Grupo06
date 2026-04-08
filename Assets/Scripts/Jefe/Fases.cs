@@ -45,6 +45,8 @@ public class Fases : MonoBehaviour
     private float _timer = 0f;
     private PatronManager _patrones;
     private BossMovement _movement;
+    private char I = 'I', P = 'P', G = 'G';     //nombres de las ondas
+
 
     #endregion
 
@@ -174,7 +176,7 @@ public class Fases : MonoBehaviour
             case 1: break;
             case 2: _patrones.PatronSimple(false, false); break;
             case 3: _patrones.PatronSimple(false, false); break;
-            case 4: _patrones.LanzarOndaIntercambiadora(); break;
+            case 4: _patrones.LanzarOnda(I); break;
         }
 
     }

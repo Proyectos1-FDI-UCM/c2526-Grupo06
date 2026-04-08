@@ -10,6 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 
 /// <summary>
@@ -26,7 +27,6 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
-
     #region Atributos del Inspector (serialized fields)
 
     // Documentar cada atributo que aparece aquí.
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI TextoVida;
     [SerializeField] private GameObject PanelGameover;
-    [SerializeField] private TextMeshProUGUI TextoAMMO;
+    [SerializeField] private GameObject[] SpritesVidas = new GameObject[5];
     [SerializeField] private GameObject ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
 
@@ -218,13 +218,13 @@ public class GameManager : MonoBehaviour
 
     public void MuestraAmmo(int _municion, int _maxAmmo)
     {
-        if (TextoAMMO == null)
+        for (int i = 0; i < _maxAmmo; i++)
         {
-            return;
-        }
-        else
-        {
-            TextoAMMO.text = ($"{_municion} / {_maxAmmo}");
+            if (SpritesVidas[i] != null)
+            {
+                    SpritesVidas[i].transform.GetChild(0).gameObject.SetActive(i+1 <= _municion);
+                    SpritesVidas[i].transform.GetChild(1).gameObject.SetActive(i+1 > _municion);
+            }
         }
     }
 
