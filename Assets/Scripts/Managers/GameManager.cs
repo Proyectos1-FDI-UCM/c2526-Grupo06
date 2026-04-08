@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
             // Queremos sobrevivir a cambios de escena.
             _instance = this;
             //DontDestroyOnLoad(this.gameObject);
+            _juegoPausado = true;
+            CambiarEstadoPausa();
             Init();
         } // if-else somos instancia nueva o no.
     }
