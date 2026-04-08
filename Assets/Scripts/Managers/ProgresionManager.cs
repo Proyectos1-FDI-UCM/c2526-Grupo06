@@ -256,6 +256,9 @@ public class ProgresionManager : MonoBehaviour
                 if (_enemyAmount <= 0)
                 {
                     //Metodo para empezar la boss fight
+
+                    //De momento la condición de victoria no toma en cuenta un boss
+                    GameManager.Instance.MostrarVictory();
                     _stoped = true;
                 }
                 break;

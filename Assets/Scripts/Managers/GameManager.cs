@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI TextoVida;
     [SerializeField] private GameObject PanelGameover;
+    [SerializeField] private GameObject PanelVictory;
     [SerializeField] private GameObject[] SpritesVidas = new GameObject[5];
     [SerializeField] private GameObject ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
             // Somos el primer GameManager.
             // Queremos sobrevivir a cambios de escena.
             _instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
             Init();
         } // if-else somos instancia nueva o no.
     }
@@ -243,6 +244,16 @@ public class GameManager : MonoBehaviour
             PanelGameover.SetActive(true);
 
         Time.timeScale = 0f;
+    }
+    /// <summary>
+    /// Método que muestra el panel de victoria
+    /// </summary>
+    public void MostrarVictory()
+    {
+        _gameOver = true;
+
+        if (PanelVictory != null)
+            PanelVictory.SetActive(true);
     }
 
     /// <summary>
