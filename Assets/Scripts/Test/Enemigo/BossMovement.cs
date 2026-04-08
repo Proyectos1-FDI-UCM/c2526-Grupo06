@@ -142,6 +142,14 @@ public class BossMovement : MonoBehaviour
         TipoMovimiento = TypeMov.AtaqueVerticalDown;
     }
 
+    /// <summary>
+    /// Devuelve la velocidad actual del movimiento del boss, para que otros scripts puedan usarla
+    /// </summary>
+    public float GetCurrentSpeed()
+    {
+        return Velocidad;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
