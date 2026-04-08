@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] SpritesVidas = new GameObject[5];
     [SerializeField] private GameObject ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
+    [SerializeField] private GameObject PanelAjustes;
 
     #endregion
 
@@ -348,6 +349,17 @@ public class GameManager : MonoBehaviour
                 _inputActions.FindActionMap("Player").Enable();
             }
         }
+    }
+
+    public void AbrirPanelAjustes()
+    { 
+        if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(true);
+        if (PanelPausa != null) PanelPausa.SetActive(false);
+    }
+    public void CerrarPanelAjustes()
+    {
+        if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(false);
+        if (PanelPausa != null) PanelPausa.SetActive(true);
     }
     #endregion
 
