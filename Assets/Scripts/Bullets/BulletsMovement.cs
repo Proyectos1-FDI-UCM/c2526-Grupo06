@@ -46,6 +46,10 @@ public class BulletsMovement : MonoBehaviour
     private bool Gravity = false;
     [SerializeField]
     private float GravityStrenght = -8f; //(Añadido de Adán) unidades de unity que acelerara.
+    [SerializeField]
+    Sprite balaRecogible; // Sprite que se le asignará a la bala cuando esta sea recogible, para que el jugador pueda identificarla mejor.
+    [SerializeField]
+    Sprite balaDanio; // Sprite que se le asignará a la bala cuando esta no sea recogible, para que el jugador pueda identificarla mejor.
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -67,6 +71,7 @@ public class BulletsMovement : MonoBehaviour
     private float _verticalVelocity = 0f;//(Añadido de Adán) velocidad vertical acumulada por aceleración gravitatoria
     private float _verticalDistance = 0f;//(Añadido de Adán) distancia que deberia haber recorrido la bala por el efecto de la gravedad (en realidad es re cutre, pero no pienso luchar contra la ecuación de movimiento de Miguel;
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
+    private SpriteRenderer _spriteRenderer; // Para cambiar el sprite de la bala
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -83,6 +88,8 @@ public class BulletsMovement : MonoBehaviour
     /// </summary>
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
         _posInicial = transform.position;
         //Despejado la aceleración de la fórmula de la posición y la velocidad de MRUA que quedaría en (velFin-velIni)^2 * 2(-posIni-VelIni*t)^1/3{raiz cúbica}
         //ASUMIMOS QUE LOS PROYECTILES VAN HACIA LA IZQUIERDA, SI NO FUESE ASÍ HABRÍA QUE CALCULAR LA DIRECCIÓN
@@ -91,12 +98,12 @@ public class BulletsMovement : MonoBehaviour
         if (Curvo) { _amplitud = Amplitud; _periodo = Periodo; }
         else { _amplitud = 0; _periodo = 1; }
 
-        //(Añadido de Adán) Comprueba si la bala es recogible para darle color verde
+        //(Añadido de Adán y Sergio) Comprueba si la bala es recogible para darle color verde
         OtorgaMunicion otorga = this.gameObject.GetComponent<OtorgaMunicion>();
         if (otorga != null)
         {
-            if (otorga.isActiveAndEnabled) this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-            else this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            if (otorga.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
+            else _spriteRenderer.sprite = balaDanio;
         }
 
         Destroy(this.gameObject, 4f);

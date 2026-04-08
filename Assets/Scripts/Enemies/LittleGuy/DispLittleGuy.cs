@@ -13,6 +13,10 @@ public class DispLittleGuy : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    [SerializeField]
+    Sprite balaRecogible; // Sprite que se le asignará a la bala cuando esta sea recogible, para que el jugador pueda identificarla mejor.
+    [SerializeField]
+    Sprite balaDanio; // Sprite que se le asignará a la bala cuando esta no sea recogible, para que el jugador pueda identificarla mejor.
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -29,6 +33,7 @@ public class DispLittleGuy : MonoBehaviour
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
 
     private Transform _player;
+    private SpriteRenderer _spriteRenderer; // Para cambiar el sprite de la bala
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -36,6 +41,8 @@ public class DispLittleGuy : MonoBehaviour
 
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
         _posInicial = transform.position;
 
 
@@ -47,12 +54,12 @@ public class DispLittleGuy : MonoBehaviour
 
         _dir = new Vector2(transform.position.x - _player.position.x, transform.position.y - _player.position.y);
 
-        //(Añadido de Adán) Comprueba si la bala es recogible para darle color verde
+        //(Añadido de Adán y Sergio) Comprueba si la bala es recogible para darle color verde
         OtorgaMunicion otorga = this.gameObject.GetComponent<OtorgaMunicion>();
         if (otorga != null ) 
         {
-            if (otorga.isActiveAndEnabled) this.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-            else this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            if (otorga.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
+            else _spriteRenderer.sprite = balaDanio;
         }
         
 

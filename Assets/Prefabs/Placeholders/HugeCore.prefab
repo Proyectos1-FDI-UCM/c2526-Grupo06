@@ -196,6 +196,8 @@ MonoBehaviour:
   BulletNormal: {fileID: 1631576297854821485, guid: 87a0ec68121dfb644a937fd47dc769b7, type: 3}
   _posX: 2
   _vel: 4
+  balaRecogible1: {fileID: 3980627167924243046, guid: 204be6acbf880d34e959c8883785f216, type: 3}
+  balaDanio1: {fileID: -6761029499975241720, guid: 41068e458eec667439a29e26a2bdfbb3, type: 3}
 --- !u!114 &1259365767746473472
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,6 +37,8 @@ public class MovHugeCore : MonoBehaviour
     private float _cadencia = 2f;   //cada cuanto dispara
     private float _timerCad = 0f;   //temporizador de disparo
 
+    private SpriteRenderer _spriteRender; // Para cambiar el sprite de la bala
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -45,6 +47,7 @@ public class MovHugeCore : MonoBehaviour
 
     void Start()
     {
+
         _posIni = transform.position;
         _endPos = new Vector3(_posX, _posIni.y, _posIni.z);
     }
@@ -99,6 +102,7 @@ public class MovHugeCore : MonoBehaviour
     }
     private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
+        
         GameObject spawned;
         float j = 1.2f;
         float x = Random.value;

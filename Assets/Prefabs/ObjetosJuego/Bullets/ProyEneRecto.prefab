@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,6 +176,8 @@ MonoBehaviour:
   Periodo: 1
   Gravity: 0
   GravityStrenght: -8
+  balaRecogible: {fileID: 3980627167924243046, guid: 204be6acbf880d34e959c8883785f216, type: 3}
+  balaDanio: {fileID: -6761029499975241720, guid: 41068e458eec667439a29e26a2bdfbb3, type: 3}
 --- !u!114 &5176829235121552676
 MonoBehaviour:
   m_ObjectHideFlags: 0
