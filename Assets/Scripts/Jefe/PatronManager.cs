@@ -1,14 +1,11 @@
 //---------------------------------------------------------
 // Script que establece los patrones de ataque del jefe por métodos públicos
-// Alejandro de Haro
+// Alejandro de Haro & Adán Calvo Durán
 // Dream'O Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using System.Drawing;
 using UnityEngine;
-using System.Collections;
-using System.Runtime.CompilerServices;   //necesario para corutinas
 // Añadir aquí el resto de directivas using
 
 public class PatronManager : MonoBehaviour
@@ -20,7 +17,11 @@ public class PatronManager : MonoBehaviour
     private GameObject BulletNormal; //Prefab de la bala normal
 
     [SerializeField]
-    private GameObject ondaIntercambiadora;
+    private GameObject _intercambia;
+    [SerializeField]
+    private GameObject _gravedad;
+    [SerializeField]
+    private GameObject _paraliza;
 
     #endregion
 
@@ -28,9 +29,14 @@ public class PatronManager : MonoBehaviour
     #region Atributos Privados (private fields)
     private float _cadencia;        //cadencia modificable de los disparos
     private float _timerCad = 0f;   //timer para medir tiempo
-    private Transform _boss;
-    private Vector3 _posInst;
-    private GameObject spawned;
+    private GameObject _boss;       //el gameobject boss
+    private Vector3 _posInst;       //posicion de instanciamiento
+    private GameObject spawned;     //variable gameobject para la bala instanciada
+    private bool _horiz = false, _barrido = false, _acelera, _curvo; //parametros para el update
+    private int _numTotal = 12, _indice;     //numero de balas a instanciar para patrones barrida y horizontal e indice
+    private float _numRandom;
+
+    private BossMovement _movimiento;
 
     #endregion
 
@@ -40,18 +46,48 @@ public class PatronManager : MonoBehaviour
     void Start()
     {
         if (GameManager.Instance != null) GameManager.Instance.SetBoss(this.gameObject);
+        _movimiento = this.GetComponent<BossMovement>();
+        _cadencia = _movimiento.GetCurrentAmpTime();
+    }
+    private void Update()
+    {
+        while (_barrido ^ _horiz)
+        {
+            if (_acelera) _numTotal = 16;
 
-        //Para pruebas
+            _timerCad += Time.deltaTime;
+            if (_timerCad >= _cadencia)
+            {
+                spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
+                spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+                if (_acelera ^ _curvo && bullet != null) bullet.SelectBulletType(_acelera, _curvo);
 
-        PatronSimple(true,true);
+                if (_horiz && _indice > _numTotal / 2 && _numRandom <= 0.5f)     //pickup munición horizontal
+                {
+                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                }
+
+                else if (_barrido && _indice % 4 >= 2 && _numRandom <= 0.5f)  //pickup munición barrido
+                {
+                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                }
+                _timerCad = 0f;
+                _indice++;
+            }
+        }
+        _horiz = false;
+        _barrido = false;
+        _indice = 0;
     }
     #endregion
 
-    // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
-    /// <summary>
-    /// Método para el patrón simple, todas las balas se instancias al instante
-    /// </summary>
+        // ---- MÉTODOS PÚBLICOS ----
+        #region Métodos públicos
+        /// <summary>
+        /// Método para el patrón simple, todas las balas se instancias al instante
+        /// </summary>
     public void PatronSimple(bool acelera, bool curvo)
     {
         float altura = 1.8f;
@@ -65,7 +101,7 @@ public class PatronManager : MonoBehaviour
             spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
 
             spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-            if (acelera ^ curvo) bullet.SelectBulletType(acelera, curvo);
+            if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
             if (i < 3 && x <= 0.5f)
             {
                 spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
@@ -100,7 +136,7 @@ public class PatronManager : MonoBehaviour
         {
             GameObject spawned = Instantiate(BulletNormal, new Vector3(transform.position.x - _inicioX, _inicioY + i / 2 * order, 0), transform.rotation);
             spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-            if (acelera ^ curvo) bullet.SelectBulletType(acelera, curvo);
+            if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
             if (_x >= 0.5f && i < 6)
             {
                 spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
@@ -109,30 +145,54 @@ public class PatronManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// Patrón que sirve para patrones que instancien balas de seguido
+    /// Patrón que sirve para activar el patrón horizontal en el update
     /// </summary>
-    public void PatronCadencia(bool acelera, bool curvo, int n, int x, int indice)
+    public void PatronHorizontal(bool acelera, bool curvo)
     {
-        spawned = Instantiate(BulletNormal, transform.position, transform.rotation);
+        _horiz = true;
+        _acelera = acelera;
+        _curvo = curvo;
+        _numRandom = Random.value;
 
-        spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-        if (acelera ^ curvo) bullet.SelectBulletType(acelera, curvo);
-
-        if (indice > n/2 && x <= 0.5f)
-        {
-            spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-            spawned.GetComponent<OtorgaMunicion>().enabled = true;
-        }
+        _movimiento = this.GetComponent<BossMovement>();
+        _cadencia = _movimiento.GetCurrentAmpTime();
     }
+    /// <summary>
+    /// Patrón que sirve para activar el patrón barrido en el update
+    /// </summary>
+    public void PatronBarrida(bool acelera, bool curvo)
+    {
+        _barrido = true;
+        _acelera = acelera;
+        _curvo = curvo;
+        _numRandom = Random.value;
 
-
-    public void LanzarOndaIntercambiadora()
+        _movimiento = this.GetComponent<BossMovement>();
+        _cadencia = _movimiento.GetCurrentAmpTime();
+    }
+    /// <summary>
+    /// Método que spawnea las ondas que el jefe lanza 
+    /// </summary>
+    public void LanzarOnda(char letra)
     {
         float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
         float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
-        
-        GameObject onda = Instantiate(ondaIntercambiadora,
-                                       new Vector3(transform.position.x - _inicioX, _inicioY / 2 , 0), transform.rotation);
+
+        switch (letra)
+        {
+            case ('I'):
+                GameObject intercambiadora = Instantiate(_intercambia,
+                new Vector3(transform.position.x - _inicioX, _inicioY / 2, 0), transform.rotation);
+                break;
+            case ('P'):
+                GameObject paralizante = Instantiate(_paraliza,
+                new Vector3(transform.position.x - _inicioX, _inicioY / 2, 0), transform.rotation);
+                break;
+            case ('G'):
+                GameObject gravedad = Instantiate(_gravedad,
+                new Vector3(transform.position.x - _inicioX, _inicioY / 2, 0), transform.rotation);
+                break;
+        }
 
     }
 

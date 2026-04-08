@@ -145,9 +145,9 @@ public class BossMovement : MonoBehaviour
     /// <summary>
     /// Devuelve la velocidad actual del movimiento del boss, para que otros scripts puedan usarla
     /// </summary>
-    public float GetCurrentSpeed()
+    public float GetCurrentAmpTime()
     {
-        return Velocidad;
+        return _amplitudMov / Velocidad;
     }
 
     #endregion

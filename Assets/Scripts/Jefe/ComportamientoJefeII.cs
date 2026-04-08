@@ -225,7 +225,7 @@ public class ComportamientoJefeII : MonoBehaviour
                 case 1: break;
                 case 2: _patrones.PatronSimple(false, false); break;
                 case 3: _patrones.PatronSimple(false, false); break;
-                case 4: _patrones.LanzarOndaIntercambiadora(); break;
+                case 4: break;
                 case -1: break;
             }
         }
