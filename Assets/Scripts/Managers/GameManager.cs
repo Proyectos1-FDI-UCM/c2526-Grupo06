@@ -109,7 +109,6 @@ public class GameManager : MonoBehaviour
             _instance = this;
             //DontDestroyOnLoad(this.gameObject);
             _juegoPausado = true;
-            CambiarEstadoPausa();
             Init();
         } // if-else somos instancia nueva o no.
     }
@@ -130,6 +129,7 @@ public class GameManager : MonoBehaviour
             _pM = ProgresionManager.gameObject.GetComponent<ProgresionManager>();
         }
         _inputActions = InputSystem.actions; // para gestionar el control del juego (pausa, etc.)
+        if (_instance != null) CambiarEstadoPausa();
     }
 
     /// <summary>
@@ -346,7 +346,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
                 if (PanelPausa != null) PanelPausa.SetActive(false);
 
-                _inputActions.FindActionMap("Player").Enable();
+                if (_inputActions.FindActionMap("Player") != null) _inputActions.FindActionMap("Player").Enable();
             }
         }
     }

@@ -21,6 +21,8 @@ public class MovLittleGuy : MonoBehaviour
     [SerializeField]
     private GameObject _littleBullet; //Prefab de la bala normal
 
+    [SerializeField] private Animator _animator; //Animador del propio enemigo
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -71,7 +73,7 @@ public class MovLittleGuy : MonoBehaviour
         {
             Vector2 direccion = _player.position - transform.position;
             float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, angulo);
+            transform.rotation = Quaternion.Euler(0f, 0f, angulo + 180f);
 
             _timerCad += Time.deltaTime;
 
@@ -80,6 +82,14 @@ public class MovLittleGuy : MonoBehaviour
                 Disparar();
                 _timerCad = 0f;
             }
+
+            //Extra para controlar el paso a la animación de disparo
+            if (_animator != null)
+            {
+                if (_timerCad >= _cadencia - 0.4f) _animator.SetBool("AboutToShoot", true);
+                else if (_timerCad < 0.2f && _timerCad > 0.1f ) _animator.SetBool("AboutToShoot", false);
+            }
+
         }
     }
     #endregion
