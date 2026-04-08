@@ -62,18 +62,18 @@ public class Pickable : MonoBehaviour
         {
             switch (PickUp)
             {
-                /*case PickableType.GanaVida:
+                case PickableType.GanaVida:
                     // se llama al componente concreto que tendrá la lógica de este pickup
-                    if (collider.GetComponent<PickUpVida>() != null)
+                    Vida vida = collider.GetComponent<Vida>();
+                    if (vida != null)
                     {
-                        // collider.GetComponent<PickUpVida>().Heal(1); // esto es un ejemplo
-                        // se llama al método que cura (aún no está hecho)
+                        vida.ActualizarVidas(1);
                     }
                     else
                     {
                         Debug.LogWarning("No está el componente PickUpVida, no se puede aplicar el efecto de este pickup");
                     }
-                    break;*/
+                    break;
                 case PickableType.Escudo:
                     // Se busca el componente escudo dentro del player
                     PlayerShield ps = collider.GetComponent<PlayerShield>();
