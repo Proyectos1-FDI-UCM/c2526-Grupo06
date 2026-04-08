@@ -1,3 +1,5 @@
+using UnityEngine;
+
 //---------------------------------------------------------
 // Lista de patrones del boss en cada fase
 // Miguel Calderón Barba
@@ -5,9 +7,6 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.Rendering;
 // Añadir aquí el resto de directivas using
 
 
@@ -45,8 +44,9 @@ public class Fases : MonoBehaviour
     private float _timer = 0f;
     private PatronManager _patrones;
     private BossMovement _movement;
-    private char I = 'I', P = 'P', G = 'G';     //nombres de las ondas
 
+    private int _casoAnterior;
+    private int _casoActual;
 
     #endregion
 
@@ -65,6 +65,7 @@ public class Fases : MonoBehaviour
     {
         _patrones = this.GetComponent<PatronManager>();
         _movement = this.GetComponent<BossMovement>();
+        _casoAnterior = -1;
     }
 
     /// <summary>
@@ -76,9 +77,9 @@ public class Fases : MonoBehaviour
         _timer = (_realTime * PatronPerSecond);
         switch (_faseActual)
         {
-            case 1:PrimeraFase(_timer); break;
-            case 2:SegundaFase(_timer); break;
-            case 3:TerceraFase(_timer); break;
+            case 1: PrimeraFase(_timer); break;
+            case 2: SegundaFase(_timer); break;
+            case 3: TerceraFase(_timer); break;
         }
     }
     #endregion
@@ -98,7 +99,14 @@ public class Fases : MonoBehaviour
 
     public void PrimeraFase(float timer)
     {
-        timer = timer % 48;
+        // Actualizamos el caso actual
+        _casoActual = ((int)timer) % 48;
+
+        // Si no ha habido un cambio de caso, entonces salimos de la función
+        if (_casoAnterior == _casoActual) return;
+
+        // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
+
         /*
         switch (timer)
         {
@@ -163,33 +171,129 @@ public class Fases : MonoBehaviour
             case 47: _patrones.PatronVertical(false, true); break;
         }
         */
+
+        // Guardar el caso actual para el siguiente frame, y así detectar un posible cambio de caso
+        _casoAnterior = _casoActual;
+
     }
-    
+
     public void SegundaFase(float timer)
     {
-        timer = timer % 5;
+        // Actualizamos el caso actual
+        _casoActual = ((int)timer) % 60;
 
-        switch (timer)
+        // Si no ha habido un cambio de caso, entonces salimos de la función
+        if (_casoAnterior == _casoActual) return;
+
+        // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
+        switch (_casoActual)
         {
             case 0: _movement.ChangeToDefault(); break;
-            ///case 0: _patrones.PatronSimple(true, false); break;
             case 1: break;
             case 2: _patrones.PatronSimple(false, false); break;
             case 3: _patrones.PatronSimple(false, false); break;
-            case 4: _patrones.LanzarOnda(I); break;
+            case 4: _patrones.LanzarOnda('I'); break;
+
+            case 5: _movement.ChangeToDefault(); break;
+            case 6: break;
+            case 7: _patrones.PatronSimple(false, false); break;
+            case 8: _patrones.PatronSimple(false, false); break;
+            case 9: _patrones.LanzarOnda('I'); break;
+
+            case 10: _patrones.PatronVertical(true, false, false); break;
+            case 11: _patrones.PatronHorizontal(true, false); break;
+            case 12: _patrones.PatronVertical(true, true, false); break;
+            case 13: _patrones.PatronHorizontal(true, false); break;
+            case 14: _patrones.PatronVertical(true, false, false); break;
+
+            case 15: _patrones.PatronVertical(true, false, false); break;
+            case 16: _patrones.PatronHorizontal(true, false); break;
+            case 17: _patrones.PatronVertical(true, true, false); break;
+            case 18: _patrones.PatronHorizontal(true, false); break;
+            case 19: _patrones.PatronVertical(true, false, false); break;
+
+            case 20: _movement.ChangeToDefault(); break;
+            case 21: _patrones.PatronBarrida(true, false); break;
+            case 22: _patrones.PatronHorizontal(false, false); break;
+            case 23: _patrones.PatronBarrida(true, false); break;
+            case 24: _movement.ChangeToDefault(); break;
+
+            case 25: _movement.ChangeToDefault(); break;
+            case 26: break;
+            case 27: _patrones.PatronSimple(false, false); break;
+            case 28: _patrones.PatronSimple(false, false); break;
+            case 29: _patrones.LanzarOnda('I'); break;
+
+            case 30: _movement.ChangeToDefault(); break;
+            case 31: break;
+            case 32: _patrones.PatronSimple(false, false); break;
+            case 33: _patrones.PatronSimple(false, false); break;
+            case 34: _patrones.LanzarOnda('I'); break;
+
+            case 35: _movement.ChangeToDefault(); break;
+            case 36: _patrones.PatronBarrida(true, false); break;
+            case 37: _patrones.PatronHorizontal(false, false); break;
+            case 38: _patrones.PatronBarrida(true, false); break;
+            case 39: _movement.ChangeToDefault(); break;
+
+            case 40: _patrones.PatronVertical(true, false, false); break;
+            case 41: _patrones.PatronHorizontal(true, false); break;
+            case 42: _patrones.PatronVertical(true, true, false); break;
+            case 43: _patrones.PatronHorizontal(true, false); break;
+            case 44: _patrones.PatronVertical(true, false, false); break;
+
+            case 45: _patrones.PatronVertical(true, false, false); break;
+            case 46: _patrones.PatronHorizontal(true, false); break;
+            case 47: _patrones.PatronVertical(true, true, false); break;
+            case 48: _patrones.PatronHorizontal(true, false); break;
+            case 49: _patrones.PatronVertical(true, false, false); break;
+
+            case 50: _movement.ChangeToDefault(); break;
+            case 51: break;
+            case 52: _patrones.PatronSimple(false, false); break;
+            case 53: _patrones.PatronSimple(false, false); break;
+            case 54: _patrones.LanzarOnda('I'); break;
+
+            case 55: _movement.ChangeToDefault(); break;
+            case 56: break;
+            case 57: _patrones.PatronSimple(false, false); break;
+            case 58: _patrones.PatronSimple(false, false); break;
+            case 59: _patrones.LanzarOnda('I'); break;
+
         }
 
+        // Guardar el caso actual para el siguiente frame, y así detectar un posible cambio de caso
+        _casoAnterior = _casoActual;
     }
+
 
     public void TerceraFase(float timer)
     {
+        // Actualizamos el caso actual
+        _casoActual = ((int)timer) % 5;
+
+        // Si no ha habido un cambio de caso, entonces salimos de la función
+        if (_casoAnterior == _casoActual) return;
+
+        // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
+        switch (_casoActual)
+        {
+            // TODO: ACCIONES DE LA FASE 3 ...
+            case 0: break;
+        }
+
+        // Guardar el caso actual para el siguiente frame, y así detectar un posible cambio de caso
+        _casoAnterior = _casoActual;
 
     }
 
     public void NextFase()
     {
         _faseActual++;
+        // reseteamos timer para que el switch de la siguiente fase comience desde el principio (case 0)
         _timer = 0;
+        // Para que detecte cualquier caso cuando hay un cambio de fase
+        _casoAnterior = -1;
     }
 
     #endregion
@@ -204,4 +308,4 @@ public class Fases : MonoBehaviour
     #endregion
 
 } // class Fases 
-// namespace
+  // namespace
