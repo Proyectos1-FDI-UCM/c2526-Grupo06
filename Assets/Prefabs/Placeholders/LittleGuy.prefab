@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _littleBullet: {fileID: 4541950960163187118, guid: deb0edfc169a9cb4d9bf040be8efd568, type: 3}
+  _animator: {fileID: -9189103808015973946}
 --- !u!114 &-6409636212588443166
 MonoBehaviour:
   m_ObjectHideFlags: 0
