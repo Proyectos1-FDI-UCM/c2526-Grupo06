@@ -2,7 +2,7 @@ using UnityEngine;
 
 //---------------------------------------------------------
 // Lista de patrones del boss en cada fase
-// Miguel Calderón Barba
+// Miguel Calderón Barba, Javier De Sala Rodríguez & Sergio Navarro Herreros
 // Dream'O Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
@@ -47,6 +47,7 @@ public class Fases : MonoBehaviour
 
     private int _casoAnterior;
     private int _casoActual;
+    private char I = 'I', P = 'P', G = 'G';
 
     #endregion
 
@@ -192,13 +193,13 @@ public class Fases : MonoBehaviour
             case 1: break;
             case 2: _patrones.PatronSimple(false, false); break;
             case 3: _patrones.PatronSimple(false, false); break;
-            case 4: _patrones.LanzarOnda('I'); break;
+            case 4: _patrones.LanzarOnda(I); break;
 
             case 5: _movement.ChangeToDefault(); break;
             case 6: break;
             case 7: _patrones.PatronSimple(false, false); break;
             case 8: _patrones.PatronSimple(false, false); break;
-            case 9: _patrones.LanzarOnda('I'); break;
+            case 9: _patrones.LanzarOnda(I); break;
 
             case 10: _patrones.PatronVertical(true, false, false); break;
             case 11: _patrones.PatronHorizontal(true, false); break;
@@ -222,13 +223,13 @@ public class Fases : MonoBehaviour
             case 26: break;
             case 27: _patrones.PatronSimple(false, false); break;
             case 28: _patrones.PatronSimple(false, false); break;
-            case 29: _patrones.LanzarOnda('I'); break;
+            case 29: _patrones.LanzarOnda(I); break;
 
             case 30: _movement.ChangeToDefault(); break;
             case 31: break;
             case 32: _patrones.PatronSimple(false, false); break;
             case 33: _patrones.PatronSimple(false, false); break;
-            case 34: _patrones.LanzarOnda('I'); break;
+            case 34: _patrones.LanzarOnda(I); break;
 
             case 35: _movement.ChangeToDefault(); break;
             case 36: _patrones.PatronBarrida(true, false); break;
@@ -252,13 +253,13 @@ public class Fases : MonoBehaviour
             case 51: break;
             case 52: _patrones.PatronSimple(false, false); break;
             case 53: _patrones.PatronSimple(false, false); break;
-            case 54: _patrones.LanzarOnda('I'); break;
+            case 54: _patrones.LanzarOnda(I); break;
 
             case 55: _movement.ChangeToDefault(); break;
             case 56: break;
             case 57: _patrones.PatronSimple(false, false); break;
             case 58: _patrones.PatronSimple(false, false); break;
-            case 59: _patrones.LanzarOnda('I'); break;
+            case 59: _patrones.LanzarOnda(I); break;
 
         }
 
@@ -270,7 +271,7 @@ public class Fases : MonoBehaviour
     public void TerceraFase(float timer)
     {
         // Actualizamos el caso actual
-        _casoActual = ((int)timer) % 5;
+        _casoActual = ((int)timer) % 60;
 
         // Si no ha habido un cambio de caso, entonces salimos de la función
         if (_casoAnterior == _casoActual) return;
@@ -278,8 +279,80 @@ public class Fases : MonoBehaviour
         // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
         switch (_casoActual)
         {
-            // TODO: ACCIONES DE LA FASE 3 ...
-            case 0: break;
+            case 0: _patrones.PatronSimple(false, false); break;
+            case 1: _patrones.PatronHorizontal(false, false); break;
+            case 2: _patrones.PatronBarrida(false, false); break;
+            case 3: _patrones.LanzarOnda(I); break;
+
+            case 4: _patrones.PatronSimple(true, false); break;
+            case 5: _patrones.PatronVertical(true, true, false); break;
+            case 6: _patrones.PatronHorizontal(true, false); break;
+            case 7: break;
+
+            case 8: _patrones.PatronSimple(false, true); break;
+            case 9: _patrones.PatronBarrida(false, true); break;
+            case 10: _patrones.PatronVertical(false, false, true); break;
+            case 11: _patrones.LanzarOnda(P); break;
+
+            case 12: _patrones.PatronSimple(true, true); break;
+            case 13: break;
+            case 14: _patrones.PatronHorizontal(true, true); break;
+            case 15: _patrones.LanzarOnda(G); break;
+
+            case 16: _patrones.PatronBarrida(true, false); break;
+            case 17: _patrones.PatronVertical(true, false, false); break;
+            case 18: _patrones.PatronSimple(false, false); break;
+            case 19: break;
+
+            case 20: _patrones.PatronHorizontal(false, true); break;
+            case 21: _patrones.PatronSimple(true, false); break;
+            case 22: _patrones.PatronBarrida(true, true); break;
+            case 23: _patrones.LanzarOnda(I); break;
+
+            case 24: break;
+            case 25: _patrones.PatronVertical(true, true, true); break;
+            case 26: _patrones.PatronSimple(true, true); break;
+            case 27: _patrones.LanzarOnda(P); break;
+
+            case 28: _patrones.PatronBarrida(false, false); break;
+            case 29: _patrones.PatronHorizontal(true, false); break;
+            case 30: break;
+            case 31: _patrones.LanzarOnda(G); break;
+
+            case 32: _patrones.PatronSimple(false, false); break;
+            case 33: _patrones.PatronVertical(false, true, false); break;
+            case 34: _patrones.PatronBarrida(false, true); break;
+            case 35: break;
+
+            case 36: _patrones.PatronHorizontal(true, true); break;
+            case 37: _patrones.PatronSimple(true, false); break;
+            case 38: _patrones.PatronVertical(true, false, true); break;
+            case 39: _patrones.LanzarOnda(I); break;
+
+            case 40: _patrones.PatronBarrida(true, true); break;
+            case 41: break;
+            case 42: _patrones.PatronSimple(false, true); break;
+            case 43: _patrones.LanzarOnda(P); break;
+
+            case 44: _patrones.PatronHorizontal(false, false); break;
+            case 45: _patrones.PatronVertical(true, true, false); break;
+            case 46: break;
+            case 47: _patrones.LanzarOnda(G); break;
+
+            case 48: _patrones.PatronSimple(true, true); break;
+            case 49: _patrones.PatronBarrida(true, false); break;
+            case 50: _patrones.PatronHorizontal(false, true); break;
+            case 51: break;
+
+            case 52: _patrones.PatronSimple(false, false); break;
+            case 53: break;
+            case 54: _patrones.PatronVertical(true, false, false); break;
+            case 55: _patrones.LanzarOnda(I); break;
+
+            case 56: _patrones.PatronBarrida(true, true); break;
+            case 57: _patrones.PatronSimple(false, true); break;
+            case 58: break;
+            case 59: _patrones.LanzarOnda(G); break;
         }
 
         // Guardar el caso actual para el siguiente frame, y así detectar un posible cambio de caso

@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     private InputActionAsset _inputActions; // Asset de acciones de entrada para gestionar el control del juego
     private bool _gameOver = false; // Variable para controlar si el juego ha terminado
     // Sin _gameOver, el juego se podría pausar y reanudar después de mostrar el panel de game over, lo que no es deseable.
+    private bool _panelAjustesAbierto = false; // Variable para controlar si el panel de ajustes está abierto o no
 
     //Variable que evita relaizar una comprovación múltiples veces.
     private bool _pMAsigned = false;
@@ -331,22 +332,29 @@ public class GameManager : MonoBehaviour
     {
         if (!_gameOver)
         {
-            _juegoPausado = !_juegoPausado;
-
-            if (_juegoPausado)
+            if (_panelAjustesAbierto)
             {
-                Time.timeScale = 0f;
-                if (PanelPausa != null) PanelPausa.SetActive(true);
-
-                _inputActions.FindActionMap("Player").Disable();
-                _inputActions.FindActionMap("UI").Enable();
+                CerrarPanelAjustes();
             }
             else
             {
-                Time.timeScale = 1f;
-                if (PanelPausa != null) PanelPausa.SetActive(false);
+                _juegoPausado = !_juegoPausado;
 
-                if (_inputActions.FindActionMap("Player") != null) _inputActions.FindActionMap("Player").Enable();
+                if (_juegoPausado)
+                {
+                    Time.timeScale = 0f;
+                    if (PanelPausa != null) PanelPausa.SetActive(true);
+
+                    _inputActions.FindActionMap("Player").Disable();
+                    _inputActions.FindActionMap("UI").Enable();
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                    if (PanelPausa != null) PanelPausa.SetActive(false);
+
+                    if (_inputActions.FindActionMap("Player") != null) _inputActions.FindActionMap("Player").Enable();
+                }
             }
         }
     }
@@ -355,11 +363,13 @@ public class GameManager : MonoBehaviour
     { 
         if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(true);
         if (PanelPausa != null) PanelPausa.SetActive(false);
+        _panelAjustesAbierto = true;
     }
     public void CerrarPanelAjustes()
     {
         if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(false);
         if (PanelPausa != null) PanelPausa.SetActive(true);
+        _panelAjustesAbierto = false;
     }
     #endregion
 
