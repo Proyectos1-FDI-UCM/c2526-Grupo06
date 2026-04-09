@@ -80,6 +80,7 @@ public class ProgresionManager : MonoBehaviour
     public void ReduceEnemyCount(int amount)
     {
         _enemyAmount -= amount;
+        UnityEngine.Debug.Log(_enemyAmount.ToString());
     }
 
     public void StopHordeSpawning(bool stop)
@@ -246,7 +247,7 @@ public class ProgresionManager : MonoBehaviour
                 {
                     GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 2f);
                     GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f);
-                    _enemyAmount++;
+                    _enemyAmount += 3;
                     _timer = 0f;
                     _numHorde++;
                 }

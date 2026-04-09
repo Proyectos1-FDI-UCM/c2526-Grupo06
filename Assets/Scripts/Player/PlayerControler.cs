@@ -90,6 +90,11 @@ public class PlayerControler : MonoBehaviour
     {
         _freezeTimer += freeze;
     }
+
+    public void GameOver()
+    {
+        Destroy(this);
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

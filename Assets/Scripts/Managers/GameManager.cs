@@ -255,7 +255,7 @@ public class GameManager : MonoBehaviour
     public void MostrarVictory()
     {
         _gameOver = true;
-
+        if (Player != null) Player.gameObject.GetComponent<PlayerControler>().GameOver();
         if (PanelVictory != null)
             PanelVictory.SetActive(true);
     }
