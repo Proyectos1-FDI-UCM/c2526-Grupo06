@@ -5,7 +5,6 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
-using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.Rendering;
 
