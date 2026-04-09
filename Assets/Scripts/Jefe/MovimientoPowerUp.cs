@@ -23,7 +23,7 @@ public class MovimientoPowerUp : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private float Velocidad = 5f;
+    private float Velocidad = 2f;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
