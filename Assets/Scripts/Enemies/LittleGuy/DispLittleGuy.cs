@@ -76,13 +76,13 @@ public class DispLittleGuy : MonoBehaviour
         {
             transform.Translate(_dir * _vel * Time.deltaTime);
 
-            /*if (Gravity) //(Añadido de Adán) calculos necesarios en caso de tener gravedad
-            {
-                _verticalDistance += _verticalVelocity * Time.deltaTime;
-                _verticalVelocity += GravityStrenght * Time.deltaTime;
-            }
-            else if (_verticalVelocity != 0f) { _verticalVelocity = 0f; }
-            transform.position = new Vector3(transform.position.x, transform.position.y, 0);*/
+        if (Gravity) //(Añadido de Adán) calculos necesarios en caso de tener gravedad
+        {
+            _verticalDistance += _verticalVelocity * Time.deltaTime;
+            _verticalVelocity += GravityStrenght * Time.deltaTime;
+        }
+        else if (_verticalVelocity != 0f) { _verticalVelocity = 0f; }
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
     }
     #endregion

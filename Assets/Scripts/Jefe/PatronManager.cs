@@ -35,6 +35,7 @@ public class PatronManager : MonoBehaviour
     private bool _horiz = false, _barrido = false, _acelera, _curvo; //parametros para el update
     private int _numTotal = 12, _indice;     //numero de balas a instanciar para patrones barrida y horizontal e indice
     private float _numRandom;
+    private bool pedido = false;
 
     private BossMovement _movimiento;
 
@@ -47,13 +48,18 @@ public class PatronManager : MonoBehaviour
     {
         if (GameManager.Instance != null) GameManager.Instance.SetBoss(this.gameObject);
         _movimiento = this.GetComponent<BossMovement>();
-        _cadencia = _movimiento.GetCurrentAmpTime();
+        _cadencia = _movimiento.GetCurrentAmpTime() / _numTotal;
     }
     private void Update()
     {
         while (_barrido ^ _horiz)
         {
             if (_acelera) _numTotal = 16;
+            if (!pedido)
+            {
+                _cadencia = _movimiento.GetCurrentAmpTime() / _numTotal;
+                pedido = true;
+            }
 
             _timerCad += Time.deltaTime;
             if (_timerCad >= _cadencia)
@@ -80,6 +86,7 @@ public class PatronManager : MonoBehaviour
         _horiz = false;
         _barrido = false;
         _indice = 0;
+        pedido = false;
     }
     #endregion
 
@@ -155,7 +162,6 @@ public class PatronManager : MonoBehaviour
         _numRandom = Random.value;
 
         _movimiento = this.GetComponent<BossMovement>();
-        _cadencia = _movimiento.GetCurrentAmpTime();
     }
     /// <summary>
     /// Patrón que sirve para activar el patrón barrido en el update
@@ -168,7 +174,6 @@ public class PatronManager : MonoBehaviour
         _numRandom = Random.value;
 
         _movimiento = this.GetComponent<BossMovement>();
-        _cadencia = _movimiento.GetCurrentAmpTime();
     }
     /// <summary>
     /// Método que spawnea las ondas que el jefe lanza 
