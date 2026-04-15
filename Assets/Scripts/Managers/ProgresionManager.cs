@@ -30,6 +30,8 @@ public class ProgresionManager : MonoBehaviour
     GameObject HugeCore;
     [SerializeField]
     int XPositionEnemySpawn;
+    [SerializeField]
+    GameObject Boss;
 
     #endregion
 
@@ -80,7 +82,7 @@ public class ProgresionManager : MonoBehaviour
     public void ReduceEnemyCount(int amount)
     {
         _enemyAmount -= amount;
-        UnityEngine.Debug.Log(_enemyAmount.ToString());
+        //UnityEngine.Debug.Log(_enemyAmount.ToString());
     }
 
     public void StopHordeSpawning(bool stop)
@@ -257,9 +259,9 @@ public class ProgresionManager : MonoBehaviour
                 if (_enemyAmount <= 0)
                 {
                     //Metodo para empezar la boss fight
-
-                    //De momento la condición de victoria no toma en cuenta un boss
-                    GameManager.Instance.MostrarVictory();
+                    Boss.SetActive(true);
+                    //Para que la condición de victoria no toma en cuenta un boss
+                    //GameManager.Instance.MostrarVictory();
                     _stoped = true;
                 }
                 break;

@@ -58,7 +58,7 @@ public class RecogeMunicion : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Colision detectada " + collision);
+        //Debug.Log("Colision detectada " + collision);
         _om = collision.gameObject.GetComponent<OtorgaMunicion>();
         if (_om != null) 
         {

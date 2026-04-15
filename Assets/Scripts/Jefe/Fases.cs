@@ -102,7 +102,7 @@ public class Fases : MonoBehaviour
     {
         // Actualizamos el caso actual
         _casoActual = ((int)timer) % 48;
-        Debug.Log(timer);
+        Debug.Log(_casoActual);
         // Si no ha habido un cambio de caso, entonces salimos de la función
         if (_casoAnterior == _casoActual) return;
 
