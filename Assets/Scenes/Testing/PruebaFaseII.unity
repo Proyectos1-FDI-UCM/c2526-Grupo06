@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PatronPerSecond: 1
-  NumPatrons: 48
-  _faseActual: 1
+  NumPatrons: 60
+  _faseActual: 3
 --- !u!1 &461617111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8374839448642552889, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
@@ -517,9 +517,16 @@ MonoBehaviour:
   Boss: {fileID: 0}
   TextoVida: {fileID: 0}
   PanelGameover: {fileID: 0}
-  TextoAMMO: {fileID: 0}
+  PanelVictory: {fileID: 0}
+  SpritesVidas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ProgresionManager: {fileID: 0}
   PanelPausa: {fileID: 0}
+  PanelAjustes: {fileID: 0}
 --- !u!4 &2040165024
 Transform:
   m_ObjectHideFlags: 0
@@ -549,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8689365205742958258, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 214579828221008966, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: PuntosVidaMaximos
@@ -595,13 +602,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5327265988378733119, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: Velocidad
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: TipoMovimiento
@@ -612,9 +623,21 @@ PrefabInstance:
       value: Jefe
       objectReference: {fileID: 0}
     - target: {fileID: 8901733773716986925, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: _gravedad
+      value: 
+      objectReference: {fileID: 5273697164822052583, guid: f35ef7dbdc17edc4586b38d3e562f8ea, type: 3}
+    - target: {fileID: 8901733773716986925, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: _paraliza
+      value: 
+      objectReference: {fileID: 2799809426980598949, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+    - target: {fileID: 8901733773716986925, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8901733773716986925, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
+      propertyPath: _intercambia
+      value: 
+      objectReference: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -203,6 +203,7 @@ MonoBehaviour:
   - 6.67
   - 3.33
   TiempoEntreDrops: 1
+  _puntosVidaRestantes: 0
 --- !u!114 &-8689365205742958258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adf723363a3a144794ad2e5a5031ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidad: 0
+  Velocidad: 1
   TiempoPausa: 1
   TipoMovimiento: 0
 --- !u!114 &8511815470774641692
@@ -225,7 +226,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8657113104869342218}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38ee00efe8c3c774db76b978f103f272, type: 3}
   m_Name: 
@@ -233,7 +234,6 @@ MonoBehaviour:
   Velocidad: 0
   TiempoPausa: 1
   TipoMovimiento: 0
-  patronManager: {fileID: 8901733773716986925}
 --- !u!114 &8901733773716986925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,4 +247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
-  ondaIntercambiadora: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
+  _intercambia: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
+  _gravedad: {fileID: 5273697164822052583, guid: f35ef7dbdc17edc4586b38d3e562f8ea, type: 3}
+  _paraliza: {fileID: 2799809426980598949, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
