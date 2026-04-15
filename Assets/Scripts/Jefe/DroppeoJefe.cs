@@ -75,7 +75,7 @@ public class DroppeoJefe : MonoBehaviour
     void Start()
     {
         _puntosVidaRestantes = PuntosVidaMaximos;
-        Debug.Log($"Vida Jefe: {_puntosVidaRestantes}");
+        //Debug.Log($"Vida Jefe: {_puntosVidaRestantes}");
         _dropsRealizados = 0;
 
         fase = GetComponent<Fases>();
@@ -115,7 +115,7 @@ public class DroppeoJefe : MonoBehaviour
                 SoltarPowerUp();
                 _dropsRealizados++; // la siguiente vez que pierda vida, buscamos el siguiente umbral de la lista
 
-                fase.NextFase();
+                //fase.NextFase();
             }
         }
 

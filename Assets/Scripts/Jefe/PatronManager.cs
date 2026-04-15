@@ -109,6 +109,7 @@ public class PatronManager : MonoBehaviour
         float altura = 1.8f;
         float lados;
         float x = Random.value;
+        _movimiento.ChangeToDefault();
 
         for (int i = 0; i < 6; i++)
         {
@@ -132,19 +133,20 @@ public class PatronManager : MonoBehaviour
     /// </summary>
     public void PatronVertical(bool up, bool acelera, bool curvo)
     {
+        
         float _x = Random.value; //Valor aleatorio para determinar si disparara o no pickups
         float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
         float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
         int order = 0; //Variable que permite saber si las balas deben instanciarse de arriba abajo o vicebersa
         if (up)
         {
-            this.gameObject.GetComponent<BossMovement>().ChangeToAtaqueVerticalUp();
+            _movimiento.ChangeToAtaqueVerticalUp();
             _inicioY = -4.7f;
             order = 1;
         }
         else
         {
-            this.gameObject.GetComponent<BossMovement>().ChangeToAtaqueVerticalDown();
+            _movimiento.ChangeToAtaqueVerticalDown();
             _inicioY = 4.7f;
             order = -1;
         }
@@ -177,6 +179,7 @@ public class PatronManager : MonoBehaviour
     /// </summary>
     public void PatronBarrida(bool acelera, bool curvo)
     {
+        _movimiento.ChangeToDefault();
         _barrido = true;
         _acelera = acelera;
         _curvo = curvo;

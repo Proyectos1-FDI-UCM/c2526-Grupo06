@@ -102,13 +102,13 @@ public class Fases : MonoBehaviour
     {
         // Actualizamos el caso actual
         _casoActual = ((int)timer) % 48;
-
+        Debug.Log(timer);
         // Si no ha habido un cambio de caso, entonces salimos de la función
         if (_casoAnterior == _casoActual) return;
 
         // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
 
-        /*
+        
         switch (timer)
         {
             case 0: _movement.ChangeToDefault(); break;
@@ -121,15 +121,15 @@ public class Fases : MonoBehaviour
             case 6: _patrones.PatronSimple(false, false); break;
             case 7:; break;
 
-            case 8: _patrones.PatronCadencia(false, false); break;
+            case 8: _patrones.PatronBarrida(false, false); break;
             case 9:; break;
-            case 10: _patrones.PatronCadencia(false, false); break;
+            case 10: _patrones.PatronBarrida(false, false); break;
             case 11:; break;
 
             case 12:; break;
-            case 13: _patrones.Horizontal(false, false); break;
+            case 13: _patrones.PatronHorizontal(false, false); break;
             case 14:; break;
-            case 15: _patrones.PatronVertical(false, false); break;
+            case 15: _patrones.PatronVertical(true, false, false); break;
 
             case 16: _patrones.PatronSimple(false, false); break;
             case 17: _patrones.PatronSimple(false, false); break;
@@ -137,41 +137,41 @@ public class Fases : MonoBehaviour
             case 19: _patrones.PatronSimple(false, false); break;
 
             case 20: _patrones.PatronSimple(false, false); break;
-            case 21: _patrones.PatronCadencia(false, false); break;
+            case 21: _patrones.PatronBarrida(false, false); break;
             case 22: _patrones.PatronSimple(false, false); break;
-            case 23: _patrones.PatronCadencia(false, false); break;
+            case 23: _patrones.PatronBarrida(false, false); break;
 
-            case 24: _patrones.PatronVertical(false, false); break;
-            case 25: _patrones.PatronCadencia(false, false); break;
-            case 26: _patrones.PatronVertical(false, false); break;
-            case 27: _patrones.PatronCadencia(false, false); break;
+            case 24: _patrones.PatronVertical(true, false, false); break;
+            case 25: _patrones.PatronBarrida(false, false); break;
+            case 26: _patrones.PatronVertical(false, false, false); break;
+            case 27: _patrones.PatronBarrida(false, false); break;
 
-            case 28: _patrones.PatronVertical(false, false); break;
-            case 29: _patrones.PatronCadencia(false, false); break;
-            case 30: _patrones.PatronCadencia(false, false); break;
-            case 31: _patrones.PatronVertical(false, false); break;
+            case 28: _patrones.PatronVertical(true, false, false); break;
+            case 29: _patrones.PatronBarrida(false, false); break;
+            case 30: _patrones.PatronBarrida(false, false); break;
+            case 31: _patrones.PatronVertical(true, false, false); break;
 
             case 32: _movement.ChangeToDefault(); break;
             case 33: _patrones.PatronHorizontal(false, true); break;
             case 34: _patrones.PatronHorizontal(false, true); break;
             case 35: _patrones.PatronHorizontal(false, true); break;
 
-            case 36: _patrones.PatronVertical(true, false); break;
+            case 36: _patrones.PatronVertical(true, true, false); break;
             case 37: _movement.ChangeToDefault(); break;
-            case 38: _patrones.PatronVertical(true, false); break;
+            case 38: _patrones.PatronVertical(false, true, false); break;
             case 39: _movement.ChangeToDefault(); break;
 
             case 40: _patrones.PatronSimple(false, true); break;
             case 41: _patrones.PatronSimple(true, false); break;
-            case 42: _patrones.PatronVertical(true, false); break;
+            case 42: _patrones.PatronVertical(false, true, false); break;
             case 43: _movement.ChangeToDefault(); break;
 
             case 44: _patrones.PatronSimple(true, false); break;
-            case 45: _patrones.PatronVertical(false, true); break;
+            case 45: _patrones.PatronVertical(false, false, true); break;
             case 46: _patrones.PatronSimple(true, false); break;
-            case 47: _patrones.PatronVertical(false, true); break;
+            case 47: _patrones.PatronVertical(true, false, true); break;
         }
-        */
+        
 
         // Guardar el caso actual para el siguiente frame, y así detectar un posible cambio de caso
         _casoAnterior = _casoActual;
