@@ -32,7 +32,7 @@ public class DispLittleGuy : MonoBehaviour
     private float _verticalDistance = 0f;//(Añadido de Adán) distancia que deberia haber recorrido la bala por el efecto de la gravedad (en realidad es re cutre, pero no pienso luchar contra la ecuación de movimiento de Miguel;
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
 
-    private Transform _player;
+    private Transform _player;              //Para que persigua al jugador
     private SpriteRenderer _spriteRenderer; // Para cambiar el sprite de la bala
     #endregion
 
@@ -45,13 +45,15 @@ public class DispLittleGuy : MonoBehaviour
 
         _posInicial = transform.position;
 
-
+        //intenta buscar al jugador. En caso de que exista, selecciona el transform
+        //del gameobject encontrado y se lo asigna a la variable transform _player.
         GameObject tf = GameObject.Find("Player");
         if (tf != null)
         {
             _player = tf.transform;
         }
 
+        //Calcula la dirección que tiene que seguir la bala, esta es la trayectoria
         _dir = new Vector2(transform.position.x - _player.position.x, transform.position.y - _player.position.y);
 
         //(Añadido de Adán y Sergio) Comprueba si la bala es recogible para darle color verde
@@ -61,8 +63,6 @@ public class DispLittleGuy : MonoBehaviour
             if (otorga.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
             else _spriteRenderer.sprite = balaDanio;
         }
-        
-
     }
 
     void Update()
@@ -76,12 +76,13 @@ public class DispLittleGuy : MonoBehaviour
         {
             transform.Translate(_dir * _vel * Time.deltaTime);
 
-        if (Gravity) //(Añadido de Adán) calculos necesarios en caso de tener gravedad
-        {
-            _verticalDistance += _verticalVelocity * Time.deltaTime;
-            _verticalVelocity += GravityStrenght * Time.deltaTime;
-        }
-        else if (_verticalVelocity != 0f) { _verticalVelocity = 0f; }
+            if (Gravity) //(Añadido de Adán) calculos necesarios en caso de tener gravedad
+            {
+                _verticalDistance += _verticalVelocity * Time.deltaTime;
+                _verticalVelocity += GravityStrenght * Time.deltaTime;
+            }
+            else if (_verticalVelocity != 0f) { _verticalVelocity = 0f; }
+
             transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         }
     }

@@ -43,16 +43,25 @@ public class PatronManager : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    /// <summary>
+    /// Selecciona la instancia del boss usando el método del GameManager
+    /// Tambien pilla la cadencia base de disparo y el script del movimiento del boss
+    /// </summary>
     void Start()
     {
         if (GameManager.Instance != null) GameManager.Instance.SetBoss(this.gameObject);
         _movimiento = this.GetComponent<BossMovement>();
         _cadencia = _movimiento.GetCurrentAmpTime() / _numTotal;
     }
+    /// <summary>
+    /// Este update contiene la lógica de los patrones horizontal y barrido
+    /// Para que el update no gaste muchos recursos, sólo ejecuta código si
+    /// uno de los dos patrones están activos y el número de balas instanciadas
+    /// es menor al del total de balas que tiene que instanciar
+    /// </summary>
     private void Update()
     {
-        while (_barrido ^ _horiz)
+        while ((_barrido ^ _horiz) && _indice < _numTotal)
         {
             if (_acelera) _numTotal = 16;
             if (!pedido)
@@ -90,11 +99,11 @@ public class PatronManager : MonoBehaviour
     }
     #endregion
 
-        // ---- MÉTODOS PÚBLICOS ----
-        #region Métodos públicos
-        /// <summary>
-        /// Método para el patrón simple, todas las balas se instancias al instante
-        /// </summary>
+    // ---- MÉTODOS PÚBLICOS ----
+    #region Métodos públicos
+    /// <summary>
+    /// Método para el patrón simple, todas las balas se instancias al instante
+    /// </summary>
     public void PatronSimple(bool acelera, bool curvo)
     {
         float altura = 1.8f;

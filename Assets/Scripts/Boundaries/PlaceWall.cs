@@ -36,17 +36,13 @@ public class PlaceWall : MonoBehaviour
     /// </summary>
     void Update()
     {
+        //Cada frame la posición de este gameobject se coloca en el (0, 0, 0) en relación a la cámara
         transform.position = _cam.position;
     }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
 
     #endregion
 

@@ -44,7 +44,10 @@ public class MovHugeCore : MonoBehaviour
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
 
-
+    /// <summary>
+    /// El void start solo toma la posición inicial del gameObject al ser instanciado para así calcular correctamente
+    /// la posición final en la cual debe de colocarse
+    /// </summary>
     void Start()
     {
 
@@ -52,6 +55,13 @@ public class MovHugeCore : MonoBehaviour
         _endPos = new Vector3(_posX, _posIni.y, _posIni.z);
     }
 
+    /// <summary>
+    /// El método update distingue entre tres opciones de comportamiento:
+    /// La primera es la situación en la cual el gameObject está congelado
+    /// La segunda es en la cual aún no ha llegado a la posición final
+    /// La tercera es en la que ya ha llegado a la posición final y debe de disparar
+    /// Esta lógica se ejecuta en una cascada if-else
+    /// </summary>
     void Update()
     {
         if (_freezeTimer > 0) //(Añadido de Adán) si esta congelada no hace nada más que reducir su timer de congelación.
@@ -59,6 +69,7 @@ public class MovHugeCore : MonoBehaviour
             _freezeTimer -= Time.deltaTime;
             if (_freezeTimer < 0) _freezeTimer = 0;
         }
+        //Entra al else if si aún no ha llegado a la posición final. Aquí está la lógica del movimiento
         else if (!Equal(transform.position.x, _posX, _maxOffset))
         {
             float nuevaY = _posIni.y + Mathf.Sin(Time.time * _vel) * _amp;
@@ -67,6 +78,7 @@ public class MovHugeCore : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, _endPos, _vel * Time.deltaTime);
         }
+        //En este else está la lógica del algoritmo a seguir de la cadencia de disparo
         else
         {
             float nuevaY = _posIni.y + Mathf.Sin(Time.time * _vel) * _amp;
@@ -96,18 +108,28 @@ public class MovHugeCore : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    private bool Equal(float v1, float v2, float v3)    //método para comparar coordenadas con un rango de error
+    /// <summary>
+    /// método para comparar coordenadas con un rango de error
+    /// </summary>
+    /// <param primer número="v1"></param>
+    /// <param segundo número="v2"></param>
+    /// <param rango de error="v3"></param>
+    /// <returns></returns>
+    private bool Equal(float v1, float v2, float v3)    
     {
         return System.Math.Abs(v1 - v2) <= v3 && System.Math.Abs(v1 - v2) >= 0;
     }
-    private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
+    /// <summary>
+    /// Instancia un proyectil desde el punto de disparo del enemigo.
+    /// </summary>
+    private void Disparar()
     {
-        
         GameObject spawned;
         float j = 1.2f;
         float x = Random.value;
         for (int i = 0; i < 4; i++)
         {
+            //Para balas de los extremos
             if (i == 0 || i == 3)
             {
                 Vector2 v2 = new Vector2(transform.position.x, transform.position.y + j);
@@ -119,6 +141,7 @@ public class MovHugeCore : MonoBehaviour
                     spawned.GetComponent<OtorgaMunicion>().enabled = true;
                 }
             }
+            //para balas de enmedio
             else
             {
                 Vector2 v2 = new Vector2(transform.position.x - 0.6f, transform.position.y + j);
