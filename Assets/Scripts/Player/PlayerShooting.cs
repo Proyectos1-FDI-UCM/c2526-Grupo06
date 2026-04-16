@@ -26,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private InputAction _fireAction;
+    // Animator para la animación de disparar
+    private Animator _animator;
     private bool _isShooting;
     private float _lastShot;
     public int _bulletCount;
@@ -58,6 +60,8 @@ public class PlayerShooting : MonoBehaviour
         {
             _isShooting = false;
             _lastShot = 0f;
+            _animator = GetComponent<Animator>();
+            if (_animator == null) { Debug.LogWarning("No hay animator en el player"); }
         }
         
     }
@@ -132,6 +136,8 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        // Animación de disparo
+        if (_animator != null) { _animator.SetTrigger("ShootTrigger"); }
         _lastShot = Time.time; // Guarda el momento del disparo como último disparo
         GameObject bulletinstance = Instantiate(Bullet); // Instancia una copia de la bala
         bulletinstance.transform.position = transform.position; // La posición debe ser la del player
