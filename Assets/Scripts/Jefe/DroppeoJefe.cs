@@ -105,7 +105,7 @@ public class DroppeoJefe : MonoBehaviour
     // Ejemplo: GetPlayerController
     public void RecibeDanio(int danio) // Método que se llama para hacer que el jefe reciba daño
     {
-        
+        Debug.Log("Recibo daño");
         //este if comprueba si existen o no umbrales que leer del array
         if (_dropsRealizados < umbralesDrop.Length)
         {
@@ -118,12 +118,21 @@ public class DroppeoJefe : MonoBehaviour
                 //fase.NextFase();
             }
         }
-
+        
         _puntosVidaRestantes -= danio;
 
         if (_puntosVidaRestantes <= 0)
         {
-            Muere();
+            if (fase.GetFaseActual() == 3)
+            {
+                GameManager.Instance.MostrarVictory();
+                Muere();
+            }
+            else
+            {
+                fase.NextFase();
+                _puntosVidaRestantes = PuntosVidaMaximos;
+            }
         }
     }
 

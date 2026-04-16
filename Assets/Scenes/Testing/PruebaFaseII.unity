@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PatronPerSecond: 1
-  NumPatrons: 60
-  _faseActual: 3
+  NumPatrons: 48
+  _faseActual: 1
 --- !u!1 &461617111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8374839448642552889, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
@@ -552,7 +552,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8689365205742958258, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: Velocidad
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8689365205742958258, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
       propertyPath: m_Enabled
@@ -638,7 +638,8 @@ PrefabInstance:
       propertyPath: _intercambia
       value: 
       objectReference: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8511815470774641692, guid: c4e97d1869c33024b9a75d69235b4a2a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -2193,6 +2193,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7071354279938825275, guid: a6b46a6fe8ae91542a4c31ecdbaf1083, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8939446664171048534, guid: a6b46a6fe8ae91542a4c31ecdbaf1083, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4710231
@@ -4120,7 +4124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatronPerSecond: 1
   NumPatrons: 48
-  _faseActual: 1
 --- !u!1 &1642834498
 GameObject:
   m_ObjectHideFlags: 0

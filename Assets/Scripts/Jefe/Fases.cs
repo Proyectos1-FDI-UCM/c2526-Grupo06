@@ -28,6 +28,7 @@ public class Fases : MonoBehaviour
     private float PatronPerSecond = 1f;
     [SerializeField]
     private int NumPatrons = 48;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -39,11 +40,12 @@ public class Fases : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    public int _faseActual = 1;
+    private int _faseActual = 1;
     private float _realTime = 0f;
     private float _timer = 0f;
     private PatronManager _patrones;
     private BossMovement _movement;
+    private int _fasesTotales = 3;
 
     private int _casoAnterior;
     private int _casoActual;
@@ -102,20 +104,41 @@ public class Fases : MonoBehaviour
     {
         // Actualizamos el caso actual
         _casoActual = ((int)timer) % 48;
-        Debug.Log(_casoActual);
         // Si no ha habido un cambio de caso, entonces salimos de la función
         if (_casoAnterior == _casoActual) return;
 
-        // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
 
-        
-        switch (timer)
-        {
-            case 0: _movement.ChangeToDefault(); break;
-            case 1:; break;
-            case 2:; break;
-            case 3:; break;
+        else Debug.Log(_casoActual);
+            // En este punto, ha habido un cambio de caso y procedemos a lanzar el ataque correspondiente
 
+
+            switch (_casoActual)
+            {
+                case 0: _movement.ChangeToDefault(); break;
+                case 1:; break;
+                case 2:; break;
+                case 3:; break;
+
+            /*case 4: _movement.ChangeToAtaqueVerticalDown(); break;
+            case 5:; break;
+            case 6:; break;
+            case 7:; break;
+
+            case 8: _movement.ChangeToAtaqueVerticalUp(); break;
+            case 9:; break;
+            case 10:; break;
+            case 11:; break;
+
+            case 12: _movement.ChangeToAtaqueCargado(); break;
+            case 13:; break;
+            case 14:; break;
+            case 15:; break;
+
+            case 16: _movement.ChangeToDefault(); break;
+            case 17:; break;
+            case 18:; break;
+            case 19:; break;
+            */
             case 4: _patrones.PatronSimple(false, false); break;
             case 5:; break;
             case 6: _patrones.PatronSimple(false, false); break;
@@ -135,42 +158,42 @@ public class Fases : MonoBehaviour
             case 17: _patrones.PatronSimple(false, false); break;
             case 18: _patrones.PatronSimple(false, false); break;
             case 19: _patrones.PatronSimple(false, false); break;
-
+            
             case 20: _patrones.PatronSimple(false, false); break;
-            case 21: _patrones.PatronBarrida(false, false); break;
-            case 22: _patrones.PatronSimple(false, false); break;
-            case 23: _patrones.PatronBarrida(false, false); break;
+                case 21: _patrones.PatronBarrida(false, false); break;
+                case 22: _patrones.PatronSimple(false, false); break;
+                case 23: _patrones.PatronBarrida(false, false); break;
 
-            case 24: _patrones.PatronVertical(true, false, false); break;
-            case 25: _patrones.PatronBarrida(false, false); break;
-            case 26: _patrones.PatronVertical(false, false, false); break;
-            case 27: _patrones.PatronBarrida(false, false); break;
+                case 24: _patrones.PatronVertical(true, false, false); break;
+                case 25: _patrones.PatronBarrida(false, false); break;
+                case 26: _patrones.PatronVertical(false, false, false); break;
+                case 27: _patrones.PatronBarrida(false, false); break;
 
-            case 28: _patrones.PatronVertical(true, false, false); break;
-            case 29: _patrones.PatronBarrida(false, false); break;
-            case 30: _patrones.PatronBarrida(false, false); break;
-            case 31: _patrones.PatronVertical(true, false, false); break;
+                case 28: _patrones.PatronVertical(true, false, false); break;
+                case 29: _patrones.PatronBarrida(false, false); break;
+                case 30: _patrones.PatronBarrida(false, false); break;
+                case 31: _patrones.PatronVertical(true, false, false); break;
 
-            case 32: _movement.ChangeToDefault(); break;
-            case 33: _patrones.PatronHorizontal(false, true); break;
-            case 34: _patrones.PatronHorizontal(false, true); break;
-            case 35: _patrones.PatronHorizontal(false, true); break;
+                case 32: _movement.ChangeToDefault(); break;
+                case 33: _patrones.PatronHorizontal(false, true); break;
+                case 34: _patrones.PatronHorizontal(false, true); break;
+                case 35: _patrones.PatronHorizontal(false, true); break;
 
-            case 36: _patrones.PatronVertical(true, true, false); break;
-            case 37: _movement.ChangeToDefault(); break;
-            case 38: _patrones.PatronVertical(false, true, false); break;
-            case 39: _movement.ChangeToDefault(); break;
+                case 36: _patrones.PatronVertical(true, true, false); break;
+                case 37: _movement.ChangeToDefault(); break;
+                case 38: _patrones.PatronVertical(false, true, false); break;
+                case 39: _movement.ChangeToDefault(); break;
 
-            case 40: _patrones.PatronSimple(false, true); break;
-            case 41: _patrones.PatronSimple(true, false); break;
-            case 42: _patrones.PatronVertical(false, true, false); break;
-            case 43: _movement.ChangeToDefault(); break;
+                case 40: _patrones.PatronSimple(false, true); break;
+                case 41: _patrones.PatronSimple(true, false); break;
+                case 42: _patrones.PatronVertical(false, true, false); break;
+                case 43: _movement.ChangeToDefault(); break;
 
-            case 44: _patrones.PatronSimple(true, false); break;
-            case 45: _patrones.PatronVertical(false, false, true); break;
-            case 46: _patrones.PatronSimple(true, false); break;
-            case 47: _patrones.PatronVertical(true, false, true); break;
-        }
+                case 44: _patrones.PatronSimple(true, false); break;
+                case 45: _patrones.PatronVertical(false, false, true); break;
+                case 46: _patrones.PatronSimple(true, false); break;
+                case 47: _patrones.PatronVertical(true, false, true); break;
+            }
         
 
         // Guardar el caso actual para el siguiente frame, y así detectar un posible cambio de caso
@@ -362,11 +385,19 @@ public class Fases : MonoBehaviour
 
     public void NextFase()
     {
-        _faseActual++;
-        // reseteamos timer para que el switch de la siguiente fase comience desde el principio (case 0)
-        _timer = 0;
-        // Para que detecte cualquier caso cuando hay un cambio de fase
-        _casoAnterior = -1;
+        
+            _faseActual++;
+            // reseteamos timer para que el switch de la siguiente fase comience desde el principio (case 0)
+            _timer = 0;
+            // Para que detecte cualquier caso cuando hay un cambio de fase
+            _casoAnterior = -1;
+    }
+    /// <summary>
+    /// Devuelve la fase actual
+    /// </summary>
+    public int GetFaseActual()
+    {
+        return _faseActual;
     }
 
     #endregion

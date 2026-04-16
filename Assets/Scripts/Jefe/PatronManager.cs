@@ -167,6 +167,7 @@ public class PatronManager : MonoBehaviour
     /// </summary>
     public void PatronHorizontal(bool acelera, bool curvo)
     {
+        _movimiento.ChangeToAtaqueCargado();
         _horiz = true;
         _acelera = acelera;
         _curvo = curvo;
