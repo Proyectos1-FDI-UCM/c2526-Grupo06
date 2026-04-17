@@ -35,7 +35,7 @@ public class EnemyDamageToPlayer : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int _layerPlayer = 10; //el núemro de capa asigando al jugador
+    private const int _layerPlayer = 10; //el núemro de capa asigando al jugador
     private static int _layerEnemigo = 11; //layer del enemigo
 
     #endregion

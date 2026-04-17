@@ -32,6 +32,7 @@ public class PlayerShooting : MonoBehaviour
     private float _lastShot;
     public int _bulletCount;
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
+    private RecogeMunicion _rMunicion;//(Añadido de Adán) esta variable es para cachear el componente recogemunición
 
     #endregion
 
@@ -62,6 +63,7 @@ public class PlayerShooting : MonoBehaviour
             _lastShot = 0f;
             _animator = GetComponent<Animator>();
             if (_animator == null) { Debug.LogWarning("No hay animator en el player"); }
+            _rMunicion = this.gameObject.GetComponent<RecogeMunicion>();
         }
         
     }
@@ -81,7 +83,7 @@ public class PlayerShooting : MonoBehaviour
             // Comprobación de input
             if (_fireAction.WasPressedThisFrame() && !_isShooting)
             {
-                _bulletCount = this.gameObject.GetComponent<RecogeMunicion>().AmmoCount(); // Valor provisional hasta tener gamemanager
+                _bulletCount = _rMunicion.AmmoCount();
                 if (_bulletCount != 0)
                 {
                     _isShooting = true;
@@ -94,7 +96,7 @@ public class PlayerShooting : MonoBehaviour
                 if (Time.time - _lastShot > Cadence)
                 {
                     Shoot(); // Función de disparo
-                    this.gameObject.GetComponent<RecogeMunicion>().ReduceAmo(1);
+                    _rMunicion.ReduceAmo(1);
                     _bulletCount--; // función provisional hasta tener gamemanager
                     if (_bulletCount == 0) // Si el número de balas acaba deja la acción de disparar
                     {
