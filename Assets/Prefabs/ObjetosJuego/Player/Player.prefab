@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 05d14113c9c465b4c940fb91c008a238, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -273,12 +273,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8374839448642552889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e8108f61dfd8894ba0251f87b5a540c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TiempoInvencible: 3
+  PlayerSprite: {fileID: 7036113311287963270}
+  FlickerTime: 0.3
+  FlickerColor: {r: 0.42830187, g: 0.77962404, b: 1, a: 0.50980395}
 --- !u!114 &8176803611529647191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShieldMaxTime: 5
+  ShieldFlickerTime: 1
   BulletDestroyer: {fileID: 0}
   ShieldSprite: {fileID: 2214824783801324818}
 --- !u!114 &7388294998051649465
