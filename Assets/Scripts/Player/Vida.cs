@@ -41,7 +41,7 @@ public class Vida : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private static int _maximoVidas = 6; //el máximo de vidas que puede tener el jugador
+    private const int _maximoVidas = 6; //el máximo de vidas que puede tener el jugador
 
     private PlayerInvencible _scriptInvencible;
     private PlayerShield _scriptShield;
