@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Buffers.Text;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -61,9 +62,10 @@ public class PatronManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        while ((_barrido ^ _horiz) && _indice < _numTotal)
+        if ((_barrido ^ _horiz) && _indice < _numTotal)
         {
             if (_acelera) _numTotal = 16;
+
             if (!pedido)
             {
                 _cadencia = _movimiento.GetCurrentAmpTime() / _numTotal;
@@ -71,31 +73,60 @@ public class PatronManager : MonoBehaviour
             }
 
             _timerCad += Time.deltaTime;
+
             if (_timerCad >= _cadencia)
             {
-                spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
-                spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-                if (_acelera ^ _curvo && bullet != null) bullet.SelectBulletType(_acelera, _curvo);
+                //spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
 
-                if (_horiz && _indice > _numTotal / 2 && _numRandom <= 0.5f)     //pickup munición horizontal
+                spawned.TryGetComponent(out BulletsMovement bullet);
+                if ((_acelera ^ _curvo) && bullet != null)
                 {
-                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                    bullet.SelectBulletType(_acelera, _curvo);
+                }
+                //Lógica para el patrón horizontal
+                if (_horiz)
+                {
+                    float baseX = transform.position.x - 1.5f;
+                    float baseY = transform.position.y - 0.25f;
+
+                    Instantiate(BulletNormal, new Vector3(baseX, baseY, 0), transform.rotation);
+                    Instantiate(BulletNormal, new Vector3(baseX, baseY + 0.5f, 0), transform.rotation);
+
+                    if (_horiz && _indice > _numTotal / 2 && _numRandom <= 0.5f) //pickup munición horizontal
+                    {
+                        spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                        spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                    }
+
+                    _indice++;
+                }
+                //Lógica para el patrón de barrido
+                else if (_barrido)
+                {
+                    Debug.Log("barrido");
+                    float baseX = transform.position.x - 1.5f;
+
+                    Instantiate(BulletNormal, new Vector3(baseX, transform.position.y, 0), transform.rotation);
+
+                    if (_barrido && _indice % 4 >= 2 && _numRandom <= 0.5f) //pickup munición barrido
+                    {
+                        spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                        spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                    }
+
+                    _indice++;
                 }
 
-                else if (_barrido && _indice % 4 >= 2 && _numRandom <= 0.5f)  //pickup munición barrido
-                {
-                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
-                }
                 _timerCad = 0f;
-                _indice++;
             }
         }
-        _horiz = false;
-        _barrido = false;
-        _indice = 0;
-        pedido = false;
+        if (_indice >= _numTotal || !_barrido && !_horiz)
+        {
+            _horiz = false;
+            _barrido = false;
+            _indice = 0;
+            pedido = false;
+        }
     }
     #endregion
 
