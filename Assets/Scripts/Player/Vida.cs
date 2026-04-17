@@ -10,8 +10,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// Antes de cada class, descripción de qué es y para qué sirve,
-/// usando todas las líneas que sean necesarias.
+/// Clase vida, maneja los puntos de vida del jugador y los casos en los que pueden cambiar
 /// </summary>
 public class Vida : MonoBehaviour
 {
@@ -30,7 +29,10 @@ public class Vida : MonoBehaviour
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     private const int _maximoVidas = 6; //el máximo de vidas que puede tener el jugador
-
+    /// <summary>
+    /// Componente animator del player para la animación de hacerse daño
+    /// </summary>
+    private Animator _animator;
     private PlayerInvencible _scriptInvencible;
     private PlayerShield _scriptShield;
 
@@ -46,6 +48,7 @@ public class Vida : MonoBehaviour
     {
         _scriptInvencible = GetComponent<PlayerInvencible>();
         _scriptShield = GetComponent<PlayerShield>();
+        _animator = GetComponent<Animator>();
         if (GameManager.HasInstance())
         {
             GameManager.Instance.MuestraVida(Vidas);
@@ -89,7 +92,6 @@ public class Vida : MonoBehaviour
         if (Vidas <= 0)
         {
             if (GameManager.HasInstance()) GameManager.Instance.MostrarGameOver();
-            Time.timeScale = 0;
             gameObject.SetActive(false);
         }
 
@@ -98,6 +100,11 @@ public class Vida : MonoBehaviour
             if (_scriptInvencible != null)
             {
                 _scriptInvencible.enabled = true;
+            }
+            // Comienza animación de daño
+            if (_animator != null)
+            {
+                _animator.SetTrigger("HurtTrigger");
             }
         }
         return true;
