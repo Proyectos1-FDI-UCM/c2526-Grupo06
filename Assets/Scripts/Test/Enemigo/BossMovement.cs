@@ -19,9 +19,6 @@ public class BossMovement : MonoBehaviour
     #region Atributos del Inspector (serialized fields)
 
     [SerializeField]
-    private float Velocidad;
-
-    [SerializeField]
     private float TiempoPausa = 1f; // tiempo que se queda parado el boss al realizar un ataque
 
     [SerializeField]
@@ -58,7 +55,12 @@ public class BossMovement : MonoBehaviour
 
     private float _intialPositionY; //posición inicial del boss en el eje Y
     private float _amplitudMov = 2.5f; // amplitud del movimiento del boss, es aprox 1/3 de la altura del escenario
-    
+    private float _velocidadMov; // velocidad del movimiento del boss
+    private float _defaultVel; // velocidad por defecto del movimiento del boss
+    private float _chargedVel; // velocidad del movimiento del boss para el ataque cargado, es más rápido para compensar las pausas
+
+    private Fases _fases; // referencia al script de fases
+
     // posiciones en las que se puede para el boss
     private float _topPosition; // posición superior del movimiento del boss
     private float _middlePosition; // posición media del movimiento del boss
@@ -80,6 +82,11 @@ public class BossMovement : MonoBehaviour
         _topPosition = _intialPositionY + _amplitudMov;
         _middlePosition = _intialPositionY;
         _bottomPosition = _intialPositionY - _amplitudMov;
+
+        _fases = GetComponent<Fases>(); // obtiene la referencia al script de fases
+        _defaultVel = CalculaVel(_amplitudMov, _fases.GetNumPatronPerSecond()); // calcula la velocidad del movimiento del boss por defecto
+        _chargedVel = CalculaChargedVel(_amplitudMov, _fases.GetNumPatronPerSecond(), TiempoPausa); // calcula la velocidad para el ataque cargado
+
     }
 
     /// <summary>
@@ -90,15 +97,19 @@ public class BossMovement : MonoBehaviour
         switch (TipoMovimiento)
         {
             case TypeMov.Default:
+                _velocidadMov = _defaultVel;
                 MovimientoDefault();
                 break;
             case TypeMov.AtaqueCargado:
+                _velocidadMov = _chargedVel;
                 MovimientoAtaqueCargado();
                 break;
             case TypeMov.AtaqueVerticalUp:
+                _velocidadMov = _defaultVel;
                 MovimientoAtaqueVertical(-1);
                 break;
             case TypeMov.AtaqueVerticalDown:
+                _velocidadMov = _defaultVel;
                 MovimientoAtaqueVertical(1);
                 break;
         }
@@ -107,7 +118,7 @@ public class BossMovement : MonoBehaviour
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
-    #region Métodos públicos
+    #region Métodos Públicos
 
     /// <summary>
     /// Cambia el patrón al movimiento por defecto, que es el movimiento normal del boss, sin pausas ni teletransportes
@@ -147,7 +158,7 @@ public class BossMovement : MonoBehaviour
     /// </summary>
     public float GetCurrentAmpTime()
     {
-        return _amplitudMov / Velocidad;
+        return _amplitudMov / _velocidadMov;
     }
 
     #endregion
@@ -160,7 +171,7 @@ public class BossMovement : MonoBehaviour
     /// </summary>
     private void MovimientoDefault()
     {
-        _unclampedTime += Time.deltaTime * Velocidad; // tiempo del movimiento
+        _unclampedTime += Time.deltaTime * _velocidadMov; // tiempo del movimiento
         SimplificaUnclampedTime(_unclampedTime); // se simplifica el tiempo sin limitar para que no se vuelva demasiado grande
         // Movimiento de balanceo de arriba a abajo
         float nuevaPosicionY = _intialPositionY + _amplitudMov * Mathf.Sin(_unclampedTime);
@@ -177,7 +188,7 @@ public class BossMovement : MonoBehaviour
     {
         if (!_isPaused) 
         {
-            _unclampedTime += Time.deltaTime * Velocidad; // tiempo del movimiento
+            _unclampedTime += Time.deltaTime * _velocidadMov; // tiempo del movimiento
             SimplificaUnclampedTime(_unclampedTime); // se simplifica el tiempo sin limitar para que no se vuelva demasiado grande
             float pos = Mathf.Sin(_unclampedTime); // posición del movimiento, es un valor entre -1 y 1
             if (pos > 0)
@@ -203,6 +214,10 @@ public class BossMovement : MonoBehaviour
         }
 
     }
+
+    /// <summary>
+    /// Comprueba si el boss ha llegado a los puntos clave
+    /// </summary>
     private void CheckAllCheckpoints(float pos, int lastCheckpoint)
     {
         float margin = 0.05f; // le damos un margen de error al pobre que es un float
@@ -223,7 +238,7 @@ public class BossMovement : MonoBehaviour
     {
         if (!_isPaused)
         {
-            _unclampedTime += Time.deltaTime * Velocidad; // tiempo del movimiento
+            _unclampedTime += Time.deltaTime * _velocidadMov; // tiempo del movimiento
             SimplificaUnclampedTime(_unclampedTime); // se simplifica el tiempo sin limitar para que no se vuelva demasiado grande
             float pos = Mathf.Sin(_unclampedTime); // posición del movimiento, es un valor entre -1 y 1
             if (pos > 0)
@@ -276,6 +291,33 @@ public class BossMovement : MonoBehaviour
     private float SimplificaUnclampedTime(float unclampedTime)
     {
         return Mathf.RoundToInt(unclampedTime / (2 * Mathf.PI));
+    }
+
+    /// <summary>
+    /// Calcula la velocidad del movimiento del boss
+    /// </summary>
+    private float CalculaVel(float amp, float numPatronesPerSec)
+    {
+        return (Mathf.PI * amp) / (2 * numPatronesPerSec);
+    }
+
+    /// <summary>
+    /// Calcula la velocidad del movimiento del boss para el ataque cargado, teniendo en cuenta el tiempo de pausa, para que el movimiento siga siendo el mismo a pesar de las pausas
+    /// </summary>
+    private float CalculaChargedVel(float amp, float numPatronesPerSec, float tiempoPausa)
+    {
+        // se calcula el tiempo total del movimiento con pausas, que es el tiempo del movimiento sin pausas más el tiempo de las pausas
+        float tiempoTotal = (CalculaVel(amp, numPatronesPerSec) * 4) + (tiempoPausa * 3); // se multiplican por 4 y 3 porque hay 4 movimientos y 3 pausas en el ciclo completo
+        return (Mathf.PI * amp) / (2 * (tiempoTotal / 4)); // se divide el tiempo total entre 4 para obtener el tiempo de cada movimiento, y se calcula la velocidad en base a ese tiempo
+    }
+
+    /// <summary>
+    /// Cambia la velocidad del movimient actual
+    /// </summary>
+    private float ChangeVel(float newVel)
+    {
+        _velocidadMov = newVel;
+        return _velocidadMov;
     }
 
     #endregion   

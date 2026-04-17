@@ -400,6 +400,11 @@ public class Fases : MonoBehaviour
         return _faseActual;
     }
 
+    public float GetNumPatronPerSecond()
+    {
+        return PatronPerSecond;
+    }
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
