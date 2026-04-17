@@ -185,6 +185,8 @@ MonoBehaviour:
   Periodo: 1
   Gravity: 0
   GravityStrenght: -8
+  balaRecogible: {fileID: 3980627167924243046, guid: 204be6acbf880d34e959c8883785f216, type: 3}
+  balaDanio: {fileID: -6761029499975241720, guid: 41068e458eec667439a29e26a2bdfbb3, type: 3}
 --- !u!114 &8466413577338162415
 MonoBehaviour:
   m_ObjectHideFlags: 0
