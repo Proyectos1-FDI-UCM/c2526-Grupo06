@@ -20,11 +20,6 @@ public class Vida : MonoBehaviour
 
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // públicos y de inspector se nombren en formato PascalCase
-    // (palabras con primera letra mayúscula, incluida la primera letra)
-    // Ejemplo: MaxHealthPoints
 
 
     [SerializeField]
@@ -34,14 +29,7 @@ public class Vida : MonoBehaviour
 
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
-    // Documentar cada atributo que aparece aquí.
-    // El convenio de nombres de Unity recomienda que los atributos
-    // privados se nombren en formato _camelCase (comienza con _, 
-    // primera palabra en minúsculas y el resto con la 
-    // primera letra en mayúsculas)
-    // Ejemplo: _maxHealthPoints
-
-    private static int _maximoVidas = 6; //el máximo de vidas que puede tener el jugador
+    private const int _maximoVidas = 6; //el máximo de vidas que puede tener el jugador
 
     private PlayerInvencible _scriptInvencible;
     private PlayerShield _scriptShield;
@@ -50,11 +38,6 @@ public class Vida : MonoBehaviour
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
-    // Por defecto están los típicos (Update y Start) pero:
-    // - Hay que añadir todos los que sean necesarios
-    // - Hay que borrar los que no se usen 
-
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
@@ -73,20 +56,17 @@ public class Vida : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
     public bool ActualizarVidas(int delta)
     {
-        // Mecánica escudo
-        if (_scriptShield != null) // Programación defensiva
+        // Mecánica escudo, solo se activa si se hace daño al jugador
+        if (_scriptShield != null && delta < 0) // +Programación defensiva
         {
-            if (_scriptShield.GetShieldState()) // Si tiene el escudo activo 
+            // Pregunta si tiene el escudo activo 
+            if (_scriptShield.GetShieldState()) 
             {
-                _scriptShield.ShieldAttack(); // Hace el screen clean del escudo
-                return false; // return temporal, luego lo cambio
+                // Hace el screen clean del escudo
+                _scriptShield.ShieldAttack(); 
+                return false;
             }
         }
         if (delta < 0 && _scriptInvencible != null && _scriptInvencible.enabled)
