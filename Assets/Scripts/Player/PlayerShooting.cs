@@ -17,8 +17,14 @@ public class PlayerShooting : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
+    /// <summary>
+    /// Prefab de bala que disparara el player
+    /// </summary>
     [SerializeField]
     private GameObject Bullet;
+    /// <summary>
+    /// Cadencia entre bala y bala cuando el jugador dispara mas de una
+    /// </summary>
     [SerializeField]
     private float Cadence = 0.2f;
     #endregion
@@ -111,11 +117,6 @@ public class PlayerShooting : MonoBehaviour
 
     // ---- MÉTODOS PÚBLICOS ----
     #region Métodos públicos
-    // Documentar cada método que aparece aquí con ///<summary>
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
-    // Ejemplo: GetPlayerController
     public bool IsShooting() //(Añadido de Adán) Permite al RecogeMunición conocer el estado del disparo
     {
         return _isShooting;
@@ -129,10 +130,6 @@ public class PlayerShooting : MonoBehaviour
 
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
-    // Documentar cada método que aparece aquí
-    // El convenio de nombres de Unity recomienda que estos métodos
-    // se nombren en formato PascalCase (palabras con primera letra
-    // mayúscula, incluida la primera letra)
     /// <summary>
     /// Método disparar, instancia un GameObject en el jugador y guarda el tiempo de disparo
     /// </summary>
