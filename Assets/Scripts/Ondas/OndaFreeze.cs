@@ -34,7 +34,6 @@ public class OndaFreeze : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private MonoBehaviour _component;
 
     #endregion
 
@@ -47,22 +46,21 @@ public class OndaFreeze : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //LLama a la funcion AddFreezeTime de las balas o jugadores que interactuen con el objeto.
     {
-        _component = collision.gameObject.GetComponent<BulletsMovement>();
-        if (_component != null)// Bala enemiga o pickup de municion en contacto
+        BulletsMovement _bulletEnemy = collision.gameObject.GetComponent<BulletsMovement>();
+        if (_bulletEnemy != null)// Bala enemiga o pickup de municion en contacto
         {
-                collision.gameObject.GetComponent<BulletsMovement>().AddFreezeTime(FreezeTime);
+            _bulletEnemy.AddFreezeTime(FreezeTime);
         }
         else
         {
-            _component = collision.gameObject.GetComponent<PlayerBulletMovement>();
-            if (_component != null)// Bala aliada en contacto
+            PlayerBulletMovement  _bulletPlayer= collision.gameObject.GetComponent<PlayerBulletMovement>();
+            if (_bulletPlayer != null)// Bala aliada en contacto
             {
-                collision.gameObject.GetComponent<PlayerBulletMovement>().AddFreezeTime(FreezeTime);
+                _bulletPlayer.AddFreezeTime(FreezeTime);
             }
             else
             {
-                _component = collision.gameObject.GetComponent<PlayerControler>();
-                if (_component != null)//Jugador en contacto
+                if (collision.gameObject.GetComponent<PlayerControler>() != null)//Jugador en contacto
                 {
                         collision.gameObject.GetComponent<PlayerControler>().AddFreezeTime(FreezeTime);
                         collision.gameObject.GetComponent<PlayerShooting>().AddFreezeTime(FreezeTime);

@@ -1,11 +1,11 @@
 //---------------------------------------------------------
-// Permite al objeto ser recogido por otro que tenga el componente "RecogeMunicion" y otorga la cantidad de munición establecida
-// Creado con la única intención de facilitar ducktyping y en habilitar la posibilidad de crear pickups de munición con diferentes cantidad de munición.
-// Adán Calvo Durán
-// Dream O'SpaceSheep
+// Breve descripción del contenido del archivo
+// Responsable de la creación de este archivo
+// Nombre del juego
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Runtime.CompilerServices;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -14,7 +14,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class OtorgaMunicion : MonoBehaviour
+public class SoundEffectsManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -24,8 +24,7 @@ public class OtorgaMunicion : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField]
-    private int MuncionOtorgada = 1; //Muncición otorgada al recoger este objeto;
-
+    private AudioSource SoundFXobject;
     #endregion
     
     // ---- ATRIBUTOS PRIVADOS ----
@@ -37,14 +36,27 @@ public class OtorgaMunicion : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
+    public static SoundEffectsManager instance;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
+    private void Awake()
+    {
+        if (instance != null) 
+        {
+            DestroyImmediate(this);
+        }
+        else
+        { 
+            instance = this; 
+        }
+    }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -55,17 +67,37 @@ public class OtorgaMunicion : MonoBehaviour
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
 
-    /// <summary>
-    /// Devuelve el valor de municion otorgada por el objeto
-    /// </summary>
-    /// <returns></returns>
-    public int ReturnAmo() //Permite a otro componente obtener la cantidad de munición.
+    public void PlaySoundFXClip(AudioClip audioClip, Transform soundPosition, float volume)
     {
-        return MuncionOtorgada;
+        //Instancia del objeto con el sonido
+        AudioSource audioSource = Instantiate(SoundFXobject, soundPosition.position, Quaternion.identity);
+        //Asignamos el clip de sonido
+        audioSource.clip = audioClip;
+        //Configuramos  el volumen del sonido
+        audioSource.volume = volume;
+        //Reproducimos el sonido
+        audioSource.Play();
+        //Destruimos el objeto tras la duración del clip de audio
+        float clipDuration = audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipDuration);
     }
 
+    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform soundPosition, float volume)
+    {
+        //Instancia del objeto con el sonido
+        AudioSource audioSource = Instantiate(SoundFXobject, soundPosition.position, Quaternion.identity);
+        //Asignamos el clip de sonido, elegidiendo uno aleatorio del array
+        audioSource.clip = audioClip[Random.Range(0,audioClip.Length)];
+        //Configuramos  el volumen del sonido
+        audioSource.volume = volume;
+        //Reproducimos el sonido
+        audioSource.Play();
+        //Destruimos el objeto tras la duración del clip de audio
+        float clipDuration = audioSource.clip.length;
+        Destroy(audioSource.gameObject, clipDuration);
+    }
     #endregion
-    
+
     // ---- MÉTODOS PRIVADOS ----
     #region Métodos Privados
     // Documentar cada método que aparece aquí
@@ -73,7 +105,7 @@ public class OtorgaMunicion : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
 
-    #endregion   
+    #endregion
 
-} // class OtorgaMunicion 
+} // class SoundEffectsManager 
 // namespace

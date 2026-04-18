@@ -19,6 +19,9 @@ public class PlayerBulletCollision : MonoBehaviour
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
     // No hay
+    // (Update) Ahora si hay
+    [SerializeField]
+    private AudioClip[] SonidosInpacto;
 
     #endregion
 
@@ -68,6 +71,8 @@ public class PlayerBulletCollision : MonoBehaviour
     /// </summary>
     private void DestroyPlayerBullet()
     {
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidosInpacto, transform, 1f); 
+        
         Destroy(gameObject); // adios pookie
     }
 
