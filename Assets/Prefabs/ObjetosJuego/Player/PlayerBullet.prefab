@@ -195,6 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SonidosInpacto:
-  - {fileID: 8300000, guid: 82007ed0f1a3b984fabce525b098fe4c, type: 3}
-  - {fileID: 8300000, guid: b89a0cac87c624049a452480ebba7057, type: 3}
-  - {fileID: 8300000, guid: 55d105b8a55debf48a31d496f0c7f3b5, type: 3}
+  - {fileID: 8300000, guid: e3ceec3907f7d60428857963e7ba435b, type: 3}
+  - {fileID: 8300000, guid: 77e64ed982599e44bb0824112bf51879, type: 3}
+  - {fileID: 8300000, guid: 43ef51c8d205f504cafa70c728de4c6b, type: 3}
