@@ -69,7 +69,7 @@ public class PlayerInvencible : MonoBehaviour
     private void OnDisable()
     {
         // Devuelve el color original al player
-        if (PlayerSprite != null) { PlayerSprite.color = Color.white; Debug.Log("Cambio el color a " + Color.white); }
+        if (PlayerSprite != null) { PlayerSprite.color = Color.white; }
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
