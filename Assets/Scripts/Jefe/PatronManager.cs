@@ -54,35 +54,6 @@ public class PatronManager : MonoBehaviour
         _movimiento = this.GetComponent<BossMovement>();
         _cadencia = _movimiento.GetCurrentAmpTime() / _numTotal;
     }
-    /// <summary>
-    /// Este update contiene la lógica de los patrones horizontal y barrido
-    /// Para que el update no gaste muchos recursos, sólo ejecuta código si
-    /// uno de los dos patrones están activos y el número de balas instanciadas
-    /// es menor al del total de balas que tiene que instanciar
-    /// </summary>
-    private void Update()
-    {
-        if ((_barrido ^ _horiz) && _indice < _numTotal)
-        {
-            if (_acelera) _numTotal = 16;
-
-            if (!pedido)
-            {
-                _cadencia = _movimiento.GetCurrentAmpTime() / _numTotal;
-                pedido = true;
-            }
-
-            _timerCad += Time.deltaTime;
-
-        }
-        if (_indice >= _numTotal || !_barrido && !_horiz)
-        {
-            _horiz = false;
-            _barrido = false;
-            _indice = 0;
-            pedido = false;
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -191,13 +162,29 @@ public class PatronManager : MonoBehaviour
     /// </summary>
     public void PatronBarrida(bool acelera, bool curvo)
     {
+        float altura = 0f;
+        float lados;
+        float x = Random.value;
         _movimiento.ChangeToDefault();
-        _barrido = true;
-        _acelera = acelera;
-        _curvo = curvo;
-        _numRandom = Random.value;
 
-        _movimiento = this.GetComponent<BossMovement>();
+        for (int i = 0; i < 3; i++)
+        {
+            lados = CalcularFuncion(i, transform.position.x);
+            _posInst = new Vector3(lados, 2.8f + altura, transform.position.z);
+            Vector3 second = new Vector3(lados, -2.8f + -altura, transform.position.z);
+
+            spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
+            spawned1 = Instantiate(BulletNormal, second, transform.rotation);
+
+            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+            if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
+            if (i < 3 && x <= 0.5f)
+            {
+                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                spawned.GetComponent<OtorgaMunicion>().enabled = true;
+            }
+            altura = altura + 0.6f;
+        }
     }
     /// <summary>
     /// Método que spawnea las ondas que el jefe lanza 
