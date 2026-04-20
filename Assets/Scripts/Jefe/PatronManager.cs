@@ -32,7 +32,7 @@ public class PatronManager : MonoBehaviour
     private float _timerCad = 0f;   //timer para medir tiempo
     private GameObject _boss;       //el gameobject boss
     private Vector3 _posInst;       //posicion de instanciamiento
-    private GameObject spawned;     //variable gameobject para la bala instanciada
+    private GameObject spawned, spawned1;     //variable gameobject para la bala instanciada
     private bool _horiz = false, _barrido = false, _acelera, _curvo; //parametros para el update
     private int _numTotal = 12, _indice;     //numero de balas a instanciar para patrones barrida y horizontal e indice
     private float _numRandom;
@@ -74,51 +74,6 @@ public class PatronManager : MonoBehaviour
 
             _timerCad += Time.deltaTime;
 
-            if (_timerCad >= _cadencia)
-            {
-                //spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
-
-                spawned.TryGetComponent(out BulletsMovement bullet);
-                if ((_acelera ^ _curvo) && bullet != null)
-                {
-                    bullet.SelectBulletType(_acelera, _curvo);
-                }
-                //Lógica para el patrón horizontal
-                if (_horiz)
-                {
-                    float baseX = transform.position.x - 1.5f;
-                    float baseY = transform.position.y - 0.25f;
-
-                    Instantiate(BulletNormal, new Vector3(baseX, baseY, 0), transform.rotation);
-                    Instantiate(BulletNormal, new Vector3(baseX, baseY + 0.5f, 0), transform.rotation);
-
-                    if (_horiz && _indice > _numTotal / 2 && _numRandom <= 0.5f) //pickup munición horizontal
-                    {
-                        spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                        spawned.GetComponent<OtorgaMunicion>().enabled = true;
-                    }
-
-                    _indice++;
-                }
-                //Lógica para el patrón de barrido
-                else if (_barrido)
-                {
-                    Debug.Log("barrido");
-                    float baseX = transform.position.x - 1.5f;
-
-                    Instantiate(BulletNormal, new Vector3(baseX, transform.position.y, 0), transform.rotation);
-
-                    if (_barrido && _indice % 4 >= 2 && _numRandom <= 0.5f) //pickup munición barrido
-                    {
-                        spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                        spawned.GetComponent<OtorgaMunicion>().enabled = true;
-                    }
-
-                    _indice++;
-                }
-
-                _timerCad = 0f;
-            }
         }
         if (_indice >= _numTotal || !_barrido && !_horiz)
         {
@@ -198,13 +153,38 @@ public class PatronManager : MonoBehaviour
     /// </summary>
     public void PatronHorizontal(bool acelera, bool curvo)
     {
-        _movimiento.ChangeToAtaqueCargado();
-        _horiz = true;
-        _acelera = acelera;
-        _curvo = curvo;
-        _numRandom = Random.value;
+        float baseX = transform.position.x - 1.5f;
+        float baseY = transform.position.y - 1.5f;
+        float j = Random.value;
 
-        _movimiento = this.GetComponent<BossMovement>();
+
+        for (int i = 0; i < 6; i++)
+        {
+            float x = baseX + i * 0.5f;
+
+            _posInst = new Vector3(x, baseY, transform.position.z);
+            spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
+            spawned1 = Instantiate(BulletNormal, new Vector3(x, baseY + 0.5f, transform.position.z), transform.rotation);
+
+            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+            if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
+
+            spawned1.TryGetComponent<BulletsMovement>(out BulletsMovement bullet1);
+            if (acelera ^ curvo && bullet1 != null) bullet1.SelectBulletType(acelera, curvo);
+
+            if (i < 3 && j <= 0.5f)
+            {
+                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                spawned.GetComponent<OtorgaMunicion>().enabled = true;
+
+
+                spawned1.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                spawned1.GetComponent<OtorgaMunicion>().enabled = true;
+            }
+             
+        }
+
+        
     }
     /// <summary>
     /// Patrón que sirve para activar el patrón barrido en el update
