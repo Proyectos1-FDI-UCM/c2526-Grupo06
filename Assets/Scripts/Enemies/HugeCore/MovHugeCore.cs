@@ -24,6 +24,8 @@ public class MovHugeCore : MonoBehaviour
     private float _posX;             //posición X hasta la cual debe de llegar
     [SerializeField]
     private float _vel = 4f;         // Velocidad de movimiento del enemigo
+    [SerializeField]
+    private Animator _animator;      //Animador del propio enemigo
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -89,6 +91,10 @@ public class MovHugeCore : MonoBehaviour
             if (_timerCad >= _cadencia)
             {
                 Disparar();
+                if (_animator != null)
+                {
+                    _animator.SetTrigger("subtrigger");
+                }
                 _timerCad = 0f;
             }
         }

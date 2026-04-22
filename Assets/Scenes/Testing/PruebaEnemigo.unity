@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1008013549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +349,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
+  _intercambia: {fileID: 0}
+  _gravedad: {fileID: 0}
+  _paraliza: {fileID: 0}
 --- !u!212 &1008013550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -431,7 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adf723363a3a144794ad2e5a5031ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidad: 1
   TiempoPausa: 1
   TipoMovimiento: 0
 --- !u!1001 &1496467765
@@ -521,6 +523,12 @@ MonoBehaviour:
   BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
   _posX: 2
   _vel: 2
+  _animator: {fileID: 1653127143}
+--- !u!95 &1653127143 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -2367763882416215642, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
+  m_PrefabInstance: {fileID: 2718001794568703838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1746941322
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,9 +562,16 @@ MonoBehaviour:
   Boss: {fileID: 1008013548}
   TextoVida: {fileID: 0}
   PanelGameover: {fileID: 0}
-  TextoAMMO: {fileID: 0}
+  PanelVictory: {fileID: 0}
+  SpritesVidas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ProgresionManager: {fileID: 0}
   PanelPausa: {fileID: 0}
+  PanelAjustes: {fileID: 0}
 --- !u!4 &1746941324
 Transform:
   m_ObjectHideFlags: 0
@@ -638,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2724237237191935932, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6671212269335025863, guid: f1871390dcce7d542829dd104ea721b3, type: 3}
       propertyPath: _cam
