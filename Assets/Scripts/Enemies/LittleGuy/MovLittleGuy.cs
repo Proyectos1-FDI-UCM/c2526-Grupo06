@@ -23,6 +23,9 @@ public class MovLittleGuy : MonoBehaviour
 
     [SerializeField] private Animator _animator; //Animador del propio enemigo
 
+    [SerializeField]
+    private AudioClip[] SonidoDisparoLittleGuy;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -113,6 +116,8 @@ public class MovLittleGuy : MonoBehaviour
     private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
         GameObject spawned = Instantiate(_littleBullet, transform.position, Quaternion.Euler(0, 0, 0));
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidoDisparoLittleGuy, transform, 1f);
+
         if (Random.value <= 0.4f)
         {
             spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;

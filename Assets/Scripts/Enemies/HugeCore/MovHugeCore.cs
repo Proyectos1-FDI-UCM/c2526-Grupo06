@@ -26,6 +26,9 @@ public class MovHugeCore : MonoBehaviour
     private float _vel = 4f;         // Velocidad de movimiento del enemigo
     [SerializeField]
     private Animator _animator;      //Animador del propio enemigo
+
+    [SerializeField]
+    private AudioClip[] SonidoDisparoHugeCore;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -135,6 +138,8 @@ public class MovHugeCore : MonoBehaviour
         float x = Random.value;
         for (int i = 0; i < 4; i++)
         {
+            if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidoDisparoHugeCore, transform, 1f);
+
             //Para balas de los extremos
             if (i == 0 || i == 3)
             {

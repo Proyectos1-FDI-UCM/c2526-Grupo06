@@ -21,6 +21,10 @@ public class EnemyBulletCleaner : MonoBehaviour
     private float GrowSpeed = 30f; // Velocidad de crecimiento
     [SerializeField]
     private float GrowTime = 1f; // Tiempo de crecimiento
+
+    [SerializeField]
+    private AudioClip[] SonidoLimpiarBalas;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -62,6 +66,8 @@ public class EnemyBulletCleaner : MonoBehaviour
             // Si el script de daño existe y está activo, destruye la bala
             if (dp != null && dp.enabled)
             {
+                if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidoLimpiarBalas, transform, 1f);
+
                 bp.DestroyBullet();
             }
         }

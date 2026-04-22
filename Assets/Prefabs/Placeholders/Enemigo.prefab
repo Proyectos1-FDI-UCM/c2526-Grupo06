@@ -121,6 +121,8 @@ MonoBehaviour:
   BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
   puntoDisparo: {fileID: 1445746516341859148}
   tiempoEntreDisparos: 0.8
+  SonidoDisparoLittleGuy:
+  - {fileID: 8300000, guid: c09b36128465f7d448c83939471969a0, type: 3}
 --- !u!50 &8949825214289205311
 Rigidbody2D:
   serializedVersion: 5

@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23aca60e35749e94ea0a41c263dacd61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SonidosInpacto:
+  SonidosImpacto:
   - {fileID: 8300000, guid: e3ceec3907f7d60428857963e7ba435b, type: 3}
   - {fileID: 8300000, guid: 77e64ed982599e44bb0824112bf51879, type: 3}
   - {fileID: 8300000, guid: 43ef51c8d205f504cafa70c728de4c6b, type: 3}

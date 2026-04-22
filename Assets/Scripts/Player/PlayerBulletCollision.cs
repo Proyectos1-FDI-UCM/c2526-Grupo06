@@ -21,7 +21,7 @@ public class PlayerBulletCollision : MonoBehaviour
     // No hay
     // (Update) Ahora si hay
     [SerializeField]
-    private AudioClip[] SonidosInpacto;
+    private AudioClip[] SonidosImpacto;
 
     #endregion
 
@@ -71,7 +71,7 @@ public class PlayerBulletCollision : MonoBehaviour
     /// </summary>
     private void DestroyPlayerBullet()
     {
-        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidosInpacto, transform, 1f); 
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidosImpacto, transform, 1f); 
         
         Destroy(gameObject); // adios pookie
     }

@@ -34,6 +34,7 @@ public class PlayerShield : MonoBehaviour
     /// </summary>
     [SerializeField]
     private SpriteRenderer ShieldSprite;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----

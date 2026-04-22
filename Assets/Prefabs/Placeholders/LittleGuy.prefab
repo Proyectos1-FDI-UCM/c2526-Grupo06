@@ -184,6 +184,8 @@ MonoBehaviour:
   - {fileID: 8292450542019962312, guid: 3a7b08f3c4880b5438aca47f0c1cd3d2, type: 3}
   - {fileID: 2102399660543291952, guid: 85886df6946615a49b87a7f5371b8c2d, type: 3}
   ProbabilidadDrop: 50
+  SonidoSpawnPowerUp:
+  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}
 --- !u!114 &31272575592928344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _littleBullet: {fileID: 4541950960163187118, guid: deb0edfc169a9cb4d9bf040be8efd568, type: 3}
   _animator: {fileID: -9189103808015973946}
+  SonidoDisparoLittleGuy:
+  - {fileID: 8300000, guid: c09b36128465f7d448c83939471969a0, type: 3}
 --- !u!114 &-6409636212588443166
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,11 @@ public class DisparoEnemigo : MonoBehaviour
     private Transform puntoDisparo;  // Punto de disparo del enemigo
     [SerializeField]
     private float tiempoEntreDisparos = 2f;
+
+    [SerializeField]
+    private AudioClip[] SonidoDisparoLittleGuy;
+
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -94,6 +99,8 @@ public class DisparoEnemigo : MonoBehaviour
     private void Disparar() //Instancia un proyectil desde el punto de disparo del enemigo.
     {
         Instantiate(BulletNormal, puntoDisparo.position, puntoDisparo.rotation);
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidoDisparoLittleGuy, transform, 1f);
+
     }
 
     public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación

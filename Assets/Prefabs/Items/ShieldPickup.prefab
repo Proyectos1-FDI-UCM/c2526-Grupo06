@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickUp: 1
+  SonidoSpawnPowerUp:
+  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}
 --- !u!50 &8920278684834212126
 Rigidbody2D:
   serializedVersion: 5

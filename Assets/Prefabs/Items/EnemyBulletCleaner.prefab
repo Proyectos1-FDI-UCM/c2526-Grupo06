@@ -167,3 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrowSpeed: 30
   GrowTime: 1
+  SonidoSpawnPowerUp:
+  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}
+  SonidoLimpiarBalas:
+  - {fileID: 8300000, guid: 7f60437252871014dad0586f9195d764, type: 3}

@@ -31,6 +31,8 @@ public class VidaEnemigo : MonoBehaviour
     [SerializeField, Range(0, 100)]
     private float ProbabilidadDrop = 50f; // Probabilidad en % de que el enemigo suelte un power up al morir
 
+    [SerializeField]
+    private AudioClip[] SonidoSpawnPowerUp;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -92,7 +94,23 @@ public class VidaEnemigo : MonoBehaviour
     {
         SoltarPowerUp();
         if (GameManager.Instance != null) GameManager.Instance.EnemyKilled();
-        Destroy(gameObject);
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if(sr != null)
+        {
+            sr.enabled = false;
+        }
+        MovLittleGuy littleGuy = GetComponent<MovLittleGuy>();
+        if(littleGuy != null)
+        {
+            littleGuy.enabled = false;
+        }
+        MovHugeCore hugeCore = GetComponent<MovHugeCore>();
+        if (hugeCore != null)
+        {
+            hugeCore.enabled = false;
+        }
+
+        Destroy(gameObject, 1f);
     }
     private void SoltarPowerUp() // Método que se llama para soltar un power up al morir el enemigo
     {
@@ -103,6 +121,9 @@ public class VidaEnemigo : MonoBehaviour
             if (random <= ProbabilidadDrop)
             {
                 int indice = Random.Range(0, PowerUps.Length);
+
+                if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidoSpawnPowerUp, transform, 1f);
+
                 Instantiate(PowerUps[indice], transform.position, Quaternion.identity);
             }
         }

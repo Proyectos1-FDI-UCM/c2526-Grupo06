@@ -182,6 +182,8 @@ MonoBehaviour:
   _posX: 2
   _vel: 2
   _animator: {fileID: -2367763882416215642}
+  SonidoDisparoHugeCore:
+  - {fileID: 8300000, guid: 537d3dcf53f683745aff689e25f9267f, type: 3}
 --- !u!114 &1259365767746473472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +214,8 @@ MonoBehaviour:
   - {fileID: 8292450542019962312, guid: 3a7b08f3c4880b5438aca47f0c1cd3d2, type: 3}
   - {fileID: 2102399660543291952, guid: 85886df6946615a49b87a7f5371b8c2d, type: 3}
   ProbabilidadDrop: 100
+  SonidoSpawnPowerUp:
+  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}
 --- !u!95 &-2367763882416215642
 Animator:
   serializedVersion: 7

@@ -46,6 +46,7 @@ public class PlayerResize : MonoBehaviour
             }
         }
     }
+
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
