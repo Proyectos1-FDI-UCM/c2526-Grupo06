@@ -258,6 +258,11 @@ public class GameManager : MonoBehaviour
         if (Player != null) Player.gameObject.GetComponent<PlayerControler>().GameOver();
         if (PanelVictory != null)
             PanelVictory.SetActive(true);
+        if (PanelVictory == true && PanelGameover == true)
+        {
+            PanelGameover.SetActive(false);
+        }
+        Time.timeScale = 0f;
     }
 
     /// <summary>
