@@ -71,10 +71,7 @@ public class PlayerControler : MonoBehaviour
             _direction = _movementAction.ReadValue<Vector2>();
             if (_direction != Vector2.zero)
             {
-                if (_direction.x > 0) transform.Translate(FlySpeed * Time.deltaTime, 0, 0);
-                else if (_direction.x < 0) transform.Translate(-FlySpeed * Time.deltaTime, 0, 0);
-                if (_direction.y > 0) transform.Translate(0, FlySpeed * Time.deltaTime, 0);
-                else if (_direction.y < 0) transform.Translate(0, -FlySpeed * Time.deltaTime, 0);
+                transform.Translate(_direction.normalized * Time.deltaTime * FlySpeed);
 
                 //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xLimit, _xLimit), Mathf.Clamp(transform.position.y, -_yLimit, _yLimit), 0);
