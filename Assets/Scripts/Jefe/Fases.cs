@@ -68,7 +68,7 @@ public class Fases : MonoBehaviour
     {
         _patrones = this.GetComponent<PatronManager>();
         _movement = this.GetComponent<BossMovement>();
-        _casoAnterior = -1;
+        _casoAnterior = -2;
     }
 
     /// <summary>
@@ -139,27 +139,27 @@ public class Fases : MonoBehaviour
             case 18:; break;
             case 19:; break;
             */
-            case 4: _patrones.PatronSimple(false, false); break;
-            case 5:; break;
-            case 6: _patrones.PatronSimple(false, false); break;
-            case 7:; break;
+                case 4: _patrones.PatronSimple(false, false); break;
+                case 5:; break;
+                case 6: _patrones.PatronSimple(false, false); break;
+                case 7:; break;
 
-            case 8: _patrones.PatronBarrida(false, false); break;
-            case 9:; break;
-            case 10: _patrones.PatronBarrida(false, false); break;
-            case 11:; break;
+                case 8: _patrones.PatronBarrida(false, false); break;
+                case 9:; break;
+                case 10: _patrones.PatronBarrida(false, false); break;
+                case 11:; break;
 
-            case 12:; break;
-            case 13: _patrones.PatronHorizontal(false, false); break;
-            case 14:; break;
-            case 15: _patrones.PatronVertical(true, false, false); break;
+                case 12:; break;
+                case 13: _patrones.PatronHorizontal(false, false); break;
+                case 14:; break;
+                case 15: _patrones.PatronVertical(true, false, false); break;
 
-            case 16: _patrones.PatronSimple(false, false); break;
-            case 17: _patrones.PatronSimple(false, false); break;
-            case 18: _patrones.PatronSimple(false, false); break;
-            case 19: _patrones.PatronSimple(false, false); break;
+                case 16: _patrones.PatronSimple(false, false); break;
+                case 17: _patrones.PatronSimple(false, false); break;
+                case 18: _patrones.PatronSimple(false, false); break;
+                case 19: _patrones.PatronSimple(false, false); break;
             
-            case 20: _patrones.PatronSimple(false, false); break;
+                case 20: _patrones.PatronSimple(false, false); break;
                 case 21: _patrones.PatronBarrida(false, false); break;
                 case 22: _patrones.PatronSimple(false, false); break;
                 case 23: _patrones.PatronBarrida(false, false); break;

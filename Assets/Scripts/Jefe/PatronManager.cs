@@ -109,18 +109,20 @@ public class PatronManager : MonoBehaviour
         }
         for (float i = 0; i < 12; i++)
         {
-            GameObject spawned = Instantiate(BulletNormal, new Vector3(transform.position.x - _inicioX, _inicioY + i / 2 * order, 0), transform.rotation);
-            spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
-            if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
-            if (_x >= 0.5f && i < 6)
-            {
-                spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
-                spawned.GetComponent<OtorgaMunicion>().enabled = true;
-            }
+                GameObject spawned = Instantiate(BulletNormal, new Vector3(transform.position.x - _inicioX, _inicioY + i / 2 * order, 0), transform.rotation);
+                spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
+                if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
+                if (_x >= 0.5f && i < 6)
+                {
+                    spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;
+                    spawned.GetComponent<OtorgaMunicion>().enabled = true;
+                }
+
+            
         }
     }
     /// <summary>
-    /// Patrón que sirve para activar el patrón horizontal en el update
+    /// Método para el patrón horizontal
     /// </summary>
     public void PatronHorizontal(bool acelera, bool curvo)
     {
@@ -158,7 +160,7 @@ public class PatronManager : MonoBehaviour
         
     }
     /// <summary>
-    /// Patrón que sirve para activar el patrón barrido en el update
+    /// Método para patrón barrida (las balas se instancian el los topes de la pantalla de forma diagonal)
     /// </summary>
     public void PatronBarrida(bool acelera, bool curvo)
     {
