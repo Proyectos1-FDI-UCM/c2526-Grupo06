@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
@@ -42,7 +43,7 @@ public class PlayerShooting : MonoBehaviour
     public int _bulletCount;
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
     private RecogeMunicion _rMunicion;//(Añadido de Adán) esta variable es para cachear el componente recogemunición
-
+    private bool _infiniteAmmoDebug = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -92,7 +93,7 @@ public class PlayerShooting : MonoBehaviour
             // Comprobación de input
             if (_fireAction.WasPressedThisFrame() && !_isShooting)
             {
-                _bulletCount = _rMunicion.AmmoCount();
+                if (!_infiniteAmmoDebug) _bulletCount = _rMunicion.AmmoCount();
                 if (_bulletCount != 0)
                 {
                     _isShooting = true;
@@ -113,6 +114,10 @@ public class PlayerShooting : MonoBehaviour
                     }
                 }
             }
+            if (_infiniteAmmoDebug && !_isShooting)
+            {
+                _bulletCount = 5;
+            }
         }
         
     }
@@ -127,6 +132,10 @@ public class PlayerShooting : MonoBehaviour
     public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
     {
         _freezeTimer += freeze;
+    }
+    public void DebugAmmoInfinite()
+    {
+       _infiniteAmmoDebug = !_infiniteAmmoDebug;
     }
 
     #endregion
