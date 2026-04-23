@@ -35,6 +35,7 @@ public class Vida : MonoBehaviour
     private Animator _animator;
     private PlayerInvencible _scriptInvencible;
     private PlayerShield _scriptShield;
+    private bool _debugInmortalidad = false;
 
     #endregion
 
@@ -76,9 +77,7 @@ public class Vida : MonoBehaviour
         {
             return false; // ignoramos daño
         }
-
-        Vidas += delta; // aplicar vidaa
-
+        if (!_debugInmortalidad) Vidas += delta; // aplicar vidaa
         if (Vidas > _maximoVidas)
         {
             Vidas = _maximoVidas;
@@ -108,6 +107,10 @@ public class Vida : MonoBehaviour
             }
         }
         return true;
+    }
+    public void SwapInmortalDebug()
+    {
+        _debugInmortalidad = !_debugInmortalidad;
     }
     #endregion
 
