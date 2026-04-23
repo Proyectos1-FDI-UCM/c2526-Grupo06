@@ -25,6 +25,10 @@ public class RecogeMunicion : MonoBehaviour
     [SerializeField]
     private int MaxAMO = 5; //Munición máxima que el player podra obtener durante la partida
 
+
+    [SerializeField]
+    private AudioClip SonidoRecogeMunicion;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -91,7 +95,7 @@ public class RecogeMunicion : MonoBehaviour
 
     private void Addamo(int amount) //Este metodo suma la cantidad de munción ingresada a _currentAmo asegurandose de no sobrepasar el límite
     {
-        
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoRecogeMunicion, transform, 1f);
         if (!(_currentAmo >= MaxAMO))
         {
             _currentAmo = Mathf.Clamp((_currentAmo + amount), 0, MaxAMO);

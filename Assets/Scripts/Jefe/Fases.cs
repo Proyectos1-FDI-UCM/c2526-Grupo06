@@ -29,6 +29,9 @@ public class Fases : MonoBehaviour
     [SerializeField]
     private int NumPatrons = 48;
 
+    [SerializeField]
+    private AudioClip SonidoDisparoJefe;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----

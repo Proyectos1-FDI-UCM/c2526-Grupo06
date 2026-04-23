@@ -110,6 +110,7 @@ MonoBehaviour:
   BulletNormal: {fileID: 7571104255118729117, guid: 68bf993eea761c149802a03378dac81e, type: 3}
   puntoDisparo: {fileID: 4700715419149072551}
   tiempoEntreDisparos: 0.8
+  SonidoDisparoLittleGuy: []
 --- !u!50 &7076597656038190427
 Rigidbody2D:
   serializedVersion: 5
@@ -235,6 +236,8 @@ MonoBehaviour:
   _intercambia: {fileID: 691462382169448272, guid: c5480d9bb983e6341881becaecb7ba94, type: 3}
   _gravedad: {fileID: 5273697164822052583, guid: f35ef7dbdc17edc4586b38d3e562f8ea, type: 3}
   _paraliza: {fileID: 2799809426980598949, guid: 1347c8d6a8e8c7d4c8710439b6c406db, type: 3}
+  SonidoDisparoJefe: {fileID: 8300000, guid: 67a24b042db20624cb6c21296944f899, type: 3}
+  SonidoSpawnOnda: {fileID: 8300000, guid: ab4b59fde29894046a34438cd3b0b307, type: 3}
 --- !u!114 &6141466552763998509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatronPerSecond: 1
   NumPatrons: 48
+  SonidoDisparoJefe: {fileID: 0}
 --- !u!95 &2560567277839232618
 Animator:
   serializedVersion: 7

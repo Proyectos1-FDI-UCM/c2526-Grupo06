@@ -4641,6 +4641,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6012113104247243656, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: SonidoRecogeMunicion
+      value: 
+      objectReference: {fileID: 8300000, guid: b862a77906e358a4c8d1f5bd6d8efdc2, type: 3}
     - target: {fileID: 8176803611529647191, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
       propertyPath: BulletDestroyer
       value: 

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2ed8d14371e0346915292d22869fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidad: 5
+  Velocidad: 3.5
 --- !u!114 &6809608399172763870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,5 +193,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickUp: 0
-  SonidoSpawnPowerUp:
-  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}

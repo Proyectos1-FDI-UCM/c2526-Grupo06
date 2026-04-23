@@ -115,6 +115,11 @@ public class SoundEffectsManager : MonoBehaviour
         //Reproducimos el sonido
         _musicSource.Play();
     }
+
+    public void OnClick()
+    {
+
+    }
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----

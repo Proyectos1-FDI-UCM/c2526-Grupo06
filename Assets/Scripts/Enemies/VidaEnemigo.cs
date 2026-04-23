@@ -110,7 +110,7 @@ public class VidaEnemigo : MonoBehaviour
             hugeCore.enabled = false;
         }
 
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.1f);
     }
     private void SoltarPowerUp() // Método que se llama para soltar un power up al morir el enemigo
     {

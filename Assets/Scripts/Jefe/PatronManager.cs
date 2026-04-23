@@ -24,6 +24,12 @@ public class PatronManager : MonoBehaviour
     [SerializeField]
     private GameObject _paraliza;
 
+    [SerializeField]
+    private AudioClip SonidoDisparoJefe;
+
+    [SerializeField]
+    private AudioClip SonidoSpawnOnda;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -70,6 +76,7 @@ public class PatronManager : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
+            if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJefe, transform, 1f);
             lados = CalcularFuncion(i, transform.position.x);
             _posInst = new Vector3(lados, transform.position.y + altura, transform.position.z);
             spawned = Instantiate(BulletNormal, _posInst, transform.rotation);
@@ -94,7 +101,8 @@ public class PatronManager : MonoBehaviour
         float _x = Random.value; //Valor aleatorio para determinar si disparara o no pickups
         float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
         float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
-        int order = 0; //Variable que permite saber si las balas deben instanciarse de arriba abajo o vicebersa
+        int order = 0; //Variable que permite saber si las balas deben instanciarse de arriba abajo o viceversa
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJefe, transform, 1f);
         if (up)
         {
             _movimiento.ChangeToAtaqueVerticalUp();
@@ -133,6 +141,7 @@ public class PatronManager : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
+            if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJefe, transform, 1f);
             float x = baseX + i * 0.5f;
 
             _posInst = new Vector3(x, baseY, transform.position.z);
@@ -171,6 +180,7 @@ public class PatronManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
+            if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJefe, transform, 1f);
             lados = CalcularFuncion(i, transform.position.x);
             _posInst = new Vector3(lados, 2.8f + altura, transform.position.z);
             Vector3 second = new Vector3(lados, -2.8f + -altura, transform.position.z);
@@ -195,6 +205,7 @@ public class PatronManager : MonoBehaviour
     {
         float _inicioY = 0f; //Distancia desde donde spawnean las balas en y
         float _inicioX = 2f; //Distancia desde donde spawnean las balas en x
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoSpawnOnda, transform, 1f);
 
         switch (letra)
         {

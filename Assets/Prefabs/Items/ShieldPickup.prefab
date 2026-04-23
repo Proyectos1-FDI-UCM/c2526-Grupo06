@@ -105,8 +105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickUp: 1
-  SonidoSpawnPowerUp:
-  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}
 --- !u!50 &8920278684834212126
 Rigidbody2D:
   serializedVersion: 5
@@ -182,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb2ed8d14371e0346915292d22869fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Velocidad: 5
+  Velocidad: 3.5
 --- !u!1001 &7320104298586089928
 PrefabInstance:
   m_ObjectHideFlags: 0
