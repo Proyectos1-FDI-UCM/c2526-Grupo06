@@ -30,8 +30,12 @@ public class SoundEffectsManager : MonoBehaviour
     private AudioSource MusicObjet;
     [SerializeField]
     private AudioClip[] Musics;
+
+    // añadido de javier para los sfx de los botones de los menús
+    [SerializeField]
+    private AudioClip SonidoClicarBoton;
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -55,11 +59,12 @@ public class SoundEffectsManager : MonoBehaviour
     {
         if (instance != null) 
         {
-            DestroyImmediate(this);
+            Destroy(gameObject);
         }
         else
         { 
             instance = this;
+            DontDestroyOnLoad(gameObject);
             if (Musics != null && Musics.Length > 0 && Musics[0] != null) PlayMusic(0, 1);
         }
     }
@@ -116,9 +121,23 @@ public class SoundEffectsManager : MonoBehaviour
         _musicSource.Play();
     }
 
+    // método que lo que hace es hacer que al clicar un botón este tenga un efecto de sonido
     public void OnClick()
     {
+        if (SonidoClicarBoton != null)
+        {
+            // instanciamos el sonido para que al cambiar de escena no desaparezca
+            AudioSource audioSource = Instantiate(SoundFXobject, transform.position, Quaternion.identity);
+            audioSource.clip = SonidoClicarBoton;
+            audioSource.volume = 1;
+            audioSource.Play();
 
+            // sonido persistente entre escenas
+            DontDestroyOnLoad(audioSource.gameObject);
+
+            // la escena se destruye cuando el sonido se ha escuchado
+            Destroy(audioSource.gameObject, SonidoClicarBoton.length);
+        }
     }
     #endregion
 
