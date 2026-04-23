@@ -27,6 +27,9 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     [SerializeField]
     private float Cadence = 0.2f;
+
+    [SerializeField]
+    private AudioClip SonidoDisparoJugador;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -135,6 +138,7 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJugador, transform, 1f);
         // Animación de disparo
         if (_animator != null) { _animator.SetTrigger("ShootTrigger"); }
         _lastShot = Time.time; // Guarda el momento del disparo como último disparo
