@@ -47,3 +47,4 @@ MonoBehaviour:
   SoundFXobject: {fileID: 2047875399493698663, guid: a9e1fe73242d27e4e8498f4135c8b6cd, type: 3}
   MusicObjet: {fileID: 2047875399493698663, guid: 70ff205319a97264887f20ac886c6d05, type: 3}
   Musics: []
+  SonidoClicarBoton: {fileID: 8300000, guid: 8225d8b034b42d14fb82720bb8a8af97, type: 3}

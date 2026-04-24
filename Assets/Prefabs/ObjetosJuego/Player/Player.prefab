@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxAMO: 5
+  SonidoRecogeMunicion: {fileID: 8300000, guid: b862a77906e358a4c8d1f5bd6d8efdc2, type: 3}
 --- !u!114 &8756156899856056065
 MonoBehaviour:
   m_ObjectHideFlags: 0
