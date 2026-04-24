@@ -190,6 +190,8 @@ public class PatronManager : MonoBehaviour
 
             spawned.TryGetComponent<BulletsMovement>(out BulletsMovement bullet);
             if (acelera ^ curvo && bullet != null) bullet.SelectBulletType(acelera, curvo);
+            spawned1.TryGetComponent<BulletsMovement>(out BulletsMovement bullet1);
+            if (acelera ^ curvo && bullet1 != null) bullet1.SelectBulletType(acelera, curvo);
             if (i < 3 && x <= 0.5f)
             {
                 spawned.GetComponent<EnemyDamageToPlayer>().enabled = false;

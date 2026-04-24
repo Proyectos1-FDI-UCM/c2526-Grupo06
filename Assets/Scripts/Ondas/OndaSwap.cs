@@ -22,6 +22,10 @@ public class OndaSwap : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    Sprite balaRecogible; // Sprite que se le asignará a la bala cuando esta sea recogible, para que el jugador pueda identificarla mejor.
+    [SerializeField]
+    Sprite balaDanio; // Sprite que se le asignará a la bala cuando esta no sea recogible, para que el jugador pueda identificarla mejor.
 
     #endregion
 
@@ -34,6 +38,7 @@ public class OndaSwap : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
     private MonoBehaviour _component;
+    private SpriteRenderer _spriteRenderer; // Para cambiar el sprite de la bala
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -45,17 +50,17 @@ public class OndaSwap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //Hace que las balas que entren en contacto con el objeto se vuelvan pickups de municion y vicebersa.
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _component = collision.gameObject.GetComponent<BulletsMovement>();
         if (_component != null)// Bala enemiga o pickup de municion en contacto
         {
                 EnemyDamageToPlayer _damge = _component.GetComponent<EnemyDamageToPlayer>();
                 OtorgaMunicion _givesAmmo = _component.GetComponent<OtorgaMunicion>();
-                SpriteRenderer _sprite = _component.GetComponent<SpriteRenderer>();
 
                 _damge.enabled = !_damge.isActiveAndEnabled;
                 _givesAmmo.enabled = !_givesAmmo.isActiveAndEnabled;
-                if (_damge.isActiveAndEnabled) _sprite.color = (Color.red);
-                else _sprite.color = (Color.green);
+                if (_damge.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
+                else _spriteRenderer.sprite = balaDanio;
         }
     }
     #endregion

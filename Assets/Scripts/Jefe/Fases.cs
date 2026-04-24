@@ -338,7 +338,7 @@ public class Fases : MonoBehaviour
             case 8: _patrones.PatronSimple(false, true); break;
             case 9: _patrones.PatronBarrida(false, true); break;
             case 10: _patrones.PatronVertical(false, false, true); break;
-            case 11: _patrones.LanzarOnda(P); break;
+            case 11: _patrones.LanzarOnda(I); break;
 
             case 12: _patrones.PatronSimple(true, true); break;
             case 13: break;
@@ -353,7 +353,7 @@ public class Fases : MonoBehaviour
             case 20: _patrones.PatronHorizontal(false, true); break;
             case 21: _patrones.PatronSimple(true, false); break;
             case 22: _patrones.PatronBarrida(true, true); break;
-            case 23: _patrones.LanzarOnda(P); break;
+            case 23: _patrones.LanzarOnda(I); break;
 
             case 24: break;
             case 25: _patrones.PatronVertical(true, true, true); break;
@@ -378,7 +378,7 @@ public class Fases : MonoBehaviour
             case 40: _patrones.PatronBarrida(true, true); break;
             case 41: break;
             case 42: _patrones.PatronSimple(false, true); break;
-            case 43: _patrones.LanzarOnda(P); break;
+            case 43: _patrones.LanzarOnda(I); break;
 
             case 44: _patrones.PatronHorizontal(false, false); break;
             case 45: _patrones.PatronVertical(true, true, false); break;
