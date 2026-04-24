@@ -28,6 +28,8 @@ public class Fases : MonoBehaviour
     private float PatronPerSecond = 1f;
     [SerializeField]
     private int NumPatrons = 48;
+    [SerializeField]
+    private Animator _animator;      //Animador del jefe
 
     [SerializeField]
     private AudioClip SonidoDisparoJefe;
@@ -83,9 +85,27 @@ public class Fases : MonoBehaviour
         _timer = (_realTime * PatronPerSecond);
         switch (_faseActual)
         {
-            case 1: PrimeraFase(_timer); break;
-            case 2: SegundaFase(_timer); break;
-            case 3: TerceraFase(_timer); break;
+            case 1: 
+                PrimeraFase(_timer);
+                break;
+            case 2:
+                if (_animator != null)
+                {
+                    _animator.SetBool("fase1", false);
+                    _animator.SetBool("fase2", true);
+                    _animator.SetBool("fase3", false);
+                }
+                SegundaFase(_timer);
+                break;
+            case 3:
+                if (_animator != null)
+                {
+                    _animator.SetBool("fase1", false);
+                    _animator.SetBool("fase2", false);
+                    _animator.SetBool("fase3", true);
+                }
+                TerceraFase(_timer); 
+                break;
         }
     }
     #endregion

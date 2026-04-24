@@ -620,6 +620,8 @@ MonoBehaviour:
   Periodo: 1
   Gravity: 0
   GravityStrenght: -8
+  balaRecogible: {fileID: 0}
+  balaDanio: {fileID: 0}
 --- !u!50 &1171258809
 Rigidbody2D:
   serializedVersion: 5
@@ -682,6 +684,7 @@ MonoBehaviour:
   PuntosVidaMaximos: 1
   PowerUps: []
   ProbabilidadDrop: 0.5
+  SonidoSpawnPowerUp: []
 --- !u!61 &1271704280
 BoxCollider2D:
   m_ObjectHideFlags: 0
