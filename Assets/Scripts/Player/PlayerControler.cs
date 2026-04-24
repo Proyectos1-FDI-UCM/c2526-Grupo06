@@ -36,6 +36,7 @@ public class PlayerControler : MonoBehaviour
     private float _xLimit = 8.33f; // Punto límite que el jugador podra alcanzar en el eje x
     private float _yLimit = 4.4f; // Punto límite que el jugador alcanzara en el eje y
     private float _freezeTimer = 0f;//esta variable se utilizara para contar cuanto tiempo le queda congelada
+    private Animator _animator; // Componente animator del player
 
     #endregion
 
@@ -53,6 +54,9 @@ public class PlayerControler : MonoBehaviour
         if (_movementAction == null) { Debug.LogError("No move action found!"); Destroy(this); }
         // Indica al GameManager que el objeto que controla es el jugador
         if (GameManager.Instance != null) { GameManager.Instance.SetPlayer(this.gameObject); }
+        // Comprueba si hay animator para animaciones
+        _animator = GetComponent<Animator>();
+        if (_animator == null) { Debug.LogWarning("No hay animator en el player"); }
 
     }
 
@@ -71,10 +75,18 @@ public class PlayerControler : MonoBehaviour
             _direction = _movementAction.ReadValue<Vector2>();
             if (_direction != Vector2.zero)
             {
+                // Activa la animación de moverse
+                if (_animator != null) { _animator.SetBool("Moving", true); }
+                // Movimiento en la direccion proporcionada
                 transform.Translate(_direction.normalized * Time.deltaTime * FlySpeed);
 
                 //Esta parte mantiene al jugador en pantalla, solo ocurre si se intenta mover, por que por ahora no hay nada en el juego que mueva al player de otra forma
                 transform.position = new Vector3(Mathf.Clamp(transform.position.x, -_xLimit, _xLimit), Mathf.Clamp(transform.position.y, -_yLimit, _yLimit), 0);
+            }
+            // El jugador no se está moviendo, desactiva la animación de moverse
+            else
+            {
+                if (_animator != null) { _animator.SetBool("Moving", false); }
             }
         }
     }
