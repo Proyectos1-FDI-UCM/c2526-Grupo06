@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Script que establece los patrones de ataque del jefe por métodos públicos
 // Alejandro de Haro & Adán Calvo Durán
-// Dream'O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

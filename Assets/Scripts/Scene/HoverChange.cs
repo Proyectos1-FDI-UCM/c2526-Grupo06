@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Script para cambiar el tamaño del botón al pasar el ratón por encima
 // MARTA REYES FUNK
-// Dream O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

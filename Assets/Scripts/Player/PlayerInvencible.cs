@@ -2,7 +2,7 @@
 // Hacemos al player "invencible" durante un tiempo determinado después de chocar con un enemigo
 // (Add-on Pablo Redondo Vaillo) tambien hace que brille durante la duracion, adicion estetica
 // Javier de Sala Rodríguez
-// Dream o' SpaceSheep
+// Dream O' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

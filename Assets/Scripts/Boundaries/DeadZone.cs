@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Componente que gestiona la reacción ante impactos
 // Miguel Calderón Barba
-// Dream O’ SpaceSheep
+// Dream O' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

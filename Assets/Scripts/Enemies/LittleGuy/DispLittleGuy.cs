@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Script exclusivo para el disparo del Little Guy
 // Alejandro de Haro
-// Dream'O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

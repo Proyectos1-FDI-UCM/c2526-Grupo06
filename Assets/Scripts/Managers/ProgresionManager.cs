@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Archivo que contendra la estructura del nivel
 // Adán Calvo Durán
-// Dream O’ SpaceSheep
+// Dream O' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Script que define el comportamiento del Huge Core
 // Alejandro de Haro Morales
-// Dream'O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

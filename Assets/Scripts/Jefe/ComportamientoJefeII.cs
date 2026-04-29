@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Patrones de movimiento del jefe
 // MARTA REYES FUNK
-// Dream O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

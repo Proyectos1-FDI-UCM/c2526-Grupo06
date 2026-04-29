@@ -3,7 +3,7 @@ using UnityEngine;
 //---------------------------------------------------------
 // Lista de patrones del boss en cada fase
 // Miguel Calderón Barba, Javier De Sala Rodríguez & Sergio Navarro Herreros
-// Dream'O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

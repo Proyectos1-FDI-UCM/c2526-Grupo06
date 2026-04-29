@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Gestionar el sistema de vida del player
 // Javier de Sala Rodríguez
-// Dream o' SpaceSheep
+// Dream O' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

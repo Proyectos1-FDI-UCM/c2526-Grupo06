@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Script que define el comportamiento del enemigo little guy
 // Alejandro de Haro
-// Dream'O Spacesheep
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 

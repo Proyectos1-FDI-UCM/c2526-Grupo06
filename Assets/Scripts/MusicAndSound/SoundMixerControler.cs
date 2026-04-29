@@ -56,16 +56,25 @@ public class SoundMixerControler : MonoBehaviour
         //Asignamos a los Sliders y al mezclador los valores almacenados
         //Master
         float VolumeMaster = PlayerPrefs.GetFloat("MasterVolumeSaved", 1f);
-        SliderVolumeMaster.value = VolumeMaster;
-        SetMasterVolume(VolumeMaster);
+        if(SliderVolumeMaster != null)
+        {
+            SliderVolumeMaster.value = VolumeMaster;
+            SetMasterVolume(VolumeMaster);
+        }
         //Music
         float VolumeMusic = PlayerPrefs.GetFloat("MusicVolumeSaved", 1f);
-        SliderVolumeMusic.value = VolumeMusic;
-        SetMusicVolume(VolumeMusic);
+        if (SliderVolumeMusic != null)
+        {
+            SliderVolumeMusic.value = VolumeMusic;
+            SetMusicVolume(VolumeMusic);
+        }
         //SFX
         float VolumeSFX = PlayerPrefs.GetFloat("SFXVolumeSaved", 1f);
-        SliderVolumeSFX.value = VolumeSFX;
-        SetSFXVolume(VolumeSFX);
+        if (SliderVolumeSFX != null)
+        {
+            SliderVolumeSFX.value = VolumeSFX;
+            SetSFXVolume(VolumeSFX);
+        }
     }
 
     #endregion

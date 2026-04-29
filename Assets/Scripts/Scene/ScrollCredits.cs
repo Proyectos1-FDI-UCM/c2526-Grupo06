@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // En eset archivo haremos que los créditos que salgan en la pantalla tengan movimiento vertical
 // Javier de Sala Rodríguez
-// Dream O SpaceSheep
+// Dream O' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
