@@ -1,10 +1,3 @@
-//---------------------------------------------------------
-// Contiene el componente GameManager
-// Guillermo Jiménez Díaz, Pedro P. Gómez Martín
-// Marco A. Gómez Martín
-// Template-P1
-// Proyectos 1 - Curso 2025-26
-//---------------------------------------------------------
 
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
@@ -47,6 +40,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
     [SerializeField] private GameObject PanelAjustes;
+
+    [SerializeField] private AudioClip GameOver;
+    [SerializeField] private AudioClip Victoria;
 
     #endregion
 
@@ -239,13 +235,21 @@ public class GameManager : MonoBehaviour
 
     public void MostrarGameOver()
     {
+        //Paramos la física
         _gameOver = true;
-
+        //Detenemos las hordas
         if (ProgresionManager != null)
             ProgresionManager.GetComponent<ProgresionManager>().StopHordeSpawning(true);
-
+        //Activamos el panel
         if (PanelGameover != null)
             PanelGameover.SetActive(true);
+        //Activamos la música correcta
+        SoundEffectsManager.instance.StopMusic(0);
+        SoundEffectsManager.instance.StopMusic(1);
+        SoundEffectsManager.instance.StopMusic(2);
+        SoundEffectsManager.instance.StopMusic(3);
+        SoundEffectsManager.instance.PlaySoundFXClip(GameOver, PanelGameover.transform, 1f);
+
 
         Time.timeScale = 0f;
     }
@@ -254,6 +258,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void MostrarVictory()
     {
+        //Detenemos la física
         _gameOver = true;
         if (Player != null) Player.gameObject.GetComponent<PlayerControler>().GameOver();
         if (PanelVictory != null)
@@ -262,6 +267,12 @@ public class GameManager : MonoBehaviour
         {
             PanelGameover.SetActive(false);
         }
+        //Activamos la música correcta
+        SoundEffectsManager.instance.StopMusic(0);
+        SoundEffectsManager.instance.StopMusic(1);
+        SoundEffectsManager.instance.StopMusic(2);
+        SoundEffectsManager.instance.StopMusic(3);
+        SoundEffectsManager.instance.PlaySoundFXClip(Victoria, PanelGameover.transform, 1f);
         Time.timeScale = 0f;
     }
 

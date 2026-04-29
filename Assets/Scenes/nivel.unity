@@ -6222,7 +6222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2810628953435746970, guid: 4cfd79aea40b41949829acd364be6d45, type: 3}
       propertyPath: Musics.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2810628953435746970, guid: 4cfd79aea40b41949829acd364be6d45, type: 3}
       propertyPath: 'Musics.Array.data[0]'
@@ -6240,6 +6240,10 @@ PrefabInstance:
       propertyPath: 'Musics.Array.data[3]'
       value: 
       objectReference: {fileID: 8300000, guid: 703579c342d341e41a56fe30d40c4769, type: 3}
+    - target: {fileID: 2810628953435746970, guid: 4cfd79aea40b41949829acd364be6d45, type: 3}
+      propertyPath: 'Musics.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f0f05544cbce46f479943445c2b994cc, type: 3}
     - target: {fileID: 2855248359917141929, guid: 4cfd79aea40b41949829acd364be6d45, type: 3}
       propertyPath: m_Name
       value: SoundEffectsManager
@@ -13899,6 +13903,14 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 200740570}
+    - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 8300000, guid: f0f05544cbce46f479943445c2b994cc, type: 3}
+    - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
+      propertyPath: Victoria
+      value: 
+      objectReference: {fileID: 8300000, guid: 708b5f31cf28dae4780dd9063e795f4e, type: 3}
     - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
       propertyPath: TextoVida
       value: 
