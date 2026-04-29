@@ -66,7 +66,7 @@ public class SoundEffectsManager : MonoBehaviour
         { 
             instance = this;
             DontDestroyOnLoad(gameObject);
-            if (Musics != null && Musics.Length > 0 && Musics[0] != null) PlayMusic(0, 1);
+            if (Musics != null && Musics.Length > 0 && Musics[0] != null) PlayMusic(0, 1, 0);
         }
     }
 
