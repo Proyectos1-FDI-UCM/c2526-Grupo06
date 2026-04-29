@@ -46,7 +46,8 @@ public class SoundEffectsManager : MonoBehaviour
     // Ejemplo: _maxHealthPoints
 
     public static SoundEffectsManager instance;
-    AudioSource _musicSource;
+    AudioSource[] _musicSource = new AudioSource[5];
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -108,17 +109,45 @@ public class SoundEffectsManager : MonoBehaviour
         float clipDuration = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipDuration);
     }
-
-    public void PlayMusic(int i, float volume)
+    /// <summary>
+    /// Metodo para instanciar una canción en uno de los 5 slots de musica
+    /// </summary>
+    /// <param name="i"></param>
+    /// <param name="volume"></param>
+    /// <param name="pist"></param>
+    public void PlayMusic(int i, float volume, int pist)
     {
         //Instacia el objeto de la musica
-        if (_musicSource == null) _musicSource = Instantiate(MusicObjet, Vector3.zero, Quaternion.identity);
+        if (_musicSource[pist] == null) _musicSource[pist] = Instantiate(MusicObjet, Vector3.zero, Quaternion.identity);
         //Asignamos el clip de música
-        _musicSource.clip = Musics[i];
+        _musicSource[pist].clip = Musics[i];
         //Configuramos  el volumen de la música
-        _musicSource.volume = volume;
+        _musicSource[pist].volume = volume;
         //Reproducimos el sonido
-        _musicSource.Play();
+        _musicSource[pist].Play();
+    }
+    /// <summary>
+    /// Metodo para parar la música de uno de los slots de música
+    /// </summary>
+    /// <param name="pist"></param>
+    public void StopMusic(int pist)
+    {
+        if ( _musicSource[pist] != null)
+        {
+            _musicSource[pist].Stop();
+        }
+    }
+    /// <summary>
+    /// Metodo para cambiar el volumen de uno de los slots de música
+    /// </summary>
+    /// <param name="volume"></param>
+    /// <param name="pist"></param>
+    public void VolumeMusic(int volume, int pist)
+    {
+        if (_musicSource[pist] != null)
+        {
+            _musicSource[pist].volume = volume;
+        }
     }
 
     // método que lo que hace es hacer que al clicar un botón este tenga un efecto de sonido
