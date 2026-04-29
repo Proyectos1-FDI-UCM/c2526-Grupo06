@@ -33,7 +33,6 @@ public class OndaGravity : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private MonoBehaviour _component;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -44,15 +43,15 @@ public class OndaGravity : MonoBehaviour
     // - Hay que borrar los que no se usen 
     private void OnTriggerEnter2D(Collider2D collision) //Permite llamar a la funcion de cambio de gravedad de los proyectiles que entren en contacto con el objeto
     {
-        _component = collision.gameObject.GetComponent<BulletsMovement>();
-        if (_component != null)// Bala enemiga o pickup de municion en contacto
+        BulletsMovement _componentEnemy = collision.gameObject.GetComponent<BulletsMovement>();
+        if (_componentEnemy != null)// Bala enemiga o pickup de municion en contacto
         {
             collision.gameObject.GetComponent<BulletsMovement>().GravityChange();
         }
         else
         {
-            _component = collision.gameObject.GetComponent<PlayerBulletMovement>();
-            if (_component != null)// Bala aliada en contacto
+            PlayerBulletMovement _componentAlly = collision.gameObject.GetComponent<PlayerBulletMovement>();
+            if (_componentAlly != null)// Bala aliada en contacto
             {
                 collision.gameObject.GetComponent<PlayerBulletMovement>().GravityChange();
             }

@@ -37,8 +37,6 @@ public class OndaSwap : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private MonoBehaviour _component;
-    private SpriteRenderer _spriteRenderer; // Para cambiar el sprite de la bala
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -50,8 +48,8 @@ public class OndaSwap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //Hace que las balas que entren en contacto con el objeto se vuelvan pickups de municion y vicebersa.
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _component = collision.gameObject.GetComponent<BulletsMovement>();
+        SpriteRenderer _spriteRenderer = GetComponent<SpriteRenderer>();
+        BulletsMovement _component = collision.gameObject.GetComponent<BulletsMovement>();
         if (_component != null)// Bala enemiga o pickup de municion en contacto
         {
                 EnemyDamageToPlayer _damge = _component.GetComponent<EnemyDamageToPlayer>();

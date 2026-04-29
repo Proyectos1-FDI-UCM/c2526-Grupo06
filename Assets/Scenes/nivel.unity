@@ -11771,11 +11771,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9787645993897d46a6af9a57cc79326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1397506264 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7071354279938825275, guid: a6b46a6fe8ae91542a4c31ecdbaf1083, type: 3}
+--- !u!114 &1397506265 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5431057645237068723, guid: a6b46a6fe8ae91542a4c31ecdbaf1083, type: 3}
   m_PrefabInstance: {fileID: 826581196}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b1a7fea6c9c24644a23b4e5085c5fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1446695561
 GameObject:
   m_ObjectHideFlags: 0
@@ -15163,7 +15169,7 @@ PrefabInstance:
     - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
       propertyPath: ProgresionManager
       value: 
-      objectReference: {fileID: 1397506264}
+      objectReference: {fileID: 1397506265}
     - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
       propertyPath: 'SpritesVidas.Array.data[0]'
       value: 

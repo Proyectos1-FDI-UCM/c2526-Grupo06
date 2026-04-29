@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject PanelVictory;
     [SerializeField] private GameObject[] SpritesVidas = new GameObject[5];
     [SerializeField] private GameObject[] SpritesVidasForReal = new GameObject[6];
-    [SerializeField] private GameObject ProgresionManager;
+    [SerializeField] private ProgresionManager ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
     [SerializeField] private GameObject PanelAjustes;
 
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         if (ProgresionManager != null)
         {
             _pMAsigned = true;
-            _pM = ProgresionManager.gameObject.GetComponent<ProgresionManager>();
+            _pM = ProgresionManager;
         }
         _inputActions = InputSystem.actions; // para gestionar el control del juego (pausa, etc.)
         if (_instance != null) CambiarEstadoPausa();
