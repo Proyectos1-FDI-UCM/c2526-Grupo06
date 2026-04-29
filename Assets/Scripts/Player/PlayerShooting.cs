@@ -43,6 +43,10 @@ public class PlayerShooting : MonoBehaviour
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
     private RecogeMunicion _rMunicion;//(Añadido de Adán) esta variable es para cachear el componente recogemunición
     private bool _infiniteAmmoDebug = false;
+    /// <summary>
+    /// booleano que controla las animaciones secretas del jugador
+    /// </summary>
+    private bool _secretAnimation = false;
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -136,6 +140,13 @@ public class PlayerShooting : MonoBehaviour
     {
        _infiniteAmmoDebug = !_infiniteAmmoDebug;
     }
+    /// <summary>
+    /// Cambia el booleano de animaciones secretas on/off
+    /// </summary>
+    public void ChangeSecret()
+    {
+        _secretAnimation = !_secretAnimation;
+    }
 
     #endregion
 
@@ -148,7 +159,11 @@ public class PlayerShooting : MonoBehaviour
     {
         if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJugador, transform, 1f);
         // Animación de disparo
-        if (_animator != null) { _animator.SetTrigger("ShootTrigger"); }
+        if (_animator != null) 
+        { 
+            if (_secretAnimation) { _animator.SetTrigger("SecretShootTrigger"); }
+            else _animator.SetTrigger("ShootTrigger"); 
+        }
         _lastShot = Time.time; // Guarda el momento del disparo como último disparo
         GameObject bulletinstance = Instantiate(Bullet); // Instancia una copia de la bala
         bulletinstance.transform.position = transform.position; // La posición debe ser la del player

@@ -36,6 +36,10 @@ public class Vida : MonoBehaviour
     private PlayerInvencible _scriptInvencible;
     private PlayerShield _scriptShield;
     private bool _debugInmortalidad = false;
+    /// <summary>
+    /// Booleano que controla las animaciones secretas del player
+    /// </summary>
+    private bool _secretAnimations = false;
 
     #endregion
 
@@ -103,7 +107,8 @@ public class Vida : MonoBehaviour
             // Comienza animación de daño
             if (_animator != null)
             {
-                _animator.SetTrigger("HurtTrigger");
+                if(_secretAnimations) { _animator.SetTrigger("SecretHurtTrigger"); }
+                else _animator.SetTrigger("HurtTrigger");
             }
         }
         return true;
@@ -111,6 +116,13 @@ public class Vida : MonoBehaviour
     public void SwapInmortalDebug()
     {
         _debugInmortalidad = !_debugInmortalidad;
+    }
+    /// <summary>
+    /// Cambia el booleano de animaciones secretas on/off
+    /// </summary>
+    public void ChangeSecret()
+    {
+        _secretAnimations = !_secretAnimations;
     }
     #endregion
 

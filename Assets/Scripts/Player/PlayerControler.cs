@@ -37,6 +37,10 @@ public class PlayerControler : MonoBehaviour
     private float _yLimit = 4.4f; // Punto límite que el jugador alcanzara en el eje y
     private float _freezeTimer = 0f;//esta variable se utilizara para contar cuanto tiempo le queda congelada
     private Animator _animator; // Componente animator del player
+    /// <summary>
+    /// booleano que controla las animaciones secretas del jugador
+    /// </summary>
+    private bool _secretAnimations = false;
 
     #endregion
 
@@ -76,7 +80,10 @@ public class PlayerControler : MonoBehaviour
             if (_direction != Vector2.zero)
             {
                 // Activa la animación de moverse
-                if (_animator != null) { _animator.SetBool("Moving", true); }
+                if (_animator != null) 
+                { 
+                    _animator.SetBool("Moving", true); 
+                }
                 // Movimiento en la direccion proporcionada
                 transform.Translate(_direction.normalized * Time.deltaTime * FlySpeed);
 
@@ -86,7 +93,10 @@ public class PlayerControler : MonoBehaviour
             // El jugador no se está moviendo, desactiva la animación de moverse
             else
             {
-                if (_animator != null) { _animator.SetBool("Moving", false); }
+                if (_animator != null) 
+                { 
+                   _animator.SetBool("Moving", false); 
+                }
             }
         }
     }
@@ -103,6 +113,18 @@ public class PlayerControler : MonoBehaviour
     public void GameOver()
     {
         Destroy(this);
+    }
+    /// <summary>
+    /// Cambia el booleano de animaciones secretas on/off
+    /// </summary>
+    public void ChangeSecret()
+    {
+        _secretAnimations = !_secretAnimations;
+        if (_animator != null)
+        {
+            if (_secretAnimations) { _animator.SetTrigger("EnableSecret"); }
+            else { _animator.SetTrigger("DisableSecret"); }
+        }
     }
     #endregion
 
