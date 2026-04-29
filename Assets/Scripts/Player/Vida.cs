@@ -56,7 +56,7 @@ public class Vida : MonoBehaviour
         _animator = GetComponent<Animator>();
         if (GameManager.HasInstance())
         {
-            GameManager.Instance.MuestraVida(Vidas);
+            GameManager.Instance.MuestraVida(Vidas, _maximoVidas);
         }
     }
 
@@ -89,7 +89,7 @@ public class Vida : MonoBehaviour
 
         if (GameManager.HasInstance())
         {
-            GameManager.Instance.MuestraVida(Vidas);
+            GameManager.Instance.MuestraVida(Vidas,_maximoVidas) ;
         }
 
         if (Vidas <= 0)

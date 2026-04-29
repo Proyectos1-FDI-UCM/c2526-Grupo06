@@ -33,10 +33,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject Boss;
 
-    [SerializeField] private TextMeshProUGUI TextoVida;
     [SerializeField] private GameObject PanelGameover;
     [SerializeField] private GameObject PanelVictory;
     [SerializeField] private GameObject[] SpritesVidas = new GameObject[5];
+    [SerializeField] private GameObject[] SpritesVidasForReal = new GameObject[6];
     [SerializeField] private GameObject ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
     [SerializeField] private GameObject PanelAjustes;
@@ -200,21 +200,16 @@ public class GameManager : MonoBehaviour
     ///<summary>
     ///Método para mostrar las vidas en pantalla
     ///</summary>
-    public void MuestraVida(int vidasActuales)
+    public void MuestraVida(int vidasActuales, int _vidasMaximas)
     {
-        if (TextoVida == null)
+        for (int i = 0; i < _vidasMaximas; i++)
         {
-            return;
+            if (SpritesVidasForReal[i] != null)
+            {
+                SpritesVidasForReal[i].transform.GetChild(0).gameObject.SetActive(i + 1 <= vidasActuales);
+                SpritesVidasForReal[i].transform.GetChild(1).gameObject.SetActive(i + 1 > vidasActuales);
+            }
         }
-
-        string puntos = "";
-
-        for (int i = 0; i < vidasActuales; i++)
-        {
-            puntos += _puntoVida;
-        }
-
-        TextoVida.text = puntos;
     }
 
     public void MuestraAmmo(int _municion, int _maxAmmo)

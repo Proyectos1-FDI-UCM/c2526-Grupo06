@@ -42,7 +42,6 @@ public class RecogeMunicion : MonoBehaviour
 
     private int _currentAmo = 0; //Munición acutal del jugador
     private OtorgaMunicion _om; //El componente OtorgaMuncion del pickup de munición más reciente contra el que haya chocado
-    private bool _SuckingAmo = true; //Boleano que controla si el jugador puede aborver o no pickups de munición
     private PlayerShooting _componenteDisparo;
     #endregion
 
@@ -101,11 +100,6 @@ public class RecogeMunicion : MonoBehaviour
             _currentAmo = Mathf.Clamp((_currentAmo + amount), 0, MaxAMO);
         }
         if (GameManager.Instance != null) GameManager.Instance.MuestraAmmo(_currentAmo, MaxAMO);
-    }
-
-    public void StopAMOSucking() //Este metodo aparte de tener un gran nombre solo sirve para poner al jugador en un estado donde no puede absorver pickups de munición;
-    {
-        _SuckingAmo = false;
     }
 
     ///<summary>
