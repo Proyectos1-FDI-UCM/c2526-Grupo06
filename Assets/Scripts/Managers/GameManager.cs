@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        string puntos = " ";
+        string puntos = "";
 
         for (int i = 0; i < vidasActuales; i++)
         {
