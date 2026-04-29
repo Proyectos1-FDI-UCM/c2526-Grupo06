@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 05d14113c9c465b4c940fb91c008a238
+guid: f71c2e2ca501f184c809c6ea067d2a8d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3192660506086191352
-    second: shieldattackplaceholder_0
+      213: 6481850670331414603
+    second: ShieldIdle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shieldattackplaceholder_0
+      name: ShieldIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,10 +113,76 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8f0bfa990db9e4c20800000000000000
-      internalID: 3192660506086191352
+      spriteID: 09dce4afdf1ec394b85f8226d34463a6
+      internalID: -1607125785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldIdle_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e353f7b8482e4da4fa21d382beb260b0
+      internalID: -2069164806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldIdle_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b8fed39e1628b247a8e5101a9b81258
+      internalID: -37422517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShieldIdle_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525a87b6c2d870f449fcb3fffa70ad1f
+      internalID: -127756554
       vertices: []
       indices: 
       edges: []
@@ -125,7 +191,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: c488b109284c50f43a6c5db6cf966f89
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +201,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shieldattackplaceholder_0: 3192660506086191352
+      ShieldIdle_0: -1607125785
+      ShieldIdle_1: -2069164806
+      ShieldIdle_2: -37422517
+      ShieldIdle_3: -127756554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

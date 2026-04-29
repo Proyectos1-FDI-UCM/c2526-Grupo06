@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 05d14113c9c465b4c940fb91c008a238, type: 3}
+  m_Sprite: {fileID: -6698300635406380639, guid: f5985217729555d47be33cfa76e0dbc8, type: 3}
   m_Color: {r: 1, g: 0.65471697, b: 0.65471697, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GrowSpeed: 30
   GrowTime: 1
-  SonidoSpawnPowerUp:
-  - {fileID: 8300000, guid: 46af8b933199e5f47a71ce33d7bf1ee5, type: 3}
   SonidoLimpiarBalas:
   - {fileID: 8300000, guid: 7f60437252871014dad0586f9195d764, type: 3}
