@@ -408,10 +408,11 @@ public class Fases : MonoBehaviour
 
     public void NextFase()
     {
-        
-            _faseActual++;
-            // reseteamos timer para que el switch de la siguiente fase comience desde el principio (case 0)
-            _timer = 0;
+        _faseActual++;
+        SoundEffectsManager.instance.VolumeMusic(1, _faseActual);
+
+        // reseteamos timer para que el switch de la siguiente fase comience desde el principio (case 0)
+        _timer = 0;
             // Para que detecte cualquier caso cuando hay un cambio de fase
             _casoAnterior = -1;
     }

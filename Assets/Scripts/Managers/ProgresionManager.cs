@@ -258,6 +258,12 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 16
                 if (_enemyAmount <= 0)
                 {
+                    //Detiene la música del nivel y activa las tres del boss, pero solo con el volumen de la primera
+                    SoundEffectsManager.instance.StopMusic(0);
+                    SoundEffectsManager.instance.PlayMusic(1,1f,1);
+                    SoundEffectsManager.instance.PlayMusic(2, 0f, 2);
+                    SoundEffectsManager.instance.PlayMusic(3, 0f, 3);
+
                     //Metodo para empezar la boss fight
                     Boss.SetActive(true);
                     //Para que la condición de victoria no toma en cuenta un boss
@@ -270,6 +276,7 @@ public class ProgresionManager : MonoBehaviour
         }
     }
     #endregion
+
 
 } // class ProgresionManager 
 // namespace
