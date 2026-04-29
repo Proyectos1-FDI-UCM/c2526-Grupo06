@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     /// Instancia única de la clase (singleton).
     /// </summary>
     private static GameManager _instance;
-    private string _puntoVida = "▓ ";
+    private string _puntoVida = "<3 ";
     private GameObject _player; // Jugador
     private GameObject _boss; //jefe
     private bool _juegoPausado = false; // Estado actual del juego (pausado o no)
@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        string puntos = "";
+        string puntos = " ";
 
         for (int i = 0; i < vidasActuales; i++)
         {
