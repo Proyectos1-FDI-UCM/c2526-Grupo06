@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 923390096}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &716679254
@@ -634,6 +634,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 358932829}
     m_Modifications:
+    - target: {fileID: 552590263611898052, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 552590263611898052, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2948636784860064316, guid: 4894136b33169f245862b203fe81f07f, type: 3}
     - target: {fileID: 555480034077511763, guid: a292fabc73468dd429323fb3618e7064, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -715,6 +723,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.75686276
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.75686276
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -757,7 +789,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7790969035401362721, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 923390097}
   m_SourcePrefab: {fileID: 100100000, guid: a292fabc73468dd429323fb3618e7064, type: 3}
 --- !u!224 &923390094 stripped
 RectTransform:
@@ -769,12 +804,30 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7147220121787967855, guid: a292fabc73468dd429323fb3618e7064, type: 3}
   m_PrefabInstance: {fileID: 923390093}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 923390096}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e67665ea226d403ab8b32a4b067d8f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &923390096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7790969035401362721, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+  m_PrefabInstance: {fileID: 923390093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &923390097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923390096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73876b1934ee47641abe38c2fa67e366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeChangeFactor: 1.2
 --- !u!1001 &1018769370
 PrefabInstance:
   m_ObjectHideFlags: 0

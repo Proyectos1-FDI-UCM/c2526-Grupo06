@@ -1,11 +1,13 @@
 //---------------------------------------------------------
-// Permite a cualquier objeto hacer que cuando una bala o pickup de munición entren en contacto con sigo convertirlos en el otro
-// Adán Calvo Durán
-// Dream O'SpaceSheep
+// Script para poder seguir usando el mando aunque se cambie de panel
+// Sergio Navarro Herreros
+// Dream O' Spacesheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 // Añadir aquí el resto de directivas using
 
 
@@ -13,7 +15,7 @@ using UnityEngine;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class OndaSwap : MonoBehaviour
+public class PanelManager : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -22,11 +24,8 @@ public class OndaSwap : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-    [SerializeField]
-    private Sprite balaRecogible; // Sprite que se le asignará a la bala cuando esta sea recogible, para que el jugador pueda identificarla mejor.
-    [SerializeField]
-    private Sprite balaDanio; // Sprite que se le asignará a la bala cuando esta no sea recogible, para que el jugador pueda identificarla mejor.
-
+    [SerializeField] 
+    private Button button;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -37,8 +36,7 @@ public class OndaSwap : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-    private MonoBehaviour _component;
-    private SpriteRenderer _spriteRenderer; // Para cambiar el sprite de la bala
+
     #endregion
 
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
@@ -48,21 +46,11 @@ public class OndaSwap : MonoBehaviour
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
 
-    private void OnTriggerEnter2D(Collider2D collision) //Hace que las balas que entren en contacto con el objeto se vuelvan pickups de municion y vicebersa.
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _component = collision.gameObject.GetComponent<BulletsMovement>();
-        if (_component != null)// Bala enemiga o pickup de municion en contacto
-        {
-                EnemyDamageToPlayer _damge = _component.GetComponent<EnemyDamageToPlayer>();
-                OtorgaMunicion _givesAmmo = _component.GetComponent<OtorgaMunicion>();
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before 
+    /// any of the Update methods are called the first time.
+    /// </summary>
 
-                _damge.enabled = !_damge.isActiveAndEnabled;
-                _givesAmmo.enabled = !_givesAmmo.isActiveAndEnabled;
-                if (_damge.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
-                else _spriteRenderer.sprite = balaDanio;
-        }
-    }
     #endregion
 
     // ---- MÉTODOS PÚBLICOS ----
@@ -72,6 +60,14 @@ public class OndaSwap : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
+    public void CerrarPanel()
+    {
+        // Limpiar la selección actual
+        EventSystem.current.SetSelectedGameObject(null);
+
+        // Desactivar el panel
+        gameObject.SetActive(false);
+    }
 
     #endregion
 
@@ -84,5 +80,5 @@ public class OndaSwap : MonoBehaviour
 
     #endregion
 
-} // class OndaSwap 
+} // class PanelManager 
 // namespace
