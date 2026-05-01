@@ -105,7 +105,7 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 1
                 if (_timer > 1.5f)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -1), 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -1), 0, 3.5f, 0);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -115,17 +115,18 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 2
                 if (_timer > 7 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 2), 1f, 5,1.5f);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
                 }
                 break;
+                
             case 2:
                 //Horda 3
                 if (_timer > 7 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f, 4, 1f);
                     _enemyAmount += 2;
                     _timer = 0f;
                     _numHorde++;
@@ -135,17 +136,18 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 4
                 if (_timer > 20 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 0);
+                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, -0.3f), 0, 5, 0);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
                 }
                 break;
+                
             case 4:
                 //Horda 5
                 if (_timer > 20 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 2), 1f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 2), 1f,5.5f, 1f);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -155,7 +157,7 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 6
                 if (_timer > 3 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -1), 0, 4, 1f);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -165,7 +167,7 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 7
                 if (_timer > 3 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -4), 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -2), 1f, 6, 1.3f);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -175,17 +177,18 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 8
                 if (_timer > 12 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 4, new Vector2(XPositionEnemySpawn, 0), 3.5f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 4, new Vector2(XPositionEnemySpawn, 0), 4f, 5.5f, 2f);
                     _enemyAmount += 4;
                     _timer = 0f;
                     _numHorde++;
                 }
                 break;
+                
             case 8:
                 //Horda 9
                 if (_timer > 7 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 2f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 1), 2f, 4f,0.5f);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -195,19 +198,20 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 10
                 if (_timer > 7 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, -1), 2.5f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, -1), 3f, 4.5f, 1f);
                     _enemyAmount += 3;
                     _timer = 0f;
                     _numHorde++;
                 }
                 break;
+                
             case 10:
                 //Horda 11
                 if (_timer > 20 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -3), 0);
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0);
-                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, -1), 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -3), 0, 5f, 1f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 3), 0, 4f, 1f);
+                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, -1), 0, 3f, 0);
                     _enemyAmount += 3;
                     _timer = 0f;
                     _numHorde++;
@@ -217,7 +221,7 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 12
                 if (_timer > 12 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 0), 1f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, 0), 4f, 4, 0);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -227,7 +231,7 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 13
                 if (_timer > 4 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -2), 1f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 1, new Vector2(XPositionEnemySpawn, -2), 1f, 5, 1f);
                     _enemyAmount++;
                     _timer = 0f;
                     _numHorde++;
@@ -237,7 +241,7 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 14
                 if (_timer > 5 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, 0), 3.5f);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 3, new Vector2(XPositionEnemySpawn, 0), 3.5f, 4f, 0.5f);
                     _enemyAmount += 3;
                     _timer = 0f;
                     _numHorde++;
@@ -247,8 +251,8 @@ public class ProgresionManager : MonoBehaviour
                 //Horda 15
                 if (_timer > 10 || _enemyAmount <= 0)
                 {
-                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 2f);
-                    GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f);
+                    GameManager.Instance.EnemigoSpawn(HugeCore, 1, new Vector2(XPositionEnemySpawn, 0), 2f, 6f, 0);
+                    GameManager.Instance.EnemigoSpawn(LitleBoy, 2, new Vector2(XPositionEnemySpawn, 0), 3f, 4f, 0);
                     _enemyAmount += 3;
                     _timer = 0f;
                     _numHorde++;

@@ -5,6 +5,7 @@
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
+using System.Net;
 using UnityEngine;
 // Añadir aquí el resto de directivas using
 
@@ -111,6 +112,11 @@ public class MovHugeCore : MonoBehaviour
     public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
     {
         _freezeTimer += freeze;
+    }
+    public void ChangePositionX(float x) //(Añadido de Adán) Mueve el punto x donde se queda el Huge Core
+    {
+        _posX = x;
+        _endPos.x = x;
     }
 
     #endregion

@@ -1,6 +1,7 @@
 
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -281,25 +282,64 @@ public class GameManager : MonoBehaviour
     /// que indica un rango de spawn al rededor de la posición otorgada. Esto solo se usara si
     /// la cantidad de enemigos es mayor a 1
     /// </summary>
-    public void EnemigoSpawn(GameObject enemy, int amount, Vector2 xy, float Spread)
+    public void EnemigoSpawn(GameObject enemy, int amount, Vector2 xy, float VerticalSpread, float EndpositionX, float HorizontalSpread)
     {
         if (enemy != null)
         {
-            if (!(Spread > 0f))
+            float x = 0;
+            float y = 0;
+            for (int i = 0; i < amount; i++) //Por cada enemigo que se desea spawnear
+            {
+                GameObject _enemyInstance = Instantiate(enemy); //Aparición del enemigo
+                if (HorizontalSpread > 0f) x = Random.Range(-HorizontalSpread, HorizontalSpread); //Si tiene aleatoriedad en su posición x
+
+                if (VerticalSpread > 0f) y = Random.Range(-VerticalSpread, VerticalSpread); //Si tiene aleatoriedad en su posición y
+                MovLittleGuy movimientoL = _enemyInstance.GetComponent<MovLittleGuy>(); //Intento buscar el componente para cambiar su posición final (si es Little Guy)
+                if (movimientoL != null) movimientoL.ChangePositionX(EndpositionX + x);
+                else
+                {
+                    MovHugeCore movimientoH = _enemyInstance.GetComponent<MovHugeCore>(); //Intento buscar el componente para cambiar su posición final (si es Huge Core)
+                    if (movimientoH != null) movimientoH.ChangePositionX(EndpositionX + x);
+                }
+                _enemyInstance.transform.position = xy + new Vector2(Random.Range(-2f,2f), y); //Posición Inical + una pequeña variacion que solo afecta al tiempo que tardan en llegar los enemigos + la variacion de altura
+            }
+        }
+        /*
+        if (enemy != null)
+        {
+            if (!(VerticalSpread > 0f))
             {
                 GameObject enemyinstance = Instantiate(enemy);
                 enemyinstance.transform.position = xy;
+                if (HorizontalSpread > 0f)
+                {
+                    MovLittleGuy movement = enemyinstance.GetComponent<MovLittleGuy>();
+                    if (movement != null)
+                    {
+                        movement.ChangePositionX(Random.Range(-HorizontalSpread, HorizontalSpread));
+                    }
+                }
+
             }
             else
             {
                 for (int i = 0; i < amount; i++)
                 {
                     GameObject enemyinstance = Instantiate(enemy);
-                    Vector2 SpawnPosition = xy + (new Vector2(Random.Range(-Spread, Spread+1), Random.Range(-Spread, Spread + 1)));
+                    Vector2 SpawnPosition = xy + (new Vector2(Random.Range(-VerticalSpread, VerticalSpread + 1), Random.Range(-VerticalSpread, VerticalSpread + 1)));
                     enemyinstance.transform.position = SpawnPosition;
+                    if (HorizontalSpread > 0f)
+                    {
+                        MovLittleGuy movement = enemyinstance.GetComponent<MovLittleGuy>();
+                        if (movement != null)
+                        {
+                            movement.ChangePositionX(Random.Range(-HorizontalSpread, HorizontalSpread));
+                        }
+                    }
                 }
             }
         }
+        */
     }
     public void EnemyKilled()
     {

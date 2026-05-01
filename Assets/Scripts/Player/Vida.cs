@@ -23,6 +23,8 @@ public class Vida : MonoBehaviour
 
     [SerializeField]
     private int Vidas = 4; //declaramos cuantas vidas tendremos al inicio de la partida
+    [SerializeField]
+    private AudioClip HurtSound;
 
     #endregion
 
@@ -100,6 +102,7 @@ public class Vida : MonoBehaviour
 
         else if (delta < 0)
         {
+            if (HurtSound != null) SoundEffectsManager.instance.PlaySoundFXClip(HurtSound, transform, 1f);
             if (_scriptInvencible != null)
             {
                 _scriptInvencible.enabled = true;

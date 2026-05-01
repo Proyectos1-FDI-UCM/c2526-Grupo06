@@ -22,6 +22,7 @@ public class MovLittleGuy : MonoBehaviour
     private GameObject _littleBullet; //Prefab de la bala normal
 
     [SerializeField] private Animator _animator; //Animador del propio enemigo
+    [SerializeField] private float PositionX = 3.5f; //Posición donde terminara el movimiento
 
     [SerializeField]
     private AudioClip[] SonidoDisparoLittleGuy;
@@ -48,7 +49,7 @@ public class MovLittleGuy : MonoBehaviour
     void Start()
     {
         _posIni = transform.position;
-        _endPos = new Vector3 (3.5f, _posIni.y, _posIni.z);
+        _endPos = new Vector3 (PositionX, _posIni.y, _posIni.z);
         // Busca al player mediante el GameManager
         if (GameManager.Instance != null)
         {
@@ -103,6 +104,11 @@ public class MovLittleGuy : MonoBehaviour
     public void AddFreezeTime(float freeze)//(Añadido de Adán) Añade tiempo de congelación
     {
         _freezeTimer += freeze;
+    }
+    public void ChangePositionX(float x)
+    {
+        PositionX = x;
+        _endPos.x = x;
     }
     
     #endregion

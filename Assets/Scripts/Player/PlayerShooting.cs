@@ -30,6 +30,8 @@ public class PlayerShooting : MonoBehaviour
 
     [SerializeField]
     private AudioClip SonidoDisparoJugador;
+    [SerializeField]
+    private AudioClip SondioNoAmmo;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -42,7 +44,8 @@ public class PlayerShooting : MonoBehaviour
     public int _bulletCount;
     private float _freezeTimer = 0f;//(Añadido de Adán) esta variable se utilizara para contar cuanto tiempo le queda congelada
     private RecogeMunicion _rMunicion;//(Añadido de Adán) esta variable es para cachear el componente recogemunición
-    private bool _infiniteAmmoDebug = false;
+    private bool _infiniteAmmoDebug = false; //(Añadido de Adán) variable para el modo debug 
+    private bool _soundColdown = false; //(Añadido de Adán) Variable que determina si debe sonar el sondio que indica no munición
     /// <summary>
     /// booleano que controla las animaciones secretas del jugador
     /// </summary>
@@ -101,7 +104,10 @@ public class PlayerShooting : MonoBehaviour
                 {
                     _isShooting = true;
                 }
+                else if (!_soundColdown) SoundEffectsManager.instance.PlaySoundFXClip(SondioNoAmmo, transform, 2f);
+                if (!_soundColdown) _soundColdown = true;
             }
+            else if (_soundColdown) _soundColdown = false;
             // Acción de disparo
             if (_isShooting && _bulletCount != 0)
             {
@@ -157,7 +163,7 @@ public class PlayerShooting : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
-        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJugador, transform, 1f);
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlaySoundFXClip(SonidoDisparoJugador, transform, 0.6f);
         // Animación de disparo
         if (_animator != null) 
         { 
