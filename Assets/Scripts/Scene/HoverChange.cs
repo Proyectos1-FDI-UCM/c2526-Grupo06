@@ -12,7 +12,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// Script para cambiar el tamaño del botón al pasar el ratón por encima
 /// </summary>
-public class HoverChange : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class HoverChange : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -44,6 +44,15 @@ public class HoverChange : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         _rectTransform.localScale = _originalScale; // devuelve el tamaño original al salir el ratón
+    }
+    public void OnSelect(BaseEventData eventData)
+    {
+        _rectTransform.localScale = _originalScale * sizeChangeFactor;
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        _rectTransform.localScale = _originalScale;
     }
 
     #endregion

@@ -1168,6 +1168,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
       propertyPath: m_Colors.m_SelectedColor.b
       value: 0.7490196
       objectReference: {fileID: 0}
@@ -1191,6 +1195,18 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.75686276
       objectReference: {fileID: 0}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: -5654661203306406116, guid: 7a68818ddbf192b4b8f2e91b8529efda, type: 3}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: -5654661203306406116, guid: 7a68818ddbf192b4b8f2e91b8529efda, type: 3}
+    - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: -5654661203306406116, guid: 7a68818ddbf192b4b8f2e91b8529efda, type: 3}
     - target: {fileID: 940785380746745079, guid: a292fabc73468dd429323fb3618e7064, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1234,10 +1250,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7790969035401362721, guid: a292fabc73468dd429323fb3618e7064, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 923390097}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a292fabc73468dd429323fb3618e7064, type: 3}
 --- !u!224 &923390094 stripped
 RectTransform:
@@ -1260,19 +1273,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7790969035401362721, guid: a292fabc73468dd429323fb3618e7064, type: 3}
   m_PrefabInstance: {fileID: 923390093}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &923390097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923390096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73876b1934ee47641abe38c2fa67e366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sizeChangeFactor: 1.2
 --- !u!1 &997805196
 GameObject:
   m_ObjectHideFlags: 0

@@ -359,17 +359,27 @@ public class GameManager : MonoBehaviour
                 if (_juegoPausado)
                 {
                     Time.timeScale = 0f;
-                    if (PanelPausa != null) PanelPausa.SetActive(true);
+
+                    if (PanelPausa != null)
+                    {
+                        PanelPausa.SetActive(true);
+                    }
 
                     _inputActions.FindActionMap("Player").Disable();
                     _inputActions.FindActionMap("UI").Enable();
+                    _inputActions.FindAction("Pause").Disable();
                 }
                 else
                 {
                     Time.timeScale = 1f;
-                    if (PanelPausa != null) PanelPausa.SetActive(false);
 
-                    if (_inputActions.FindActionMap("Player") != null) _inputActions.FindActionMap("Player").Enable();
+                    if (PanelPausa != null)
+                    {
+                        PanelPausa.SetActive(false);
+                    }
+
+                    _inputActions.FindActionMap("Player").Enable();
+                    _inputActions.FindAction("Pause").Enable();
                 }
             }
         }
@@ -379,14 +389,20 @@ public class GameManager : MonoBehaviour
     { 
         if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(true);
         if (PanelPausa != null) PanelPausa.SetActive(false);
+        _inputActions.FindAction("Pause").Disable();
         _panelAjustesAbierto = true;
+        
     }
     public void CerrarPanelAjustes()
     {
         if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(false);
         if (PanelPausa != null) PanelPausa.SetActive(true);
+        _inputActions.FindAction("Pause").Enable();
         _panelAjustesAbierto = false;
     }
+    
+
+
     #endregion
 
     // ---- MÉTODOS PRIVADOS ----
