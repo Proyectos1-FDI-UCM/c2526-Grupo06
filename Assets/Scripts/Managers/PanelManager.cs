@@ -25,7 +25,17 @@ public class PanelManager : MonoBehaviour
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
     [SerializeField] 
-    private Button button;
+    private GameObject opcionesFirstSelected;
+    [SerializeField]
+    private GameObject principalFirstSelected;
+    [SerializeField]
+    private GameObject panelGameOver;
+    [SerializeField]
+    private GameObject gameOverFirstSelected;
+    [SerializeField]
+    private GameObject panelVictoria;
+    [SerializeField]
+    private GameObject victoriaFirstSelected;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -60,13 +70,42 @@ public class PanelManager : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-    public void CerrarPanel()
+
+    public void AbrirPanelOpciones()
     {
         // Limpiar la selección actual
         EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(opcionesFirstSelected);
+        // Activar el panel
+        gameObject.SetActive(true);
+    }
+    public void CerrarPanelOpciones()
+    {
+        // Limpiar la selección actual
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(principalFirstSelected);
 
         // Desactivar el panel
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
+    }
+    public void PanelGameOver()
+    {
+        if (panelGameOver != null)
+        {
+            // Limpiar la selección actual
+            EventSystem.current.SetSelectedGameObject(null);
+            Debug.Log("Estoy en el boton que me toca");
+            EventSystem.current.SetSelectedGameObject(gameOverFirstSelected);
+        }
+    }
+    public void PanelVictoria()
+    {
+        if (panelVictoria != null)
+        {
+            // Limpiar la selección actual
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(victoriaFirstSelected);
+        }
     }
 
     #endregion

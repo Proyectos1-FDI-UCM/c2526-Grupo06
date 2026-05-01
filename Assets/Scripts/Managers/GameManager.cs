@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ProgresionManager ProgresionManager;
     [SerializeField] private GameObject PanelPausa;
     [SerializeField] private GameObject PanelAjustes;
+    [SerializeField] private PanelManager PanelManager;
 
     [SerializeField] private AudioClip GameOver;
     [SerializeField] private AudioClip Victoria;
@@ -238,6 +239,8 @@ public class GameManager : MonoBehaviour
         //Activamos el panel
         if (PanelGameover != null)
             PanelGameover.SetActive(true);
+        if (PanelManager != null)
+            PanelManager.PanelGameOver();
         //Activamos la música correcta
         SoundEffectsManager.instance.StopMusic(0);
         SoundEffectsManager.instance.StopMusic(1);
@@ -258,6 +261,8 @@ public class GameManager : MonoBehaviour
         if (Player != null) Player.gameObject.GetComponent<PlayerControler>().GameOver();
         if (PanelVictory != null)
             PanelVictory.SetActive(true);
+        if (PanelManager != null)
+            PanelManager.PanelVictoria();
         if (PanelVictory == true && PanelGameover == true)
         {
             PanelGameover.SetActive(false);

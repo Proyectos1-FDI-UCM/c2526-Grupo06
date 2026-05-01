@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 19747985}
   - component: {fileID: 19747987}
   - component: {fileID: 19747986}
-  - component: {fileID: 19747988}
   m_Layer: 5
   m_Name: Panel_Ajustes
   m_TagString: Untagged
@@ -198,19 +197,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 19747984}
   m_CullTransparentMesh: 1
---- !u!114 &19747988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19747984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1642834500}
 --- !u!1 &41864798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,9 +1421,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1449359910}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: AbrirPanelAjustes
+      - m_Target: {fileID: 631308316}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: AbrirPanelOpciones
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1451,6 +1437,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SoundEffectsManager, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 19747984}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1024766134}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7729,6 +7739,7 @@ GameObject:
   - component: {fileID: 631308314}
   - component: {fileID: 631308313}
   - component: {fileID: 631308312}
+  - component: {fileID: 631308316}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7824,6 +7835,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &631308316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631308311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opcionesFirstSelected: {fileID: 1642834498}
+  principalFirstSelected: {fileID: 981860847}
+  panelGameOver: {fileID: 786183588}
+  gameOverFirstSelected: {fileID: 2014926103}
+  panelVictoria: {fileID: 781370199}
+  victoriaFirstSelected: {fileID: 1776896675}
 --- !u!1 &643250904
 GameObject:
   m_ObjectHideFlags: 0
@@ -8497,7 +8526,6 @@ GameObject:
   - component: {fileID: 781370202}
   - component: {fileID: 781370201}
   - component: {fileID: 781370200}
-  - component: {fileID: 781370203}
   m_Layer: 5
   m_Name: Panel_VICTORY
   m_TagString: Untagged
@@ -8564,19 +8592,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &781370203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781370199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1776896678}
 --- !u!1 &786183588
 GameObject:
   m_ObjectHideFlags: 0
@@ -8588,7 +8603,6 @@ GameObject:
   - component: {fileID: 786183591}
   - component: {fileID: 786183590}
   - component: {fileID: 786183589}
-  - component: {fileID: 786183592}
   m_Layer: 5
   m_Name: Panel_GAMEOVER (1)
   m_TagString: Untagged
@@ -8655,19 +8669,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &786183592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786183588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1776896678}
 --- !u!1 &789424192
 GameObject:
   m_ObjectHideFlags: 0
@@ -10302,7 +10303,6 @@ GameObject:
   - component: {fileID: 1024766137}
   - component: {fileID: 1024766136}
   - component: {fileID: 1024766135}
-  - component: {fileID: 1024766138}
   m_Layer: 5
   m_Name: Menu_Pausa
   m_TagString: Untagged
@@ -10371,19 +10371,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1024766138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1024766134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 981860849}
 --- !u!1 &1051924050
 GameObject:
   m_ObjectHideFlags: 0
@@ -12686,9 +12673,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1449359910}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: CerrarPanelAjustes
+      - m_Target: {fileID: 1024766134}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 631308316}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: CerrarPanelOpciones
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12702,6 +12701,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SoundEffectsManager, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 19747984}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -13009,6 +13020,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2810628953435746970, guid: 4cfd79aea40b41949829acd364be6d45, type: 3}
         m_TargetAssemblyTypeName: SoundEffectsManager, Assembly-CSharp
         m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 631308316}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: PanelVictoria
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14218,6 +14241,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 631308316}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: PanelGameOver
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2014926107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15158,6 +15193,10 @@ PrefabInstance:
       propertyPath: PanelAjustes
       value: 
       objectReference: {fileID: 19747984}
+    - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
+      propertyPath: PanelManager
+      value: 
+      objectReference: {fileID: 631308316}
     - target: {fileID: 7642507664182211612, guid: dc92fd31e4511444abc22ec687effe3e, type: 3}
       propertyPath: PanelVictory
       value: 

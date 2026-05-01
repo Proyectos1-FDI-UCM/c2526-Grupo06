@@ -365,10 +365,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 129520339}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1736268855}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: AbrirPanelOpciones
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -711,7 +711,6 @@ GameObject:
   - component: {fileID: 129520340}
   - component: {fileID: 129520343}
   - component: {fileID: 129520342}
-  - component: {fileID: 129520341}
   m_Layer: 5
   m_Name: PanelBotones
   m_TagString: Untagged
@@ -742,19 +741,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &129520341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129520339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1154644138}
 --- !u!114 &129520342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -817,6 +803,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Testing Power Up
       objectReference: {fileID: 0}
+    - target: {fileID: 5942487799609633218, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942487799609633218, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2948636784860064316, guid: 4894136b33169f245862b203fe81f07f, type: 3}
     - target: {fileID: 8606664896545888718, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3295,7 +3289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1154644135}
+  m_FirstSelected: {fileID: 245059909}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1004808912
@@ -3307,11 +3301,11 @@ Transform:
   m_GameObject: {fileID: 1004808909}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -9718.331}
+  m_LocalScale: {x: 107.98145, y: 107.98145, z: 107.98145}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1736268854}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019614249
 GameObject:
@@ -3444,6 +3438,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5942487799609633218, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942487799609633218, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2948636784860064316, guid: 4894136b33169f245862b203fe81f07f, type: 3}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -3585,6 +3587,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5942487799609633218, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5942487799609633218, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2948636784860064316, guid: 4894136b33169f245862b203fe81f07f, type: 3}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -4717,6 +4727,7 @@ GameObject:
   - component: {fileID: 1736268853}
   - component: {fileID: 1736268852}
   - component: {fileID: 1736268851}
+  - component: {fileID: 1736268855}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4799,6 +4810,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1004808912}
   - {fileID: 844650335}
   - {fileID: 712216813}
   - {fileID: 2033963790}
@@ -4812,6 +4824,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1736268855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736268850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opcionesFirstSelected: {fileID: 1744033190}
+  principalFirstSelected: {fileID: 245059909}
 --- !u!1 &1744033190
 GameObject:
   m_ObjectHideFlags: 0
@@ -4919,13 +4945,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: 7605ef96674793a49b7d9240cf200cd3, type: 3}
-        m_TargetAssemblyTypeName: SoundEffectsManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1736268855}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: CerrarPanelOpciones
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2062963169}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5269,7 +5307,6 @@ GameObject:
   - component: {fileID: 2062963170}
   - component: {fileID: 2062963172}
   - component: {fileID: 2062963171}
-  - component: {fileID: 2062963173}
   m_Layer: 5
   m_Name: PanelAjustes
   m_TagString: Untagged
@@ -5342,19 +5379,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062963169}
   m_CullTransparentMesh: 1
---- !u!114 &2062963173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062963169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5b446d3ceaa9cd4ba496ed4682c0f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 1744033192}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5366,4 +5390,3 @@ SceneRoots:
   - {fileID: 308634672}
   - {fileID: 1615615392}
   - {fileID: 1004164082}
-  - {fileID: 1004808912}
