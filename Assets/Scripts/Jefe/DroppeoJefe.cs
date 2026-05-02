@@ -132,6 +132,7 @@ public class DroppeoJefe : MonoBehaviour
             {
                 fase.NextFase();
                 _puntosVidaRestantes = PuntosVidaMaximos;
+                _dropsRealizados = 0;
             }
         }
     }
