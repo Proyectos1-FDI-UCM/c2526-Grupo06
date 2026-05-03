@@ -250,6 +250,7 @@ MonoBehaviour:
   Bullet: {fileID: 6507326731185513161, guid: edef170f3b3571f4fa2d1f649beaf52a, type: 3}
   Cadence: 0.4
   SonidoDisparoJugador: {fileID: 8300000, guid: 53801c0d6fb0a03419e6846f0624b851, type: 3}
+  SondioNoAmmo: {fileID: 0}
   _bulletCount: 0
 --- !u!50 &3014308030955811277
 Rigidbody2D:
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vidas: 4
+  HurtSound: {fileID: 0}
 --- !u!114 &-7953771667111596643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,6 +325,8 @@ MonoBehaviour:
   ShieldFlickerTime: 1
   BulletDestroyer: {fileID: 0}
   ShieldSprite: {fileID: 2214824783801324818}
+  SonidoLimpiarBalas:
+  - {fileID: 8300000, guid: 7f60437252871014dad0586f9195d764, type: 3}
 --- !u!114 &7388294998051649465
 MonoBehaviour:
   m_ObjectHideFlags: 0

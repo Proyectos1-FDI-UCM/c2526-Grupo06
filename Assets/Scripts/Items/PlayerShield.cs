@@ -35,6 +35,9 @@ public class PlayerShield : MonoBehaviour
     [SerializeField]
     private SpriteRenderer ShieldSprite;
 
+    [SerializeField]
+    private AudioClip[] SonidoLimpiarBalas;
+
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -95,6 +98,7 @@ public class PlayerShield : MonoBehaviour
     /// </summary>
     public void EnableShield()
     {
+        if (SoundEffectsManager.instance != null) SoundEffectsManager.instance.PlayRandomSoundFXClip(SonidoLimpiarBalas, transform, 1f);
         if (ShieldSprite != null) { ShieldSprite.enabled = true; }
         _shieldTime = 0;
         _shieldEnabled = true;   
