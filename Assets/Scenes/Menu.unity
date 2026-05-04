@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 245059913}
     m_SelectOnDown: {fileID: 485770222}
     m_SelectOnLeft: {fileID: 1154644138}
     m_SelectOnRight: {fileID: 0}
@@ -1446,7 +1446,7 @@ PrefabInstance:
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 245059913}
     - target: {fileID: 8367459987240929699, guid: bdaeee04a68fe4283b8789c48055f778, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
