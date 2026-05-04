@@ -23,11 +23,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Testing/NivelDePrueba.unity
     guid: d1d84b90456d8e749b6448fe00712c49
-  - enabled: 1
-    path: Assets/Scenes/nivel 1.unity
+  - enabled: 0
+    path: Assets/Scenes/Playtesting/nivel 1.unity
     guid: b87bafc7835b13f4e927a13719103d70
-  - enabled: 1
-    path: Assets/Scenes/EscenaTestingPowerUps.unity
+  - enabled: 0
+    path: Assets/Scenes/Testing/EscenaTestingPowerUps.unity
     guid: ddc75185030eda247a51dcd69829bf1a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
