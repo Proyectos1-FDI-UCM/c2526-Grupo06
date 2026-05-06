@@ -105,8 +105,6 @@ public class BulletsMovement : MonoBehaviour
             if (otorga.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
             else _spriteRenderer.sprite = balaDanio;
         }
-
-        Destroy(this.gameObject, 4f);
     }
     void Update()
     {
