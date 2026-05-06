@@ -22,11 +22,13 @@ public class ScrollCredits : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
-
+    [SerializeField]
     public float Velocidad = 50f; //creamos velocidad
+    [SerializeField]
+    private float StopAt = 0f; //Variable que controla la altura a la que debe parar de scrollear
 
     #endregion
-    
+
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -35,28 +37,33 @@ public class ScrollCredits : MonoBehaviour
     // primera palabra en minúsculas y el resto con la 
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
-
+    private RectTransform _rect;
+    private bool _enabled = false;
     #endregion
-    
+
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-    
+
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
-
+    private void Start()
+    {
+        _rect = GetComponent<RectTransform>();
+        if (_rect != null ) _enabled = true;
+    }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
     void Update()
     {
         //mueve el texto hacia arriba constantemente
-        transform.Translate(Vector3.up  * Velocidad * Time.deltaTime );
+        if (_enabled && _rect.anchoredPosition.y < StopAt) transform.Translate(Vector3.up * Velocidad * Time.deltaTime);
     }
     #endregion
 

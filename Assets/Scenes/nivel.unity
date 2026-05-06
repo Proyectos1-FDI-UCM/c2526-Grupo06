@@ -1496,9 +1496,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 631308316}
-        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
-        m_MethodName: AbrirPanelOpciones
+      - m_Target: {fileID: 1449359910}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AbrirPanelAjustes
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9934,7 +9934,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &965266399
 GameObject:
@@ -11527,6 +11527,14 @@ PrefabInstance:
       propertyPath: HurtSound
       value: 
       objectReference: {fileID: 8300000, guid: 4a68c3e1566ab41458ccd9d875075113, type: 3}
+    - target: {fileID: 2214824783801324818, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214824783801324818, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4202310439107004848, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5

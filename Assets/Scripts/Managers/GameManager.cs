@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -60,6 +61,7 @@ public class GameManager : MonoBehaviour
     private GameObject _player; // Jugador
     private GameObject _boss; //jefe
     private bool _juegoPausado = false; // Estado actual del juego (pausado o no)
+    private bool _sePuedePausar = true; // Variable para controlar si se puede pausar
     private InputActionAsset _inputActions; // Asset de acciones de entrada para gestionar el control del juego
     private bool _gameOver = false; // Variable para controlar si el juego ha terminado
     // Sin _gameOver, el juego se podría pausar y reanudar después de mostrar el panel de game over, lo que no es deseable.
@@ -107,7 +109,6 @@ public class GameManager : MonoBehaviour
             // Queremos sobrevivir a cambios de escena.
             _instance = this;
             //DontDestroyOnLoad(this.gameObject);
-            _juegoPausado = true;
             Init();
         } // if-else somos instancia nueva o no.
     }
@@ -128,7 +129,6 @@ public class GameManager : MonoBehaviour
             _pM = ProgresionManager;
         }
         _inputActions = InputSystem.actions; // para gestionar el control del juego (pausa, etc.)
-        if (_instance != null) CambiarEstadoPausa();
     }
 
     /// <summary>
@@ -388,18 +388,12 @@ public class GameManager : MonoBehaviour
     {
         if (!_gameOver)
         {
-            if (_panelAjustesAbierto)
-            {
-                CerrarPanelAjustes();
-            }
-            else
+            if (_sePuedePausar)
             {
                 _juegoPausado = !_juegoPausado;
-
                 if (_juegoPausado)
                 {
                     Time.timeScale = 0f;
-
                     if (PanelPausa != null)
                     {
                         PanelPausa.SetActive(true);
@@ -407,7 +401,6 @@ public class GameManager : MonoBehaviour
 
                     _inputActions.FindActionMap("Player").Disable();
                     _inputActions.FindActionMap("UI").Enable();
-                    _inputActions.FindAction("Pause").Disable();
                 }
                 else
                 {
@@ -419,25 +412,28 @@ public class GameManager : MonoBehaviour
                     }
 
                     _inputActions.FindActionMap("Player").Enable();
-                    _inputActions.FindAction("Pause").Enable();
-                }
+                } 
             }
+            else if (_panelAjustesAbierto)
+            {
+                CerrarPanelAjustes();
+                PanelPausa.SetActive(true);
+            }
+            
         }
     }
 
     public void AbrirPanelAjustes()
     { 
         if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(true);
-        if (PanelPausa != null) PanelPausa.SetActive(false);
-        _inputActions.FindAction("Pause").Disable();
+        _sePuedePausar = false;
         _panelAjustesAbierto = true;
         
     }
     public void CerrarPanelAjustes()
     {
         if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(false);
-        if (PanelPausa != null) PanelPausa.SetActive(true);
-        _inputActions.FindAction("Pause").Enable();
+        _sePuedePausar = true;
         _panelAjustesAbierto = false;
     }
     

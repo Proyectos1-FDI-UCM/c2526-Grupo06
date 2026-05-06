@@ -1,12 +1,11 @@
 //---------------------------------------------------------
-// Script para pausar el juego, mostrando un menú de pausa y deteniendo el tiempo del juego.
-// Sergio Navarro Herreros
-// Dream O'SpaceSheep
+// Permite activar/desactivar un objeto elegido mediante una función
+// Adán Calvo Durán
+// Dream O' SpaceSheep
 // Proyectos 1 - Curso 2025-26
 //---------------------------------------------------------
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 // Añadir aquí el resto de directivas using
 
 
@@ -14,7 +13,7 @@ using UnityEngine.InputSystem;
 /// Antes de cada class, descripción de qué es y para qué sirve,
 /// usando todas las líneas que sean necesarias.
 /// </summary>
-public class PausaJuego : MonoBehaviour
+public class HideOnClick : MonoBehaviour
 {
     // ---- ATRIBUTOS DEL INSPECTOR ----
     #region Atributos del Inspector (serialized fields)
@@ -23,8 +22,10 @@ public class PausaJuego : MonoBehaviour
     // públicos y de inspector se nombren en formato PascalCase
     // (palabras con primera letra mayúscula, incluida la primera letra)
     // Ejemplo: MaxHealthPoints
+    [SerializeField]
+    private GameObject Tarjet;
     #endregion
-
+    
     // ---- ATRIBUTOS PRIVADOS ----
     #region Atributos Privados (private fields)
     // Documentar cada atributo que aparece aquí.
@@ -34,24 +35,22 @@ public class PausaJuego : MonoBehaviour
     // primera letra en mayúsculas)
     // Ejemplo: _maxHealthPoints
 
-    private InputAction _pauseAction; // Acción de entrada para pausar el juego
-    private bool _freeButton = true; // Boleano que comprueba si el jugador dejo de pulsar el escape
     #endregion
-
+    
     // ---- MÉTODOS DE MONOBEHAVIOUR ----
     #region Métodos de MonoBehaviour
-
+    
     // Por defecto están los típicos (Update y Start) pero:
     // - Hay que añadir todos los que sean necesarios
     // - Hay que borrar los que no se usen 
-
+    
     /// <summary>
     /// Start is called on the frame when a script is enabled just before 
     /// any of the Update methods are called the first time.
     /// </summary>
     void Start()
     {
-        _pauseAction = InputSystem.actions.FindAction("Pause");
+        
     }
 
     /// <summary>
@@ -59,18 +58,7 @@ public class PausaJuego : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (_pauseAction != null)
-        {
-            if (_pauseAction.triggered)
-            {
-                if (_freeButton)
-                {
-                    GameManager.Instance.CambiarEstadoPausa();
-                    _freeButton = false;
-                }
-            }
-            else _freeButton = true;
-        }
+        
     }
     #endregion
 
@@ -81,7 +69,10 @@ public class PausaJuego : MonoBehaviour
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
     // Ejemplo: GetPlayerController
-
+    public void ActivateOrDeactivate()
+    {
+        Tarjet.SetActive(!Tarjet.activeSelf);
+    }
     #endregion
     
     // ---- MÉTODOS PRIVADOS ----
@@ -90,7 +81,8 @@ public class PausaJuego : MonoBehaviour
     // El convenio de nombres de Unity recomienda que estos métodos
     // se nombren en formato PascalCase (palabras con primera letra
     // mayúscula, incluida la primera letra)
+
     #endregion   
 
-} // class PausaJuego 
+} // class HideOnClick 
 // namespace
