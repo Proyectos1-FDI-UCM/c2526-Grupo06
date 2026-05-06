@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 8901733773716986925}
   - component: {fileID: 6141466552763998509}
   - component: {fileID: 2560567277839232618}
+  - component: {fileID: 5566051947324548832}
   m_Layer: 11
   m_Name: Jefe
   m_TagString: Untagged
@@ -276,3 +277,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5566051947324548832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8657113104869342218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb5ee6635c2b104d9d60d5358a3ca49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -2,10 +2,10 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
             _instance = null;
         } // if somos la instancia principal
     }
+
 
     #endregion
 
@@ -437,7 +438,12 @@ public class GameManager : MonoBehaviour
         _panelAjustesAbierto = false;
     }
     
-
+    public void RestartPauseSettings() //Metodo que se llama al pasar de una escena a otra en caso de que sea necesario restaurar los valores de la pausa
+    {
+        Time.timeScale = 1f; // Hace que aúnque se pausara previamente el juego el tiempo vuelva a fluir
+        _inputActions.FindActionMap("Player").Enable();
+        _sePuedePausar = (PanelPausa != null); //Habilita la pausa si hay un panel de pausa
+    }
 
     #endregion
 
@@ -450,7 +456,9 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        // De momento no hay nada que inicializar
+        Time.timeScale = 1f; // Hace que aúnque se pausara previamente el juego el tiempo vuelva a fluir
+        _sePuedePausar = (PanelPausa != null);
+
     }
 
     private void TransferManagerSetup()
