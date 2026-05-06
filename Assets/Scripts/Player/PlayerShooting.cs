@@ -31,7 +31,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private AudioClip SonidoDisparoJugador;
     [SerializeField]
-    private AudioClip SondioNoAmmo;
+    private AudioClip[] SondioNoAmmo;
     #endregion
 
     // ---- ATRIBUTOS PRIVADOS ----
@@ -104,7 +104,7 @@ public class PlayerShooting : MonoBehaviour
                 {
                     _isShooting = true;
                 }
-                else if (!_soundColdown) SoundEffectsManager.instance.PlaySoundFXClip(SondioNoAmmo, transform, 2f);
+                else if (!_soundColdown) SoundEffectsManager.instance.PlayRandomSoundFXClip(SondioNoAmmo, transform, 2f);
                 if (!_soundColdown) _soundColdown = true;
             }
             else if (_soundColdown) _soundColdown = false;
