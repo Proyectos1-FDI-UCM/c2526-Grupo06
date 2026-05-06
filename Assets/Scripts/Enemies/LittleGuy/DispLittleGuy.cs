@@ -47,15 +47,14 @@ public class DispLittleGuy : MonoBehaviour
 
         //intenta buscar al jugador. En caso de que exista, selecciona el transform
         //del gameobject encontrado y se lo asigna a la variable transform _player.
-        GameObject tf = GameObject.Find("Player");
-        if (tf != null)
+        GameObject player = null;
+        if(GameManager.Instance!= null) { player = GameManager.Instance.GetPlayer(); }
+        if (player != null)
         {
-            _player = tf.transform;
+            _player = player.transform;
+            //Calcula la dirección que tiene que seguir la bala, esta es la trayectoria
+            _dir = new Vector2(transform.position.x - _player.position.x, transform.position.y - _player.position.y);
         }
-
-        //Calcula la dirección que tiene que seguir la bala, esta es la trayectoria
-        _dir = new Vector2(transform.position.x - _player.position.x, transform.position.y - _player.position.y);
-
         //(Añadido de Adán y Sergio) Comprueba si la bala es recogible para darle color verde
         OtorgaMunicion otorga = this.gameObject.GetComponent<OtorgaMunicion>();
         if (otorga != null ) 
