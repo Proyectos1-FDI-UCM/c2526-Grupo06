@@ -48,17 +48,18 @@ public class OndaSwap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) //Hace que las balas que entren en contacto con el objeto se vuelvan pickups de municion y vicebersa.
     {
-        SpriteRenderer _spriteRenderer = GetComponent<SpriteRenderer>();
         BulletsMovement _component = collision.gameObject.GetComponent<BulletsMovement>();
         if (_component != null)// Bala enemiga o pickup de municion en contacto
         {
-                EnemyDamageToPlayer _damge = _component.GetComponent<EnemyDamageToPlayer>();
+                EnemyDamageToPlayer _damage = _component.GetComponent<EnemyDamageToPlayer>();
                 OtorgaMunicion _givesAmmo = _component.GetComponent<OtorgaMunicion>();
 
-                _damge.enabled = !_damge.isActiveAndEnabled;
+                _damage.enabled = !_damage.isActiveAndEnabled;
                 _givesAmmo.enabled = !_givesAmmo.isActiveAndEnabled;
-                if (_damge.isActiveAndEnabled) _spriteRenderer.sprite = balaRecogible;
-                else _spriteRenderer.sprite = balaDanio;
+
+                SpriteRenderer _spriteRenderer = collision.gameObject.GetComponent<SpriteRenderer>();
+                if (_damage.isActiveAndEnabled) _spriteRenderer.sprite = balaDanio;
+                else _spriteRenderer.sprite = balaRecogible;
         }
     }
     #endregion
