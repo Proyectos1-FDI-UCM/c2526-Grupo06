@@ -94,7 +94,6 @@ public class PanelManager : MonoBehaviour
         {
             // Limpiar la selección actual
             EventSystem.current.SetSelectedGameObject(null);
-            Debug.Log("Estoy en el boton que me toca");
             EventSystem.current.SetSelectedGameObject(gameOverFirstSelected);
         }
     }
