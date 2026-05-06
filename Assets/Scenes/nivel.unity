@@ -11595,6 +11595,22 @@ PrefabInstance:
       propertyPath: SondioNoAmmo
       value: 
       objectReference: {fileID: 8300000, guid: c120ce2dd525fdd4d96c1b3f49b98510, type: 3}
+    - target: {fileID: 8756156899856056065, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: SondioNoAmmo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756156899856056065, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: 'SondioNoAmmo.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a913a759256ac2a459a41a1229385c3e, type: 3}
+    - target: {fileID: 8756156899856056065, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: 'SondioNoAmmo.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ad0133162be2b9419be94a17816315a, type: 3}
+    - target: {fileID: 8756156899856056065, guid: 3e2fd6ec275b225498dcd853c7bf2572, type: 3}
+      propertyPath: 'SondioNoAmmo.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ba831da2f127d646895381df4d74bdd, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
