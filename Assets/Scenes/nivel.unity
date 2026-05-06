@@ -7922,7 +7922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   opcionesFirstSelected: {fileID: 1642834498}
   principalFirstSelected: {fileID: 981860847}
-  panelGameOver: {fileID: 0}
+  panelGameOver: {fileID: 1618894939}
   gameOverFirstSelected: {fileID: 2014926103}
   panelVictoria: {fileID: 781370199}
   victoriaFirstSelected: {fileID: 1776896675}
@@ -8559,7 +8559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -206, y: 0}
+  m_AnchoredPosition: {x: -114, y: -140}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694386917
@@ -9274,9 +9274,9 @@ RectTransform:
   - {fileID: 384549874}
   m_Father: {fileID: 1446695562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 720, y: -157.425}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &896810975
@@ -12995,7 +12995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1618894940
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15052,9 +15052,9 @@ RectTransform:
   - {fileID: 1820792206}
   m_Father: {fileID: 1446695562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 720, y: -57.425003}
   m_SizeDelta: {x: 160, y: 59.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2014926105
