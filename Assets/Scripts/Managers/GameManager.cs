@@ -398,6 +398,8 @@ public class GameManager : MonoBehaviour
                     if (PanelPausa != null)
                     {
                         PanelPausa.SetActive(true);
+                        
+                        if (PanelManager != null) PanelManager.CerrarPanelOpciones();
                     }
 
                     _inputActions.FindActionMap("Player").Disable();
@@ -417,23 +419,29 @@ public class GameManager : MonoBehaviour
             }
             else if (_panelAjustesAbierto)
             {
+                // Esto pasa cuando le das al esc dentro de opciones
                 CerrarPanelAjustes();
                 PanelPausa.SetActive(true);
+
+                // Devolvemos el foco al botón del panel de pausa
+                if (PanelManager != null) PanelManager.CerrarPanelOpciones();
+
+                _inputActions.FindActionMap("UI").Enable();
             }
-            
+
         }
     }
 
     public void AbrirPanelAjustes()
     { 
-        if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(true);
+        if (PanelAjustes != null) PanelAjustes.SetActive(true);
         _sePuedePausar = false;
         _panelAjustesAbierto = true;
         
     }
     public void CerrarPanelAjustes()
     {
-        if (PanelAjustes != null) PanelAjustes.gameObject.SetActive(false);
+        if (PanelAjustes != null) PanelAjustes.SetActive(false);
         _sePuedePausar = true;
         _panelAjustesAbierto = false;
     }

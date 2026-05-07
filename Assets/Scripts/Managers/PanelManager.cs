@@ -76,17 +76,12 @@ public class PanelManager : MonoBehaviour
         // Limpiar la selección actual
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(opcionesFirstSelected);
-        // Activar el panel
-        gameObject.SetActive(true);
     }
     public void CerrarPanelOpciones()
     {
         // Limpiar la selección actual
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(principalFirstSelected);
-
-        // Desactivar el panel
-        gameObject.SetActive(true);
     }
     public void PanelGameOver()
     {
