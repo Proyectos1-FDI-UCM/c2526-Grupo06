@@ -10,8 +10,8 @@ Tendrás que subierte a lomos de Holly Molly, tú cordero de peluche, para derro
 - Pausa: Esc 
 ## Mando
 - Movimiento: Joystick izquierdo / Cruceta
-- Disparar:  Barra espaciadora
-- Pausa: Start
+- Disparar:  A/B/Y/X/RT/LT/RB/LB
+- Pausa: Start/Select
 
 
 # Desarrolladores
