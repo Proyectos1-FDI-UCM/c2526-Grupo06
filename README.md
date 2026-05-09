@@ -13,6 +13,12 @@ Tendrás que subierte a lomos de Holly Molly, tú cordero de peluche, para derro
 - Disparar:  A/B/Y/X/RT/LT/RB/LB
 - Pausa: Start/Select
 
+## CHETOS
+En el menú de opciones dentro de lnivel, puedes encontrar una variedad de modificaciones
+que facilitan ver el todo el contenido sin apenas dificultad.
+- Invencibilidad
+- Munición infinita
+- Animaciones secretas(muy recomendable probarlo al menos una vez)
 
 # Desarrolladores
 - Miguel Calderón Barba
